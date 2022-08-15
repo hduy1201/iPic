@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ipic-260ac": {
+      "hosting": {
+        "CLIENT": [
+          "ipic"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ipic-260ac"
+  }
+}
