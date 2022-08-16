@@ -4,15 +4,13 @@ import { Document } from 'mongoose';
 export type AnimalDocument = Animal & Document;
 
 @Schema({
-    timestamps: true,
+  timestamps: true,
 })
 export class Animal {
-
-    @Prop({
-        required: true
-    })
-    name: string;
-
+  @Prop({
+    required: true,
+  })
+  name: string;
 }
 const animal = new Animal();
 
