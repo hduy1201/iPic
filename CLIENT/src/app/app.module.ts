@@ -11,8 +11,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbButtonModule, NbSearchModule, NbOptionModule, NbInputModule, NbFormFieldModule, NbIconModule, NbIconComponent, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { authReducer } from 'src/reducers/auth.reducer';
+import { AuthEffects } from 'src/effects/auth.effect';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,12 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({
+      auth: authReducer
+    }, {}),
+    EffectsModule.forRoot([
+      AuthEffects
+    ]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
