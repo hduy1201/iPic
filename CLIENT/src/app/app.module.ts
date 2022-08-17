@@ -11,7 +11,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbButtonModule, NbSearchModule, NbOptionModule, NbInputModule, NbFormFieldModule, NbIconModule, NbIconComponent, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 @NgModule({
@@ -30,7 +30,17 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbActionsModule,
+    NbCardModule,
+    NbButtonModule,
+    NbSearchModule,
+    NbOptionModule,
+    NbInputModule,
+    NbFormFieldModule,
+    NbIconModule,
+    NbSidebarModule.forRoot(),
+    NbSidebarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
