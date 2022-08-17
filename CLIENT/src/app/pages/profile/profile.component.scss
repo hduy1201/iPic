@@ -1,0 +1,73 @@
+.vitri {
+    width: 100%;
+}
+
+.avaUser {
+    width: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.user-content{
+  
+    text-align: center;
+}
+#name{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.hub-button{
+    justify-content: center;
+    display: flex;
+}
+
+.button-share {
+    border-radius: 5px;
+    border: none;
+    padding: 1em;
+    margin-right: 1rem;
+    background-color: #e8e8e8;
+}
+
+.button-share:hover  {
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+}
+
+.button-file {
+    border-radius: 5px;
+    border: none;
+    padding: 1em;
+    background-color: #e8e8e8;
+}
+.button-file:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+}
+
+.folder { 
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.create:hover {
+    cursor: pointer;
+}
+
+.save:hover{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
