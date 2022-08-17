@@ -19,4 +19,5 @@ export class AppComponent {
   login() {
     this.store.dispatch(AuthActions.login());
   }
+
 }

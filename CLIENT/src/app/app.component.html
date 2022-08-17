@@ -1,14 +1,43 @@
 <nb-layout>
   <nb-layout-header fixed>
     <!-- Insert header here -->
-    <button nbButton size="medium" status="primary" (click)="login()">Login with Google</button>
+    <img src="../assets/logo_ipic.png" height="80" width="100" />
+
+    <div class="tc"> <button nbButton>Trang chủ</button> </div>
+    <button nbButton style="color:black; background-color: transparent; border: none">Tạo</button>
+    <button nbButton style="color:black; background-color: transparent; border: none">
+      <nb-icon icon="arrow-ios-downward-outline"></nb-icon>
+    </button>
+
+    <span style="flex:0 auto"></span>
+    <div class="searchBox">
+      <nb-icon icon="search"></nb-icon>
+      <input type="text" placeholder="Tìm kiếm">
+    </div>
+
+    <span style="flex:1 auto"></span>
+    <button nbButton style="color:black; background-color: transparent; border: none; margin-right: 10px;">
+      <nb-icon icon="bell"></nb-icon>
+    </button>
+    <button nbButton style="color:black; background-color: transparent; border: none">
+      <nb-icon icon="message-circle"></nb-icon>
+    </button>
+    <button nbButton style="color:black; background-color: transparent; border: none">
+      <nb-icon icon="checkmark-circle-2"></nb-icon>
+    </button>
+    <button nbButton style="color:black; background-color: transparent; border: none">
+      <nb-icon icon="arrow-ios-downward-outline"></nb-icon>
+    </button>
+
+
   </nb-layout-header>
 
   <nb-layout-column>
-    <!-- {{ idToken$ | async }} -->
-    <router-outlet></router-outlet>
-  </nb-layout-column>
 
+    <router-outlet></router-outlet>
+
+  </nb-layout-column>
+  <!-- <nb-sidebar> </nb-sidebar> -->
   <!-- <nb-layout-footer fixed>
   </nb-layout-footer> -->
 </nb-layout>
