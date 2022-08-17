@@ -23,10 +23,38 @@ import { PostModule } from './modules/post/post.module';
 export class AppModule implements NestModule { 
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware).forRoutes(
-      {
-        path: '/animal/get-all',
-        method: RequestMethod.GET,
-      }
+      // {
+      //   path: '/post/:id',
+      //   method: RequestMethod.POST,
+      // },
+      // {
+      //   path: 'post/add',
+      //   method: RequestMethod.POST,
+      // },
+      // {
+      //   path: '/post/update',
+      //   method: RequestMethod.PUT,
+      // },
+      // {
+      //   path: '/post/delete',
+      //   method: RequestMethod.DELETE,
+      // },
+      // {
+      //   path: '/user/all',
+      //   method: RequestMethod.GET,
+      // },
+      // {
+      //   path: '/user/:id',
+      //   method: RequestMethod.GET,
+      // },
+      // {
+      //   path: '/user/register',
+      //   method: RequestMethod.POST,
+      // },
+      // {
+      //   path: '/user/update',
+      //   method: RequestMethod.PUT,
+      // }
     );
   }
 }

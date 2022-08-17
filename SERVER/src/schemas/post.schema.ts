@@ -19,7 +19,6 @@ export class Post {
   content: string;
 
   @Prop({
-    required: true,
     default: Array
   })
   images: string[];
@@ -52,7 +51,9 @@ export class Post {
   coverImage: string;
 
   /**public, private, archive */
-  @Prop()
+  @Prop({
+    default: 'public'
+  })
   status: string;
 }
 
