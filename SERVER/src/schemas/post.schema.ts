@@ -36,8 +36,13 @@ export class Post {
   @Prop()
   comments: string[];
 
+  /**Image */
   @Prop()
   coverImage: string;
+
+  /**public, private, archive */
+  @Prop()
+  status: string;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

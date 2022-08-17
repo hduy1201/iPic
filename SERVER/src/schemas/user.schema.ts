@@ -8,12 +8,12 @@ export class User {
   @Prop({
     required: true,
   })
-  firstname: string;
+  firstName: string;
 
   @Prop({
     required: true,
   })
-  lastname: string;
+  lastName: string;
 
   @Prop({
     required: true,
