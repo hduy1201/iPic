@@ -19,7 +19,6 @@ export class Post {
   content: string;
 
   @Prop({
-    required: true,
     default: Array
   })
   images: string[];
@@ -45,10 +44,17 @@ export class Post {
   })
   comments: [];
 
+  /**Image */
   @Prop({
     required: true
   })
   coverImage: string;
+
+  /**public, private, archive */
+  @Prop({
+    default: 'public'
+  })
+  status: string;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
