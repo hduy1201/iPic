@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  items = [{ title: 'Tạo Ghim ý tưởng' }, { title: 'Tạo Ghim' }];
+
   title = 'CLIENT';
 
 }
