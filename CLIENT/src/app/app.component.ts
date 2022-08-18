@@ -10,6 +10,8 @@ import * as AuthActions from '../actions/auth.action';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  items = [{ title: 'Tạo Ghim ý tưởng' }, { title: 'Tạo Ghim' }];
+
   title = 'CLIENT';
 
   idToken$ = this.store.select((state) => state.auth.idToken);
