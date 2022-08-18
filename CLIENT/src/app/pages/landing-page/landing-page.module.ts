@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { LandingPageComponent } from './landing-page.component';
+import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LandingPageComponent } from './landing-page.component';
   ],
   imports: [
     CommonModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
+    AngularFullpageModule
   ]
 })
 export class LandingPageModule { }

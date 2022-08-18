@@ -1,4 +1,6 @@
 // Landing page
+@import url(~fullpage.js/dist/fullpage.min.css);
+
 * {
     margin: 0;
     padding: 0;
@@ -47,6 +49,8 @@ li {
 }
 
 .heading .text {
+    top: 60px;
+    position: relative;
     font-size: 60px;
     font-weight: 600;
 }
@@ -57,7 +61,7 @@ li {
 
 .heading .wrapper .offset {
     position: absolute;
-    top: 0;
+    top: 40px;
     left: 0;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -129,19 +133,19 @@ li {
 }
 
 .column:nth-child(3) {
-    margin-top: 320px;
+    margin-top: 240px;
     -webkit-transition-delay: 0.4s;
     transition-delay: 0.4s;
 }
 
 .column:nth-child(4) {
-    margin-top: 480px;
+    margin-top: 400px;
     -webkit-transition-delay: 0.6s;
     transition-delay: 0.6s;
 }
 
 .column:nth-child(5) {
-    margin-top: 320px;
+    margin-top: 240px;
     -webkit-transition-delay: 0.8s;
     transition-delay: 0.8s;
 }

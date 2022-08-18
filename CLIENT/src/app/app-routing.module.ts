@@ -13,6 +13,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/landing-page/landing-page.module').then(m => m.LandingPageModule),
   },
+  { path: 'headers', loadChildren: () => import('./pages/headers/headers.module').then(m => m.HeadersModule) },
 ];
 
 @NgModule({

@@ -11,9 +11,9 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSelectModule, NbMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { HeadersModule } from './pages/headers/headers.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    HeadersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

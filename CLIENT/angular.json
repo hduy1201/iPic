@@ -33,7 +33,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/fullpage.scrollHorizontally.min.js"
+            ]
           },
           "configurations": {
             "production": {
