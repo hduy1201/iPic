@@ -20,11 +20,7 @@
   background-color: transparent;
   padding-left: 20px;
 }
-.searchBox > nb-icon {
 
-  font-size: 20px;
-  color: rgb(0, 0, 0);
-}
 
 nb-layout-header {
   background-color:rgba(223, 185, 151, 1) ;
@@ -33,6 +29,9 @@ nb-layout-header {
   border-radius: 50px;
   width: 90%;
   height: 40px;
+  margin-left: 10%;
+  background-color:rgba(217, 217, 217, 1);
+  border: none;
 
 }
 
