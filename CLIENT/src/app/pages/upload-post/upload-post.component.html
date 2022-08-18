@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="post-form">
+    <div class="header-form">
+      <div class="option-icon">
+        <svg
+          class="gUZ ztu U9O kVc"
+          height="18"
+          width="18"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          aria-label=""
+          role="img"
+        >
+          <path
+            d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"
+          ></path>
+        </svg>
+      </div>
+      <div class="drop-down-tag">
+        <input type="search" placeholder="Nhập #tag" />
+        <button>Lưu</button>
+      </div>
+    </div>
+    <div class="main-form">
+      <div class="left-form">
+        <div
+          class="custom-dropzone"
+          ngx-dropzone
+          [accept]="'image/*'"
+          (change)="onSelect($event)"
+        >
+          <ngx-dropzone-label>
+            <div class="upload-content">
+              <i class="fa fa-arrow-down" aria-hidden="true"></i>
+              <div>
+                <p>Kéo thả hoặc nhấp vào để tải lên</p>
+              </div>
+            </div>
+            <div class="upload-suggest">
+              <p>
+                Khuyến nghị: Sử dụng tập tin .jpg chất lượng cao có kích thước
+                dưới 20MB
+              </p>
+            </div>
+          </ngx-dropzone-label>
+          <ngx-dropzone-image-preview
+            ngProjectAs="ngx-dropzone-preview"
+            *ngFor="let f of files"
+            [file]="f"
+            [removable]="true"
+            (removed)="onRemove(f)"
+          >
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </div>
+      </div>
+      <div class="right-form">
+        <input class="title" type="text" placeholder="Tạo tiêu đề" />
+        <div class="profile">
+          <img class="avatar" src="/assets/images/img_01.jpg" />
+          <div class="account-name">Lư Hoàng Duy</div>
+        </div>
+        <div class="description">
+          <input
+            class="input-description"
+            type="text"
+            placeholder="Nhập mô tả bài viết của bạn ở đây..."
+          />
+        </div>
+        <div class="website-link">
+          <input
+            class="input-link"
+            type="url"
+            placeholder="Chia sẻ thêm liên kết liên quan đến bài của bạn"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
