@@ -55,6 +55,11 @@ export class Post {
     default: 'public'
   })
   status: string;
+
+  @Prop({
+    default: Array<string>
+  })
+  links: Array<string> ;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
