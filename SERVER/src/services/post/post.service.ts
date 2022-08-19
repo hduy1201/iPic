@@ -5,7 +5,7 @@ import { Post, PostDocument } from 'src/schemas/post.schema';
 
 @Injectable()
 export class PostService {
-  constructor(@InjectModel(Post.name) private postModel: Model<PostDocument>) {}
+  constructor(@InjectModel(Post.name) private postModel: Model<PostDocument>) { }
 
   async getAllPosts() {
     try {
@@ -28,8 +28,12 @@ export class PostService {
   }
 
   async createPost(post: Post) {
-    let createPost = new this.postModel(post);
-    return await createPost.save();
+    try {
+      let createPost = new this.postModel(post);
+      return await createPost.save();
+    } catch (error) {
+      return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
   }
 
   async updatePost(id: string, post: Post) {

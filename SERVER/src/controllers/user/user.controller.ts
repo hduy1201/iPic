@@ -5,7 +5,7 @@ import { Response } from 'express';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   @Get('/all')
   public async getAllUsers() {
@@ -20,7 +20,10 @@ export class UserController {
   @Post('/register')
   public async createUser(@Body() user: User, @Res() res: Response) {
     const _user = await this.userService.createUser(user);
-    res.status(HttpStatus.CREATED).send();
+    res.status(HttpStatus.CREATED).send({
+      message: "Registered User Successfully!!!",
+      data: _user
+    });
   }
 
   @Put('/update')

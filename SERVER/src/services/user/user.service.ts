@@ -5,7 +5,7 @@ import { User, UserDocument } from 'src/schemas/user.schema';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
 
   async createUser(user: User) {
     try {
@@ -37,6 +37,18 @@ export class UserService {
   async findUserById(id: string) {
     try {
       const user = await this.userModel.findById(id);
+      if (!user) {
+        throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
+      }
+      return user;
+    } catch (error) {
+      return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async findUserByUid(uid: string) {
+    try {
+      const user = await this.userModel.findOne({ uid: uid });
       if (!user) {
         throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
       }

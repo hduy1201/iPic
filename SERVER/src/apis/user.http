@@ -1,0 +1,14 @@
+POST http://localhost:3000/user/register
+Content-Type: application/json
+
+{
+  "firstName": "Trọng",
+  "lastName": "Phạm",
+  "email": "trong.phamtranduc@gmail.com",
+  "dob": "09/09/20000",
+  "photoURL": "",
+  "gender": "Male",
+  "description":"",
+  "website": "",
+  "uid": ""
+}

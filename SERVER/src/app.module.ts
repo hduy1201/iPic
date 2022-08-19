@@ -12,32 +12,33 @@ import { PostModule } from './modules/post/post.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority"),
+    MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
+    // MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority"),
     AnimalModule,
     PostModule,
     UserModule
   ],
-  controllers: [AppController, ],
-  providers: [AppService, AuthService, ],
+  controllers: [AppController,],
+  providers: [AppService, AuthService,],
 })
-export class AppModule implements NestModule { 
+export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware).forRoutes(
       // {
       //   path: '/post/:id',
       //   method: RequestMethod.POST,
       // },
-      // {
-      //   path: 'post/add',
-      //   method: RequestMethod.POST,
-      // },
+      {
+        path: 'post/add',
+        method: RequestMethod.POST,
+      },
       // {
       //   path: '/post/update',
       //   method: RequestMethod.PUT,
       // },
       // {
       //   path: '/post/delete',
-      //   method: RequestMethod.DELETE,
+      //   method: RequestMethod.DELETE,  
       // },
       // {
       //   path: '/user/all',
