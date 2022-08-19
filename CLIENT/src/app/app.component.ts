@@ -16,7 +16,7 @@ export class AppComponent {
 
   idToken$ = this.store.select((state) => state.auth.idToken);
 
-  constructor(private store: Store<{ auth: AuthState }>) {}
+  constructor(private store: Store<{ auth: AuthState }>) { }
 
   login() {
     this.store.dispatch(AuthActions.login());

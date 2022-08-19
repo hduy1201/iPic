@@ -1,0 +1,77 @@
+.s3-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.s3-split {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.image {
+  height: 80%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 40px;
+}
+
+.s3-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  height: 100%;
+  width: 100%;
+}
+
+.s3-right {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.s3-right-title {
+  font-size: 60px;
+  color: rgb(38, 121, 134);
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 70px;
+}
+
+.s3-right-description {
+  font-size: 30px;
+  color: rgb(38, 121, 134);
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 40px;
+}
+
+.s3-btn {
+  border: 0px;
+  border-radius: 93px;
+  height: 60px;
+  width: 120px;
+  background: rgb(38, 121, 134);
+  color: rgb(218, 255, 246);
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.s3-btn:active {
+  background: rgb(92, 12, 39);
+}
