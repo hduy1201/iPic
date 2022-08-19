@@ -1,0 +1,72 @@
+.dad {
+  display: inline-block;
+  width: 900px;
+  height: 1000px;
+  margin-left: 130px;
+
+
+
+}
+.c1 {
+  float: left;
+  width: 450px;
+  height: 100%;
+  border-radius: 50px 0 0 50px;
+  border: 1px solid  transparent;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+
+
+}
+.c2 {
+  float: right;
+  width: 450px;
+  height: 100%;
+  border-radius: 0 50px 50px 0;
+  border: 1px solid  transparent;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+
+}
+.back > button > nb-icon {
+    font-size: 1.5rem;
+    line-height: 2;
+    width: 2em;
+    height: 2em;
+    color: #000000; //For unspecified status
+
+}
+.back > button {
+  float: left;
+}
+
+.b > button > nb-icon {
+  font-size: 1.5rem;
+    line-height: 2;
+    width: 1em;
+    height: 1em;
+    color: #000000; //For unspecified status
+
+}
+
+.b > button {
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.duongLink:link {
+  text-decoration: none;
+}
+
+.duongLink:visited {
+  text-decoration: none;
+}
+
+.duongLink:hover {
+  text-decoration: underline;
+}
+
+.duongLink:active {
+  text-decoration: underline;
+}
+

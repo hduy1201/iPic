@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
-import { NbSidebarModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbSelectModule, NbSidebarModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
 @NgModule({
@@ -15,6 +16,10 @@ import { NbSidebarModule } from '@nebular/theme';
     DetailRoutingModule,
     NbSidebarModule.forRoot(),
     NbSidebarModule,
+    NbCardModule,
+    NbIconModule,
+    NbEvaIconsModule,
+    NbSelectModule,
   ]
 })
 export class DetailModule { }
