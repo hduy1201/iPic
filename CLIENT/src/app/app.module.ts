@@ -11,14 +11,13 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSelectModule, NbMenuModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HeadersModule } from './pages/headers/headers.module';
+import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,8 +32,9 @@ import { HeadersModule } from './pages/headers/headers.module';
     NbLayoutModule,
     NbEvaIconsModule,
     HeadersModule,
+    AngularFullpageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

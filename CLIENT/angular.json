@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "02e30635-eef9-48b2-a588-c286b90c6c50"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -34,7 +37,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/fullpage.scrollHorizontally.min.js"
             ]
           },
           "configurations": {
