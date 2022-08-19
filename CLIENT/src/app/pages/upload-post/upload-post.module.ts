@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UploadPostRoutingModule } from './upload-post-routing.module';
 import { UploadPostComponent } from './upload-post.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   imports: [
     CommonModule,
     UploadPostRoutingModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    ReactiveFormsModule
   ]
 })
 export class UploadPostModule { }

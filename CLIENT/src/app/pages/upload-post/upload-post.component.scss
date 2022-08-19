@@ -95,6 +95,10 @@ ngx-dropzone-label {
   height: 90%;
 }
 
+ngx-dropzone-image-preview {
+  width: 80%;
+}
+
 ngx-dropzone-label,
 .upload-content {
   margin-top: 40%;
@@ -147,6 +151,7 @@ ngx-dropzone-label,
   border-left: none;
   border-right: none;
   background-color: #dfb997;
+  
 }
 
 .right-form .website-link {
@@ -163,4 +168,8 @@ ngx-dropzone-label,
   border-right: none;
   background-color: #dfb997;
   font-size: 1rem;
+}
+
+input:focus {
+  outline: none !important;
 }

@@ -15,6 +15,9 @@ import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbButtonM
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { AuthEffects } from 'src/effects/auth.effect';
+import { HttpClientModule } from '@angular/common/http';
+import { createPostReducer } from 'src/reducers/post.reducer';
+import { PostEffectS } from 'src/effects/post.effect';
 
 @NgModule({
   declarations: [
@@ -28,10 +31,12 @@ import { AuthEffects } from 'src/effects/auth.effect';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     StoreModule.forRoot({
-      auth: authReducer
+      auth: authReducer,
+      createPostReducer: createPostReducer
     }, {}),
     EffectsModule.forRoot([
-      AuthEffects
+      AuthEffects,
+      PostEffectS
     ]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
@@ -48,8 +53,7 @@ import { AuthEffects } from 'src/effects/auth.effect';
     NbSidebarModule.forRoot(),
     NbSidebarModule,
     NbContextMenuModule,
-
-
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

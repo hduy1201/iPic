@@ -23,9 +23,7 @@ export class PostController {
     @Post('/add')
     public async createPost(@Body() post: Schema.Post, @Req() req: any) {
 
-        const payload = req.payload;
         console.log(post);
-        console.log(payload);
         
         // return await this.PostService.createPost(post);
     }

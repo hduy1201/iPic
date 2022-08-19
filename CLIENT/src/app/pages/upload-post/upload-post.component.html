@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="post-form">
+  <div class="post-form" [formGroup]="postForm">
     <div class="header-form">
       <div class="option-icon">
         <svg
@@ -18,7 +18,7 @@
       </div>
       <div class="drop-down-tag">
         <input type="search" placeholder="Nhập #tag" />
-        <button>Lưu</button>
+        <button type="submit" (click)="addPost()">Lưu</button>
       </div>
     </div>
     <div class="main-form">
@@ -28,8 +28,9 @@
           ngx-dropzone
           [accept]="'image/*'"
           (change)="onSelect($event)"
+          for="image"
         >
-          <ngx-dropzone-label>
+          <ngx-dropzone-label id="image">
             <div class="upload-content">
               <i class="fa fa-arrow-down" aria-hidden="true"></i>
               <div>
@@ -50,28 +51,38 @@
             [removable]="true"
             (removed)="onRemove(f)"
           >
-            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
           </ngx-dropzone-image-preview>
         </div>
       </div>
       <div class="right-form">
-        <input class="title" type="text" placeholder="Tạo tiêu đề" />
+        <div for="title">
+          <input
+            class="title"
+            type="text"
+            placeholder="Tạo tiêu đề"
+            id="title"
+            formControlName="title"
+          />
+        </div>
         <div class="profile">
           <img class="avatar" src="/assets/images/img_01.jpg" />
           <div class="account-name">Lư Hoàng Duy</div>
         </div>
-        <div class="description">
+        <div class="description" for="description">
           <input
             class="input-description"
             type="text"
             placeholder="Nhập mô tả bài viết của bạn ở đây..."
+            id="description"
+            formControlName="content"
           />
         </div>
-        <div class="website-link">
+        <div class="website-link" for="link">
           <input
             class="input-link"
             type="url"
             placeholder="Chia sẻ thêm liên kết liên quan đến bài của bạn"
+            id="link"
           />
         </div>
       </div>
