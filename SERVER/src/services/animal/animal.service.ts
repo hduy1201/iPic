@@ -13,4 +13,10 @@ export class AnimalService {
             return new HttpException(error.message, HttpStatus.BAD_REQUEST);
         }
     }
+
+    //for test idToken
+    async create(body: any) {
+        let createdBody = new this.animalModel(body);
+        await createdBody.save();
+    }
 }

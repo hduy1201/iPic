@@ -11,11 +11,13 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbButtonModule, NbSearchModule, NbOptionModule, NbInputModule, NbFormFieldModule, NbIconModule, NbIconComponent, NbSidebarModule, NbContextMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { HeadersModule } from './pages/headers/headers.module';
-import { AngularFullpageModule } from '@fullpage/angular-fullpage';
-
+import { AuthEffects } from 'src/effects/auth.effect';
+import { createPostReducer } from 'src/reducers/post.reducer';
+import { authReducer } from 'src/reducers/auth.reducer';
+import { PostEffectS } from 'src/effects/post.effect';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,16 +27,22 @@ import { AngularFullpageModule } from '@fullpage/angular-fullpage';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({
+      auth: authReducer,
+      createPostReducer: createPostReducer
+    }, {}),
+    EffectsModule.forRoot([
+      AuthEffects,
+      PostEffectS
+    ]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
     NbEvaIconsModule,
-    HeadersModule,
-    AngularFullpageModule,
+    NbIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

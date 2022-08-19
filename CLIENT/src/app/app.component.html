@@ -1,11 +1,58 @@
 <nb-layout>
   <nb-layout-header fixed>
-    <app-headers style="width: 100%;"></app-headers>
     <!-- Insert header here -->
+    <img routerLink="/" src="../assets/logo_ipic.png" height="50px" width="50px" style="margin-right:10px;" />
+
+    <div class="tc"> <button routerLink="home" nbButton>Trang chủ</button> </div>
+
+    <button routerLink="/upload-post" nbButton style="color:black;
+    background-color: transparent;
+    border: none">Tạo</button>
+
+    <button nbButton style="background-color: transparent;
+    border: none;
+    margin-right:10px">
+      <nb-icon icon="arrow-ios-downward-outline" style="color:black;"></nb-icon>
+    </button>
+
+    <span style="flex:0 auto"></span>
+    <div class="searchBox">
+      <nb-icon icon="search" style="color:black;"></nb-icon>
+      <input type="text" placeholder="Tìm kiếm">
+    </div>
+
+    <span style="flex:1 auto"></span>
+    <button nbButton style="background-color: transparent;
+    border: none;margin-right: 10px;">
+      <nb-icon icon="bell" style="color:black;"></nb-icon>
+    </button>
+
+    <button nbButton style="background-color: transparent;
+    border: none;margin-right: 10px; ">
+      <nb-icon icon="message-circle" style="color:black;"></nb-icon>
+    </button>
+
+    <button nbButton style="background-color: transparent;
+    border: none; margin-right:10px;">
+      <nb-icon icon="checkmark-circle-2" style="color:black;"></nb-icon>
+    </button>
+
+    <button nbButton (click)="login()" style="
+     background-color: transparent;
+     border: none;margin-right:15px;">
+      <nb-icon icon="arrow-ios-downward-outline" style="color:black;"></nb-icon>
+
+    </button>
+
+
   </nb-layout-header>
-  <nb-layout-column style="padding: 0 !important;">
+
+  <nb-layout-column>
+
     <router-outlet></router-outlet>
+
   </nb-layout-column>
+  <!-- <nb-sidebar> </nb-sidebar> -->
   <!-- <nb-layout-footer fixed>
   </nb-layout-footer> -->
 </nb-layout>

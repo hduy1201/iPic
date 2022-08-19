@@ -1,0 +1,37 @@
+.searchBox {
+  background-color: rgba(217, 217, 217, 1);
+  border-radius: 50px;
+  padding: 10px;
+  width: 60%;
+  height: 40px;
+  display: flex;
+
+}
+
+.searchBox>input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  font-weight: light;
+  text-align: left;
+  background-color: transparent;
+  padding-left: 20px;
+}
+
+
+nb-layout-header {
+  background-color: rgba(223, 185, 151, 1);
+}
+
+.tc>button {
+  border-radius: 10px;
+  width: 90%;
+  height: 40px;
+  margin-left: 10%;
+  background-color: rgba(217, 217, 217, 1);
+  border: none;
+  padding: 15px;
+}
