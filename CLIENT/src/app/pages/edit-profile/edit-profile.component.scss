@@ -1,11 +1,12 @@
 .parrent {
     width: 100%;
     display: flex;
+    margin-top: 40px;
 }
 
 .left {
-   max-width: 200px;
-    
+    width: 20%;
+    padding: 20px 0px 0px 50px;
 }
 
 .right {
@@ -13,12 +14,12 @@
 }
 
 .hover-underline-animation {
-   position: relative;
-   font-weight: bold;
-   padding: 3px;
- }
- 
- p:after {
+    position: relative;
+    font-weight: bold;
+    padding: 3px;
+}
+
+p:after {
     content: '';
     position: absolute;
     width: 30%;
@@ -29,23 +30,24 @@
     background-color: #000000;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
- }
- 
- .hover-underline-animation:hover:after {
-   transform: scaleX(1);
-   transform-origin: bottom left;
- }
+}
 
- .avaUser {
+.hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.avaUser {
     width: 65px;
     border-radius: 50%;
     display: block;
     margin-top: -10px;
 }
 
-.child-right{
-    margin-left: 15%;
+.child-right {
+    margin-left: 5%;
 }
+
 .font {
     font-size: 20pt;
     font-weight: bold;
@@ -65,7 +67,7 @@ button {
 }
 
 .title {
-    display: flex; 
+    display: flex;
     gap: 1em;
     width: 50%;
 }

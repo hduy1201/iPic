@@ -1,55 +1,57 @@
 .dad {
-  display: inline-block;
+  display: block;
   width: 900px;
   height: 1000px;
-  margin-left: 130px;
-
-
-
+  // margin-left: 130px;
+  margin: 50px auto 50px auto;
 }
+
 .c1 {
   float: left;
   width: 450px;
   height: 100%;
   border-radius: 50px 0 0 50px;
-  border: 1px solid  transparent;
+  border: 1px solid transparent;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 
 
 }
+
 .c2 {
   float: right;
   width: 450px;
   height: 100%;
   border-radius: 0 50px 50px 0;
-  border: 1px solid  transparent;
+  border: 1px solid transparent;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
 
 }
-.back > button > nb-icon {
-    font-size: 1.5rem;
-    line-height: 2;
-    width: 2em;
-    height: 2em;
-    color: #000000; //For unspecified status
+
+.back>button>nb-icon {
+  font-size: 1.5rem;
+  line-height: 2;
+  width: 2em;
+  height: 2em;
+  color: #000000; //For unspecified status
 
 }
-.back > button {
+
+.back>button {
   float: left;
 }
 
-.b > button > nb-icon {
+.b>button>nb-icon {
   font-size: 1.5rem;
-    line-height: 2;
-    width: 1em;
-    height: 1em;
-    color: #000000; //For unspecified status
+  line-height: 2;
+  width: 1em;
+  height: 1em;
+  color: #000000; //For unspecified status
 
 }
 
-.b > button {
+.b>button {
   margin-left: 20px;
   margin-top: 40px;
 }
@@ -70,7 +72,7 @@
   text-decoration: underline;
 }
 
-.info > p {
+.info>p {
   margin-left: 90px;
   font-size: 15px;
   font-weight: bold;
@@ -78,20 +80,20 @@
 }
 
 .searchBox {
-  background-color:transparent;
-  border: 1px solid lightgray ;
+  background-color: transparent;
+  border: 1px solid lightgray;
   border-radius: 50px;
-  margin-top:22px;
+  margin-top: 22px;
   margin-left: 90px;
   padding: 10px;
   width: 75%;
   height: 40px;
-  display:  flex;
+  display: flex;
 
 
 }
 
-.searchBox > input {
+.searchBox>input {
   border: none;
   outline: none;
   width: 100%;
@@ -105,32 +107,33 @@
 }
 
 .linkofpic {
-  background-color:transparent;
-  border: 1px solid lightgray ;
+  background-color: transparent;
+  border: 1px solid lightgray;
   border-radius: 50px;
-  margin-top:930px;
+  margin-top: 930px;
   margin-left: 30px;
   padding: 10px;
   width: 55%;
   height: 40px;
-  display:  flex;
+  display: flex;
 
 
 }
 
-.linkofpic > nb-icon {
+.linkofpic>nb-icon {
   font-size: 1.5rem;
-    line-height: 2;
-    width: 1em;
-    height: 1em;
-    color: #000000; //For unspecified status
+  line-height: 2;
+  width: 1em;
+  height: 1em;
+  color: #000000; //For unspecified status
 
 }
-.c1 > img {
+
+.c1>img {
   float: left;
   width: 450px;
   height: 100%;
   border-radius: 50px 0 0 50px;
-  border: 1px solid  transparent;
+  border: 1px solid transparent;
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }

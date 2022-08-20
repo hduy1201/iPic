@@ -1,6 +1,6 @@
 .container {
   padding: 0;
-  margin: 0 auto;
+  margin: 50px auto 50px auto;
   width: 65%;
   height: 95%;
   display: flex;
@@ -125,6 +125,7 @@ ngx-dropzone-label,
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .right-form .account-name {
   width: 50%;
   padding: 35px 0;
@@ -151,7 +152,7 @@ ngx-dropzone-label,
   border-left: none;
   border-right: none;
   background-color: #dfb997;
-  
+
 }
 
 .right-form .website-link {
