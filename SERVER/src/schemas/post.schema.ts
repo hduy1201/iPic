@@ -27,7 +27,7 @@ export class Post {
     required: true,
     type: mongoose.Schema.Types.ObjectId, ref: "Users"
   })
-  authorId: User;
+  authorId: string;
 
   @Prop({
     default: Array
@@ -55,6 +55,11 @@ export class Post {
     default: 'public'
   })
   status: string;
+
+  @Prop({
+    default: Array<string>
+  })
+  links: Array<string> ;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

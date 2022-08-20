@@ -1,0 +1,176 @@
+.container {
+  padding: 0;
+  margin: 50px auto 50px auto;
+  width: 65%;
+  height: 95%;
+  display: flex;
+  background-color: #dfb997;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.container .post-form {
+  width: 100%;
+  margin: 50px 50px 0 50px;
+}
+
+.container .post-form .header-form {
+  width: 100%;
+  height: 8%;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .option-icon {
+  padding: 1.5%;
+  width: 5%;
+}
+
+.container .post-form .drop-down-tag {
+  width: 30%;
+  height: 100%;
+  display: inline-flex;
+}
+
+.container .drop-down-tag button {
+  background-color: #97b5db;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  width: 20%;
+  height: 90%;
+  border: 0.5px solid none;
+  border-left: none;
+}
+
+.container .drop-down-tag button:hover {
+  background-color: #008cba;
+  color: #ffff;
+}
+
+.container .drop-down-tag input {
+  border-radius: 5px 0 0 5px;
+  border: none;
+  width: 80%;
+  height: 90%;
+  border: 0.5px solid none;
+  border-right: none;
+  background-color: #efefef;
+}
+
+.container .post-form .main-form {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .main-form .left-form {
+  width: 50%;
+}
+
+.container .main-form .right-form {
+  width: 50%;
+}
+
+ngx-dropzone,
+.custom-dropzone {
+  margin: 10px 20px 10px 0;
+}
+
+.custom-dropzone {
+  height: 90%;
+  width: 80%;
+  background: #efefef;
+  border-radius: 8px;
+}
+
+.custom-dropzone p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+ngx-dropzone-label {
+  width: 90%;
+  height: 90%;
+}
+
+ngx-dropzone-image-preview {
+  width: 80%;
+}
+
+ngx-dropzone-label,
+.upload-content {
+  margin-top: 40%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.right-form .title {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  height: 15%;
+  width: 100%;
+  background-color: #dfb997;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.right-form .profile {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.right-form .account-name {
+  width: 50%;
+  padding: 35px 0;
+  margin: 0 0 0 15px;
+  font-weight: bold;
+}
+
+.right-form .avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 100%;
+}
+
+.right-form .description {
+  width: 100%;
+  height: 25%;
+  margin-top: 10%;
+}
+
+.right-form .input-description {
+  width: 100%;
+  height: 30%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #dfb997;
+
+}
+
+.right-form .website-link {
+  width: 100%;
+  height: 25%;
+  margin-top: 4%;
+}
+
+.right-form .input-link {
+  width: 100%;
+  height: 50%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #dfb997;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none !important;
+}

@@ -1,13 +1,16 @@
-import { Body, Controller, Delete, Get, Post, Put, Query, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put, Query, Req } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PostService } from 'src/services/post/post.service';
-import * as Schema from 'src/schemas/post.schema'; 
+import { UserService } from 'src/services/user/user.service';
+import * as Schema from 'src/schemas/post.schema';
+import { User } from 'src/models/user.model';
 
 @Controller('post')
 export class PostController {
 
     constructor(
         private PostService: PostService,
+        private UserService: UserService
     ) { }
 
     @Get('/all')
@@ -22,12 +25,7 @@ export class PostController {
 
     @Post('/add')
     public async createPost(@Body() post: Schema.Post, @Req() req: any) {
-
-        const payload = req.payload;
         console.log(post);
-        console.log(payload);
-        
-        // return await this.PostService.createPost(post);
     }
 
     @Put('/update')

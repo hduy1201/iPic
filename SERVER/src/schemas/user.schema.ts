@@ -35,6 +35,11 @@ export class User {
   @Prop()
   description: string;
 
+  @Prop({
+    required: true
+  })
+  uid: string
+
   @Prop()
   website: string;
 
