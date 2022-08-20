@@ -25,18 +25,7 @@ export class PostController {
 
     @Post('/add')
     public async createPost(@Body() post: Schema.Post, @Req() req: any) {
-
-        let payload = req.payload;
-        let _user: User;
-        // let _user = await this.UserService.findUserByUid(payload.uid);
-
-        if (!_user) {
-            throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
-        }
-
-        post.authorId = _user._id;
-        console.log(post)
-        // return await this.PostService.createPost(post);
+        console.log(post);
     }
 
     @Put('/update')

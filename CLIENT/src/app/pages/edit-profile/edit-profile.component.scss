@@ -1,0 +1,116 @@
+.parrent {
+    width: 100%;
+    display: flex;
+}
+
+.left {
+   max-width: 200px;
+    
+}
+
+.right {
+    width: 80%;
+}
+
+.hover-underline-animation {
+   position: relative;
+   font-weight: bold;
+   padding: 3px;
+ }
+ 
+ p:after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+ }
+ 
+ .hover-underline-animation:hover:after {
+   transform: scaleX(1);
+   transform-origin: bottom left;
+ }
+
+ .avaUser {
+    width: 65px;
+    border-radius: 50%;
+    display: block;
+    margin-top: -10px;
+}
+
+.child-right{
+    margin-left: 15%;
+}
+.font {
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+button {
+    padding: 5px;
+    margin-left: 1rem;
+    margin-top: 1%;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(253, 248, 248, 0.805);
+}
+
+.font-title {
+    font-size: 8pt;
+}
+
+.title {
+    display: flex; 
+    gap: 1em;
+    width: 50%;
+}
+
+.input-information {
+    display: block;
+}
+
+.input-profile-name {
+    padding: 15px;
+    border-radius: 15px;
+    border: solid 0.5px grey;
+    width: 100%;
+}
+
+input {
+    outline: none;
+}
+
+.name-user {
+    width: 100%;
+}
+
+.input-profile-introduce {
+    width: 50%;
+    padding: 40px;
+    border-radius: 15px;
+    border: solid 0.5px grey;
+}
+
+.input-profile-link {
+    width: 50%;
+    padding: 15px;
+    border-radius: 15px;
+    border: solid 0.5px grey;
+}
+
+.input-profile-email {
+    width: 50%;
+    padding: 15px;
+    border-radius: 15px;
+    border: solid 0.5px grey;
+}
+
+.align {
+    column-count: 2;
+    gap: 20px;
+}
