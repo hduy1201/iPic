@@ -9,14 +9,16 @@ import { UserModule } from './modules/user/user.module';
 import { PostController } from './controllers/post/post.controller';
 import { PostService } from './services/post/post.service';
 import { PostModule } from './modules/post/post.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
-    // MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority"),
+    // MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
+    MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority"),
     AnimalModule,
     PostModule,
-    UserModule
+    UserModule,
+    MulterModule.register({dest: './uploads/images'})
   ],
   controllers: [AppController,],
   providers: [AppService, AuthService,],
