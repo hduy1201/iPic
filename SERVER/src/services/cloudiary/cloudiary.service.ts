@@ -15,7 +15,9 @@ export class CloudiaryService {
       );
       console.log(imagePath);
       try {
-        let res = await cloudinary.uploader.upload(imagePath);
+        let res = await cloudinary.uploader.upload(imagePath, {
+          folder: "iPic"
+        });
         resolve(res);
       } catch (error) {
         reject(error);

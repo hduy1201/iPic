@@ -41,10 +41,10 @@ export class AppModule implements NestModule {
       //   path: '/post/:id',
       //   method: RequestMethod.POST,
       // },
-      {
-        path: 'post/add',
-        method: RequestMethod.POST,
-      },
+      // {
+      //   path: 'post/add',
+      //   method: RequestMethod.POST,
+      // },
       // {
       //   path: '/post/update',
       //   method: RequestMethod.PUT,
