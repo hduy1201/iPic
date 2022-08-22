@@ -1,22 +1,21 @@
-import { state } from '@angular/animations';
 import { createReducer, on } from '@ngrx/store';
 import { Post } from 'src/models/post';
-import { createPostState, PostState } from 'src/states/post.state';
+import { createPostState, getAllPostState } from 'src/states/post.state';
 import * as PostAction from '../actions/post.action';
 
-const initcreatePostState: createPostState = {
+const initCreatePostState: createPostState = {
   isLoading: false,
   post: <Post>{},
   error: '',
 };
 
 export const createPostReducer = createReducer(
-  initcreatePostState,
+  initCreatePostState,
   on(PostAction.createPost, (state, action) => {
     return {
       ...state,
       isLoading: true,
-      post: action.post
+      post: action.post,
     };
   }),
 
@@ -24,7 +23,7 @@ export const createPostReducer = createReducer(
     return {
       ...state,
       isLoading: false,
-      post: <Post>{}
+      post: <Post>{},
     };
   }),
 
@@ -33,30 +32,43 @@ export const createPostReducer = createReducer(
       ...state,
       isLoading: false,
       error: error,
-      post: <Post>{}
+      post: <Post>{},
     };
   })
 );
 
-// on(PostAction.getPosts, (state) => {
-//     return {
-//       ...state,
-//       isLoading: true,
-//     };
-//   }),
+const initGetAllPostState: getAllPostState = {
+  isLoading: false,
+  posts: <Post[]>[],
+  error: '',
+  isSuccess: false,
+};
 
-//   on(PostAction.getPostsSuccess, (state, { posts }) => {
-//     return {
-//       ...state,
-//       isLoading: false,
-//       post: posts,
-//     };
-//   }),
+export const getAllPostReducer = createReducer(
+  initGetAllPostState,
+  on(PostAction.getPosts, (state) => {
+    return {
+      ...state,
+      isLoading: true,
+      isSuccess: false,
+    };
+  }),
 
-//   on(PostAction.getPostsFail, (state, { error }) => {
-//     return {
-//       ...state,
-//       isLoading: false,
-//       error: error,
-//     };
-//   })
+  on(PostAction.getPostsSuccess, (state, { posts }) => {
+    return {
+      ...state,
+      isLoading: false,
+      posts: posts,
+      isSuccess: true,
+    };
+  }),
+
+  on(PostAction.getPostsFail, (state, { error }) => {
+    return {
+      ...state,
+      isLoading: false,
+      error: error,
+      isSuccess: false,
+    };
+  })
+);
