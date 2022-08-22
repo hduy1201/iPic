@@ -1,11 +1,14 @@
+.searchBoxContainer {
+  width: 60%;
+}
+
 .searchBox {
   background-color: rgba(217, 217, 217, 1);
   border-radius: 50px;
   padding: 10px;
-  width: 60%;
+  width: 100%;
   height: 40px;
   display: flex;
-
 }
 
 .searchBox>input {
@@ -21,6 +24,86 @@
   padding-left: 20px;
 }
 
+.suggestionContainer {
+  visibility: hidden;
+  display: none;
+  position: absolute;
+  background-color: rgb(245, 245, 245);
+  border-radius: 15px;
+  padding: 20px;
+  padding-left: 30px;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+}
+
+.ideaforYou {
+  margin-top: 10px;
+}
+
+.trendOnPinterest {
+  margin-top: 20px;
+}
+
+.make-visible {
+  visibility: visible;
+}
+
+.searchItemContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.searchItemContainer .searchItem {
+  background-color: rgb(218, 213, 208);
+  border-radius: 40px;
+  border: none;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12.5px 20px;
+  width: inherit;
+  height: 40px;
+  display: flex;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.searchItemContainer .searchItem:hover {
+  background-color: rgb(182, 178, 174);
+}
+
+.trendTabLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.trendTabLine .trendTab {
+  display: flex;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-blend-mode: darken;
+  margin-right: 10px;
+  text-decoration: none !important;
+}
+
+.trendTabLine .trendTab:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
 
 nb-layout-header {
   background-color: rgba(223, 185, 151, 1);
