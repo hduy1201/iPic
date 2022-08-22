@@ -64,7 +64,7 @@ export class Post {
   @Prop({
     default: Array<string>
   })
-  links: Array<string> ;
+  links: Array<string>;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

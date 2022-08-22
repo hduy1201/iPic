@@ -31,12 +31,13 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
 import { ImagePost } from 'src/models/imageNude.model';
+import * as path from 'path';
 @Controller('post')
 export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) {}
+  ) { }
 
   @Get('/all')
   public async testPost() {
@@ -82,7 +83,7 @@ export class PostController {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
       _imagePath.push({
         url: pathImage.url,
-        hashTag: 'Warning 18+', // safe neu safe test < 0.7;
+        hashTag: await this.nudePost(files[i]) // safe neu safe test < 0.7;
       });
     }
 
@@ -132,34 +133,35 @@ export class PostController {
     }
   }
 
-  @Post('/test-nudenet')
-  @UseInterceptors(
-    FileInterceptor('file', {
-      storage,
-    }),
-  )
-  public async nudePost(@UploadedFile() file: Express.Multer.File) {
-    if (!file) {
-      throw new HttpException(
-        'Please choose any file!',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
+  // @Post('/test-nude')
+  public async nudePost(file) {
+
+    // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
+    const _imagePath = path.join(__dirname, `../../../uploads/images/${file.filename}`);
+
+    console.log(_imagePath);
+
     let image = await imageToBase64(
-      '/Users/mac/Documents/itss-training/WEB22A/Pinterest/AdultImageClassifier/uploads/TestPic -1660903563817.png',
+      _imagePath
     );
 
     let request = {
       data: {},
     };
 
-    request.data[file.filename] = image;
+    request.data['undefined'] = image;
     try {
       let result: NudeNet = await (
         await axios.post('http://localhost:8080/sync', request)
       ).data;
+
       console.log(result);
-      return result;
+
+      if (result.prediction.undefined.unsafe > 0.7) {
+        return "Warning 18+";
+      } else {
+        return "Safe";
+      }
     } catch (error) {
       return error;
     }
