@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -9,17 +14,25 @@ import { UserModule } from './modules/user/user.module';
 import { PostController } from './controllers/post/post.controller';
 import { PostService } from './services/post/post.service';
 import { PostModule } from './modules/post/post.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { Cloudinary } from './providers/cloudinary';
+import { CloudiaryService } from './services/cloudiary/cloudiary.service';
+import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
-    // MongooseModule.forRoot("mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority"),
+    // MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
+    MongooseModule.forRoot(
+      'mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority',
+    ),
     AnimalModule,
     PostModule,
-    UserModule
+    UserModule,
+    MulterModule.register({ dest: './uploads/images' }),
+    CloudiaryModule,
   ],
-  controllers: [AppController,],
-  providers: [AppService, AuthService,],
+  controllers: [AppController],
+  providers: [AppService, AuthService, Cloudinary, CloudiaryService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
@@ -38,7 +51,7 @@ export class AppModule implements NestModule {
       // },
       // {
       //   path: '/post/delete',
-      //   method: RequestMethod.DELETE,  
+      //   method: RequestMethod.DELETE,
       // },
       // {
       //   path: '/user/all',
