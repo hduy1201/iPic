@@ -1,40 +1,167 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put, Query, Req } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+  Put,
+  Query,
+  Req,
+  UploadedFile,
+  UploadedFiles,
+  UseInterceptors,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { PostService } from 'src/services/post/post.service';
 import { UserService } from 'src/services/user/user.service';
 import * as Schema from 'src/schemas/post.schema';
 import { User } from 'src/models/user.model';
-
+const imageToBase64 = require('image-to-base64');
+import axios from 'axios';
+import { NudeNet } from 'src/models/nude.model';
+import { storage } from 'src/helpers/storage.helper';
+import {
+  FileInterceptor,
+  FilesInterceptor,
+  FileFieldsInterceptor,
+} from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
+import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
+import { ImagePost } from 'src/models/imageNude.model';
 @Controller('post')
 export class PostController {
+  constructor(
+    private PostService: PostService,
+    private CloudiaryService: CloudiaryService,
+  ) {}
 
-    constructor(
-        private PostService: PostService,
-        private UserService: UserService
-    ) { }
+  @Get('/all')
+  public async testPost() {
+    return await this.PostService.getAllPosts();
+  }
 
-    @Get('/all')
-    public async testPost() {
-        return await this.PostService.getAllPosts();
+  @Get('/')
+  public async getPostById(@Query(`id`) id: string) {
+    return await this.PostService.getPostById(id);
+  }
+
+  @Post('/add')
+  @UseInterceptors(
+    FilesInterceptor('images', 5, {
+      storage: diskStorage({
+        destination: './uploads/images',
+        filename: (req, file, cb) => {
+          // Generating a 32 random chars long string
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          //Calling the callback passing the random name generated with the original extension name
+          cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  public async createPost(
+    @Body() post: Schema.Post,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+  ) {
+    if (!files) {
+      throw new HttpException(
+        'Please choose at least one picture!',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
-    @Get('/')
-    public async getPostById(@Query(`id`) id: string) {
-        return await this.PostService.getPostById(id);
+    let _imagePath: Array<ImagePost> = [];
+
+    for (let i = 0; i < files.length; i++) {
+      let pathImage = await this.CloudiaryService.uploadImage(files[i]);
+      _imagePath.push({
+        url: pathImage.url,
+        hashTag: 'Warning 18+', // safe neu safe test < 0.7;
+      });
     }
 
-    @Post('/add')
-    public async createPost(@Body() post: Schema.Post, @Req() req: any) {
-        console.log(post);
-    }
+    post.images = _imagePath;
+    post.coverImage = _imagePath[0].url;
 
-    @Put('/update')
-    public async updatePost(@Query(`id`) id: string, @Body() post: Schema.Post) {
-        return await this.PostService.updatePost(id, post);
-    }
+    let postSave = await this.PostService.createPost(post);
+    return {
+      message: 'Created Post Successfully!!!',
+      data: postSave,
+    };
+  }
 
-    @Delete('/delete')
-    public async deletePost(@Query(`id`) id: string) {
-        return await this.PostService.deletePost(id);
+  @Put('/update')
+  public async updatePost(@Query(`id`) id: string, @Body() post: Schema.Post) {
+    return await this.PostService.updatePost(id, post);
+  }
+
+  @Delete('/delete')
+  public async deletePost(@Query(`id`) id: string) {
+    return await this.PostService.deletePost(id);
+  }
+
+  //test uploadfiles
+  @Post('upload')
+  @UseInterceptors(
+    FilesInterceptor('images', 5, {
+      storage: diskStorage({
+        destination: './uploads/images',
+        filename: (req, file, cb) => {
+          // Generating a 32 random chars long string
+          const randomName = Array(32)
+            .fill(null)
+            .map(() => Math.round(Math.random() * 16).toString(16))
+            .join('');
+          //Calling the callback passing the random name generated with the original extension name
+          cb(null, `${randomName}${extname(file.originalname)}`);
+        },
+      }),
+    }),
+  )
+  async uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+    // console.log(files);
+    for (let i = 0; i < files.length; i++) {
+      let pathImage = await this.CloudiaryService.uploadImage(files[i]);
+      console.log(pathImage.url);
     }
+  }
+
+  @Post('/test-nudenet')
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage,
+    }),
+  )
+  public async nudePost(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      throw new HttpException(
+        'Please choose any file!',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    let image = await imageToBase64(
+      '/Users/mac/Documents/itss-training/WEB22A/Pinterest/AdultImageClassifier/uploads/TestPic -1660903563817.png',
+    );
+
+    let request = {
+      data: {},
+    };
+
+    request.data[file.filename] = image;
+    try {
+      let result: NudeNet = await (
+        await axios.post('http://localhost:8080/sync', request)
+      ).data;
+      console.log(result);
+      return result;
+    } catch (error) {
+      return error;
+    }
+  }
 }

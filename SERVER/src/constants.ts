@@ -1,0 +1,1 @@
+export const CLOUDINARY = require('Cloudinary').v2;

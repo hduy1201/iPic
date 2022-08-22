@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { createPostState, PostState } from 'src/states/post.state';
+import { createPostState, getAllPostState } from 'src/states/post.state';
 import * as PostAction from 'src/actions/post.action';
 import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';

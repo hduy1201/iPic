@@ -14,7 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbActionsModule, NbCardModule, NbButtonModule, NbSearchModule, NbOptionModule, NbInputModule, NbFormFieldModule, NbIconModule, NbIconComponent, NbSidebarModule, NbContextMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AuthEffects } from 'src/effects/auth.effect';
-import { createPostReducer } from 'src/reducers/post.reducer';
+import { createPostReducer, getAllPostReducer } from 'src/reducers/post.reducer';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     provideStorage(() => getStorage()),
     StoreModule.forRoot({
       auth: authReducer,
-      createPostReducer: createPostReducer
+      createPostReducer: createPostReducer,
+      getAllPostReducer: getAllPostReducer
     }, {}),
     EffectsModule.forRoot([
       AuthEffects,
