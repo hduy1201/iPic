@@ -1,19 +1,40 @@
-import { Body, Controller, Delete, Get, HttpException, HttpStatus, Post, Put, Query, Req, UploadedFile, UseInterceptors } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    HttpException,
+    HttpStatus,
+    Post,
+    Put,
+    Query,
+    Req,
+    UploadedFile,
+    UploadedFiles,
+    UseInterceptors,
+} from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { PostService } from 'src/services/post/post.service';
 import { UserService } from 'src/services/user/user.service';
 import * as Schema from 'src/schemas/post.schema';
 import { User } from 'src/models/user.model';
-import { FileInterceptor } from '@nestjs/platform-express';
 const imageToBase64 = require('image-to-base64');
 import axios from 'axios';
 import { NudeNet } from 'src/models/nude.model';
 import { storage } from 'src/helpers/storage.helper';
+import {
+    FileInterceptor,
+    FilesInterceptor,
+    FileFieldsInterceptor,
+} from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
+import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
 @Controller('post')
 export class PostController {
-
     constructor(
         private PostService: PostService,
-        private UserService: UserService
+        private CloudiaryService: CloudiaryService,
     ) { }
 
     @Get('/all')
@@ -41,6 +62,33 @@ export class PostController {
         return await this.PostService.deletePost(id);
     }
 
+    //test uploadfiles
+    @Post('upload')
+    @UseInterceptors(
+        FilesInterceptor('images', 5, {
+            storage: diskStorage({
+                destination: './uploads/images',
+                filename: (req, file, cb) => {
+                    // Generating a 32 random chars long string
+                    const randomName = Array(32)
+                        .fill(null)
+                        .map(() => Math.round(Math.random() * 16).toString(16))
+                        .join('');
+                    //Calling the callback passing the random name generated with the original extension name
+                    cb(null, `${randomName}${extname(file.originalname)}`);
+                },
+            }),
+        }),
+    )
+
+    async uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+        // console.log(files);
+        for (let i = 0; i < files.length; i++) {
+            let pathImage = await this.CloudiaryService.uploadImage(files[i]);
+            console.log(pathImage.url);
+        }
+    }
+
     @Post('/test-nudenet')
     @UseInterceptors(FileInterceptor('file', {
         storage
@@ -66,5 +114,4 @@ export class PostController {
 
 
     }
-
 }
