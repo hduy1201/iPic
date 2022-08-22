@@ -24,10 +24,14 @@ import {
 } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
 
 @Controller('post')
 export class PostController {
-  constructor(private PostService: PostService) {}
+  constructor(
+    private PostService: PostService,
+    private CloudiaryService: CloudiaryService,
+  ) {}
 
   @Get('/all')
   public async testPost() {
@@ -57,7 +61,7 @@ export class PostController {
   //test uploadfiles
   @Post('upload')
   @UseInterceptors(
-    FilesInterceptor('images', Infinity, {
+    FilesInterceptor('images', 5, {
       storage: diskStorage({
         destination: './uploads/images',
         filename: (req, file, cb) => {
@@ -72,7 +76,12 @@ export class PostController {
       }),
     }),
   )
-  uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
+
+  async uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+    // console.log(files);
+    for (let i = 0; i < files.length; i++) {
+      let pathImage = await this.CloudiaryService.uploadImage(files[i]);
+      console.log(pathImage.url);
+    }
   }
 }
