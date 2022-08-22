@@ -18,8 +18,9 @@ import { createPostReducer, getAllPostReducer } from 'src/reducers/post.reducer'
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoadingPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
