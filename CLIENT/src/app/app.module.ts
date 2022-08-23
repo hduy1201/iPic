@@ -18,6 +18,7 @@ import { createPostReducer } from 'src/reducers/post.reducer';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -40,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     NbLayoutModule,
     NbEvaIconsModule,
     NbIconModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,46 +1,60 @@
 <nb-layout>
   <nb-layout-header fixed>
     <!-- Insert header here -->
-    <img routerLink="/" src="../assets/logo_ipic.png" height="50px" width="50px" style="margin-right:10px;" />
+    <span style="flex: 1 auto"></span>
+    <img routerLink="/" src="../assets/logo_ipic.png"
+    height="50px" width="50px" style="margin-left: 20px" />
 
-    <div class="tc"> <button routerLink="home" nbButton>Trang chủ</button> </div>
+    <div class="tc">
+      <button routerLink="home" nbButton>Trang chủ</button>
+     </div>
 
-    <button routerLink="/upload-post" nbButton style="color:black;
+    <button routerLink="/upload-post"
+    nbButton style="color:gray ;
     background-color: transparent;
-    border: none">Tạo</button>
+    border: none;
+   margin-left: 20px">Tạo</button>
 
     <button nbButton style="background-color: transparent;
-    border: none;
-    margin-right:10px">
-      <nb-icon icon="arrow-ios-downward-outline" style="color:black;"></nb-icon>
+    border: none;">
+      <nb-icon icon="arrow-ios-downward-outline"
+      style="color:gray ;;
+      "></nb-icon>
     </button>
 
-    <span style="flex:0 auto"></span>
+    <span style="flex:1 1 auto"></span>
     <div class="searchBox">
-      <nb-icon icon="search" style="color:black;"></nb-icon>
+      <nb-icon icon="search-outline" style="color:gray ;"></nb-icon>
       <input type="text" placeholder="Tìm kiếm">
     </div>
 
     <span style="flex:1 auto"></span>
-    <button nbButton style="background-color: transparent;
-    border: none;margin-right: 10px;">
-      <nb-icon icon="bell" style="color:black;"></nb-icon>
+    <button nbButton
+    style="background-color: transparent;
+    border: none;
+    margin-right: 20px;">
+      <nb-icon icon="bell-outline" style="color:gray ;" ></nb-icon>
     </button>
 
-    <button nbButton style="background-color: transparent;
-    border: none;margin-right: 10px; ">
-      <nb-icon icon="message-circle" style="color:black;"></nb-icon>
+    <button nbButton
+    style="background-color: transparent;
+    border: none;
+    margin-right: 20px; ">
+      <nb-icon icon="message-circle-outline" style="color:gray"></nb-icon>
     </button>
 
-    <button nbButton style="background-color: transparent;
-    border: none; margin-right:10px;">
-      <nb-icon icon="checkmark-circle-2" style="color:black;"></nb-icon>
+    <button nbButton
+    style="background-color: transparent;
+    border: none;
+    margin-right:20px;">
+      <nb-icon icon="checkmark-circle-2-outline" style="color:gray"></nb-icon>
     </button>
 
-    <button nbButton (click)="login()" style="
-     background-color: transparent;
-     border: none;margin-right:15px;">
-      <nb-icon icon="arrow-ios-downward-outline" style="color:black;"></nb-icon>
+    <button nbButton (click)="login()"
+    style="background-color: transparent;
+     border: none;
+     margin-right:20px;">
+      <nb-icon icon="arrow-ios-downward-outline" style="color:gray"></nb-icon>
 
     </button>
 
