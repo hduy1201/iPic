@@ -1,8 +1,8 @@
 .container {
   padding: 0;
   margin: 50px auto 50px auto;
-  width: 65%;
-  height: 95%;
+  width: 60%;
+  height: 90%;
   display: flex;
   background-color: #dfb997;
   border-radius: 8px;
@@ -80,9 +80,12 @@ ngx-dropzone,
 
 .custom-dropzone {
   height: 90%;
-  width: 80%;
+  width: 85%;
   background: #efefef;
   border-radius: 8px;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .custom-dropzone p {

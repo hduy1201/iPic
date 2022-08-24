@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,25 +6,31 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { createPostState, PostState } from 'src/states/post.state';
+import { createPostState, getAllPostState } from 'src/states/post.state';
 import * as PostAction from 'src/actions/post.action';
 import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
-
+import { DialogService } from '../../services/dialog.service'
 @Component({
   selector: 'app-upload-post',
   templateUrl: './upload-post.component.html',
+  template: ``,
   styleUrls: ['./upload-post.component.scss'],
 })
 export class UploadPostComponent implements OnInit {
   // insertFrm: FormGroup;
 
-  constructor(private store: Store<{ createPostReducer: createPostState }>) {
-    this.createPost$ = this.store.select(state=> state.createPostReducer);
+  constructor(
+    private store: Store<{ createPostReducer: createPostState }>,
+    private DialogService:DialogService
+  ) {
+    this.createPost$ = this.store.select((state) => state.createPostReducer);
   }
   createPost$: Observable<createPostState>;
 
+  public posts: Array<Post> = [];
 
+  @ViewChild('dialog') dialog!: TemplateRef<any>;
   files: File[] = [];
 
   postForm = new FormGroup({
@@ -33,11 +39,18 @@ export class UploadPostComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.createPost$.subscribe(
-      res=>{
-        console.log(res);
+    this.createPost$.subscribe((res) => {
+      console.log(res)
+      if(res.isSuccess == true)
+      {
+        this.DialogService.openDialog(this.dialog, res.message)
       }
-    )
+
+      // if(res.error != ""){
+      //   this.DialogService.openDialog(this.dialog, res.error)
+      // }
+    });
+    
   }
 
   onSelect(event: { addedFiles: any }) {
@@ -50,8 +63,13 @@ export class UploadPostComponent implements OnInit {
   }
 
   addPost() {
-    console.log(this.postForm.value);
-    console.log(this.files);
-    this.store.dispatch(PostAction.createPost({ post: this.postForm.value }));
+    let _post = {
+      ...this.postForm.value,
+      authorId: '62fca2631f36f5757d7a8d2b',
+    };
+    this.store.dispatch(
+      PostAction.createPost({ post: _post, files: this.files })
+    );
   }
+
 }

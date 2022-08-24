@@ -1,11 +1,15 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post, PostDocument } from 'src/schemas/post.schema';
+import { CloudiaryService } from '../cloudiary/cloudiary.service';
 
 @Injectable()
 export class PostService {
-  constructor(@InjectModel(Post.name) private postModel: Model<PostDocument>) { }
+  constructor(
+    @InjectModel(Post.name) private postModel: Model<PostDocument>,
+    private cloudiary: CloudiaryService,
+  ) {}
 
   async getAllPosts() {
     try {
@@ -30,6 +34,7 @@ export class PostService {
   async createPost(post: Post) {
     try {
       let createPost = new this.postModel(post);
+      console.log(post)
       return await createPost.save();
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
@@ -52,5 +57,11 @@ export class PostService {
 
   async deletePost(id: string) {
     return await this.postModel.findByIdAndDelete(id);
+  }
+
+  async uploadImageToCloudinary(file: Express.Multer.File) {
+    return await this.cloudiary.uploadImage(file).catch(() => {
+      throw new BadRequestException('Invalid file type.');
+    })
   }
 }
