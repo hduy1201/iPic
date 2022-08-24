@@ -34,6 +34,7 @@ export class PostService {
   async createPost(post: Post) {
     try {
       let createPost = new this.postModel(post);
+      console.log(post)
       return await createPost.save();
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
