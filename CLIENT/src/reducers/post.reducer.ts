@@ -7,6 +7,8 @@ const initCreatePostState: createPostState = {
   isLoading: false,
   post: <Post>{},
   error: '',
+  isSuccess: false,
+  message: ''
 };
 
 export const createPostReducer = createReducer(
@@ -15,15 +17,18 @@ export const createPostReducer = createReducer(
     return {
       ...state,
       isLoading: true,
+      isSuccess: false,
       post: action.post,
     };
   }),
 
-  on(PostAction.createPostSuccess, (state) => {
+  on(PostAction.createPostSuccess, (state, action) => {
     return {
       ...state,
       isLoading: false,
+      isSuccess: true,
       post: <Post>{},
+      message: action.message
     };
   }),
 
@@ -31,6 +36,7 @@ export const createPostReducer = createReducer(
     return {
       ...state,
       isLoading: false,
+      isSuccess: false,
       error: error,
       post: <Post>{},
     };
