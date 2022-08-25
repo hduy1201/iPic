@@ -133,7 +133,6 @@ export class PostController {
     }
   }
 
-  // @Post('/test-nude')
   public async nudePost(file) {
 
     // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
@@ -166,4 +165,42 @@ export class PostController {
       return error;
     }
   }
+
+  @Post('/test-nude')
+  public async testNude() {
+    // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
+    const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth.jpg`);
+
+    console.log(_imagePath);
+
+    let image = await imageToBase64(
+      _imagePath
+    );
+
+    let request = {
+      data: {},
+    };
+
+    request.data['undefined'] = image;
+    try {
+      let result: NudeNet = await (
+        await axios.post('http://localhost:8080/sync', request)
+      ).data;
+
+      console.log(result);
+
+      if (result.prediction.undefined.unsafe > 0.7) {
+        return {
+          message: "Warning 18+"
+        }
+      } else {
+        return {
+          message: "Safe"
+        }
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
 }
