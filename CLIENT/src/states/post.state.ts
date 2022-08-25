@@ -11,4 +11,6 @@ export interface createPostState {
     isLoading: boolean;
     post: Post;
     error: string;
+    isSuccess: boolean;
+    message: string;
 }

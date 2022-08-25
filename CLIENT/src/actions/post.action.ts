@@ -1,15 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 import { Post } from 'src/models/post';
 
-export const createPost = createAction('[Post] Post', props<{ post: Post }>());
+//CREATE POST
+export const createPost = createAction('[Post] Post', props<{ post: Post, files: Array<File> }>());
 
-export const createPostSuccess = createAction('[Post] Post Success');
+export const createPostSuccess = createAction('[Post] Post Success', props<{ message: string}>());
 
 export const createPostFail = createAction(
   '[Post] Post Failure',
   props<{ error: string }>()
 );
-
+//LIST POST
 export const getPosts = createAction('[Post] Get All Posts');
 
 export const getPostsSuccess = createAction(

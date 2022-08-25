@@ -37,7 +37,7 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) { }
+  ) {}
 
   @Get('/all')
   public async testPost() {
@@ -66,30 +66,36 @@ export class PostController {
       }),
     }),
   )
+
   public async createPost(
     @Body() post: Schema.Post,
     @UploadedFiles() files: Array<Express.Multer.File>,
   ) {
-    if (!files) {
+    if (post.title || post.content == '') {
+      throw new HttpException(
+        'Please enter field required',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    if (!files || files.length == 0) {
       throw new HttpException(
         'Please choose at least one picture!',
         HttpStatus.BAD_REQUEST,
       );
     }
-
+    
     let _imagePath: Array<ImagePost> = [];
-
     for (let i = 0; i < files.length; i++) {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
       _imagePath.push({
         url: pathImage.url,
-        hashTag: await this.nudePost(files[i]) // safe neu safe test < 0.7;
+        // hashTag: await this.nudePost(files[i]) // safe neu safe test < 0.7;
+        hashTag: 'Warning 18+', // safe neu safe test < 0.7;
       });
     }
 
     post.images = _imagePath;
     post.coverImage = _imagePath[0].url;
-
     let postSave = await this.PostService.createPost(post);
     return {
       message: 'Created Post Successfully!!!',
@@ -134,15 +140,15 @@ export class PostController {
   }
 
   public async nudePost(file) {
-
     // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
-    const _imagePath = path.join(__dirname, `../../../uploads/images/${file.filename}`);
+    const _imagePath = path.join(
+      __dirname,
+      `../../../uploads/images/${file.filename}`,
+    );
 
     console.log(_imagePath);
 
-    let image = await imageToBase64(
-      _imagePath
-    );
+    let image = await imageToBase64(_imagePath);
 
     let request = {
       data: {},
@@ -157,9 +163,9 @@ export class PostController {
       console.log(result);
 
       if (result.prediction.undefined.unsafe > 0.7) {
-        return "Warning 18+";
+        return 'Warning 18+';
       } else {
-        return "Safe";
+        return 'Safe';
       }
     } catch (error) {
       return error;
