@@ -48,5 +48,4 @@ export class AppComponent implements AfterViewInit {
       return;
     this.suggestBox.classList.remove('make-visible');
   }
-
 }
