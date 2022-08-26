@@ -37,7 +37,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'detail',
+    path: 'ipic',
     loadChildren: () =>
       import('./pages/detail/detail.module').then((m) => m.DetailModule),
   },
@@ -71,10 +71,15 @@ const routes: Routes = [
         (m) => m.EditProfileModule
       ),
   },
+  {
+    path: 'new-comer',
+    loadChildren: () =>
+      import('./pages/new-comer/new-comer.module').then(m => m.NewComerModule)
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

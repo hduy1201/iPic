@@ -37,8 +37,9 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) {}
+  ) { }
 
+  //GET ALL POSTS
   @Get('/')
   public async testPost(
     @Query('page') page: number,
@@ -47,11 +48,13 @@ export class PostController {
     return await this.PostService.getAllPosts(page, pagesize);
   }
 
+  //GET POST WITH ID
   @Get('/')
   public async getPostById(@Query(`id`) id: string) {
     return await this.PostService.getPostById(id);
   }
 
+  //CREATE POST
   @Post('/add')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
@@ -105,17 +108,19 @@ export class PostController {
     };
   }
 
+  //UPDATE POST
   @Put('/update')
   public async updatePost(@Query(`id`) id: string, @Body() post: Schema.Post) {
     return await this.PostService.updatePost(id, post);
   }
 
+  //DELETE POST
   @Delete('/delete')
   public async deletePost(@Query(`id`) id: string) {
     return await this.PostService.deletePost(id);
   }
 
-  //test uploadfiles
+  //TEST UPLOAD FILES
   @Post('upload')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
@@ -134,44 +139,11 @@ export class PostController {
     }),
   )
   async uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-    // console.log(files);
     for (let i = 0; i < files.length; i++) {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
       console.log(pathImage.url);
     }
   }
 
-  // @Post('/test-nude')
-  public async nudePost(file) {
-    // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
-    const _imagePath = path.join(
-      __dirname,
-      `../../../uploads/images/${file.filename}`,
-    );
 
-    console.log(_imagePath);
-
-    let image = await imageToBase64(_imagePath);
-
-    let request = {
-      data: {},
-    };
-
-    request.data['undefined'] = image;
-    try {
-      let result: NudeNet = await (
-        await axios.post('http://localhost:8080/sync', request)
-      ).data;
-
-      console.log(result);
-
-      if (result.prediction.undefined.unsafe > 0.7) {
-        return 'Warning 18+';
-      } else {
-        return 'Safe';
-      }
-    } catch (error) {
-      return error;
-    }
-  }
 }
