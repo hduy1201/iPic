@@ -32,6 +32,7 @@ import { AuthEffects } from 'src/effects/auth.effect';
 import {
   createPostReducer,
   getAllPostReducer,
+  getPostReducer,
 } from 'src/reducers/post.reducer';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
@@ -52,6 +53,7 @@ import { DialogService } from './services/dialog.service';
       auth: authReducer,
       createPostReducer: createPostReducer,
       getAllPostReducer: getAllPostReducer,
+      getPostReducer: getPostReducer,
       choose: chooseReducer,
     }, {}),
     EffectsModule.forRoot([

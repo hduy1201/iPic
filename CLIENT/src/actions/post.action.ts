@@ -31,3 +31,14 @@ export const getPostsFail = createAction(
   '[Post] Get All Posts Fail',
   props<{ error: string }>()
 );
+
+//DETAIL POST
+export const getPost = createAction('[Post] Get Post', props<{ id: string }>());
+export const getPostSuccess = createAction(
+  '[Post] Get Post Success',
+  props<{ post: Post }>()
+);
+export const getPostFail = createAction(
+  '[Post] Get Post Fail',
+  props<{ error: string }>()
+);

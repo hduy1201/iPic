@@ -39,4 +39,17 @@ export class PostEffectS {
       })
     )
   );
+
+  getPost$ = createEffect(() =>
+  this.action$.pipe(
+    ofType(PostAction.getPost),
+    switchMap((action) => this.postServices.getPost(action.id)),
+    map((post) => {
+      return  PostAction.getPostSuccess({ post })
+    }),
+    catchError((error) => {
+      return of(PostAction.getPostFail({ error: error.message }));
+    })
+  )
+  )
 }
