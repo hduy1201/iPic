@@ -37,7 +37,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'detail',
+    path: 'ipic',
     loadChildren: () =>
       import('./pages/detail/detail.module').then((m) => m.DetailModule),
   },
@@ -77,4 +77,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

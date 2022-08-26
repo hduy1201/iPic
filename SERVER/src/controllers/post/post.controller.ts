@@ -37,18 +37,21 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) {}
+  ) { }
 
+  //GET ALL POSTS
   @Get('/all')
   public async testPost() {
     return await this.PostService.getAllPosts();
   }
 
+  //GET POST WITH ID
   @Get('/')
   public async getPostById(@Query(`id`) id: string) {
     return await this.PostService.getPostById(id);
   }
 
+  //CREATE POST
   @Post('/add')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
@@ -66,7 +69,6 @@ export class PostController {
       }),
     }),
   )
-
   public async createPost(
     @Body() post: Schema.Post,
     @UploadedFiles() files: Array<Express.Multer.File>,
@@ -83,7 +85,7 @@ export class PostController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    
+
     let _imagePath: Array<ImagePost> = [];
     for (let i = 0; i < files.length; i++) {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
@@ -103,17 +105,19 @@ export class PostController {
     };
   }
 
+  //UPDATE POST
   @Put('/update')
   public async updatePost(@Query(`id`) id: string, @Body() post: Schema.Post) {
     return await this.PostService.updatePost(id, post);
   }
 
+  //DELETE POST
   @Delete('/delete')
   public async deletePost(@Query(`id`) id: string) {
     return await this.PostService.deletePost(id);
   }
 
-  //test uploadfiles
+  //TEST UPLOAD FILES
   @Post('upload')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
@@ -132,81 +136,11 @@ export class PostController {
     }),
   )
   async uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-    // console.log(files);
     for (let i = 0; i < files.length; i++) {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
       console.log(pathImage.url);
     }
   }
 
-  public async nudePost(file) {
-    // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
-    const _imagePath = path.join(
-      __dirname,
-      `../../../uploads/images/${file.filename}`,
-    );
-
-    console.log(_imagePath);
-
-    let image = await imageToBase64(_imagePath);
-
-    let request = {
-      data: {},
-    };
-
-    request.data['undefined'] = image;
-    try {
-      let result: NudeNet = await (
-        await axios.post('http://localhost:8080/sync', request)
-      ).data;
-
-      console.log(result);
-
-      if (result.prediction.undefined.unsafe > 0.7) {
-        return 'Warning 18+';
-      } else {
-        return 'Safe';
-      }
-    } catch (error) {
-      return error;
-    }
-  }
-
-  @Post('/test-nude')
-  public async testNude() {
-    // const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth2.png`);
-    const _imagePath = path.join(__dirname, `../../../uploads/images/macdobth.jpg`);
-
-    console.log(_imagePath);
-
-    let image = await imageToBase64(
-      _imagePath
-    );
-
-    let request = {
-      data: {},
-    };
-
-    request.data['undefined'] = image;
-    try {
-      let result: NudeNet = await (
-        await axios.post('http://localhost:8080/sync', request)
-      ).data;
-
-      console.log(result);
-
-      if (result.prediction.undefined.unsafe > 0.7) {
-        return {
-          message: "Warning 18+"
-        }
-      } else {
-        return {
-          message: "Safe"
-        }
-      }
-    } catch (error) {
-      return error;
-    }
-  }
 
 }
