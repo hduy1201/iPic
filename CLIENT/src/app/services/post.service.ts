@@ -9,8 +9,10 @@ import { URL } from '../../configs/baseURL';
 export class PostService {
   constructor(private Http: HttpClient) {}
 
-  getAllPosts(): Observable<Post[]> {
-    return this.Http.get<Post[]>(URL + `post/all`);
+  getAllPosts(page: number, pagesize: number): Observable<Post[]> {
+    return this.Http.get<Post[]>(
+      URL + `post?page=${page}&pagesize=${pagesize}`
+    );
   }
 
   addPost(

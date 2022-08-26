@@ -17,7 +17,10 @@ export const createPostFail = createAction(
   props<{ error: string }>()
 );
 //LIST POST
-export const getPosts = createAction('[Post] Get All Posts');
+export const getPosts = createAction(
+  '[Post] Get All Posts',
+  props<{ page: number; pageSize: number }>()
+);
 
 export const getPostsSuccess = createAction(
   '[Post] Get All Posts Success',

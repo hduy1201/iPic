@@ -28,7 +28,9 @@ export class PostEffectS {
   getAllPost$ = createEffect(() =>
     this.action$.pipe(
       ofType(PostAction.getPosts),
-      switchMap(() => this.postServices.getAllPosts()),
+      switchMap((action) =>
+        this.postServices.getAllPosts(action.page, action.pageSize)
+      ),
       map((posts) => {
         return PostAction.getPostsSuccess({ posts });
       }),

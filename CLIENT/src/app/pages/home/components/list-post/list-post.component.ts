@@ -11,18 +11,37 @@ import * as PostActions from '../../../../../actions/post.action';
   styleUrls: ['./list-post.component.scss'],
 })
 export class ListPostComponent implements OnInit {
+  throttle = 500;
+  scrollDistance = 1;
+  scrollUpDistance = 2;
+  modalOpen = false;
+  public page = 1;
+  public isLoading: boolean = true;
+
+  public posts: Array<Post> = [];
+  public getAllPost$: Observable<getAllPostState>;
+
   constructor(private store: Store<{ getAllPostReducer: getAllPostState }>) {
     this.getAllPost$ = this.store.select((state) => state.getAllPostReducer);
   }
 
-  public posts: Array<Post> = [];
-  public getAllPost$: Observable<getAllPostState>;
+  onScrollDown(ev: any) {
+    this.page += 1;
+    this.store.dispatch(
+      PostActions.getPosts({ page: this.page, pageSize: 20 })
+    );
+  }
+
   ngOnInit(): void {
-    this.store.dispatch(PostActions.getPosts());
+    this.store.dispatch(
+      PostActions.getPosts({ page: this.page, pageSize: 20 })
+    );
     this.getAllPost$.subscribe((res) => {
       if (res.isSuccess) {
-        console.log(this.posts);
-        this.posts = res.posts;
+        res.posts.map((post) => {
+          this.posts.push(post);
+        });
+        console.log(res.posts);
       }
     });
   }

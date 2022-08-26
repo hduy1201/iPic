@@ -39,9 +39,12 @@ export class PostController {
     private CloudiaryService: CloudiaryService,
   ) {}
 
-  @Get('/all')
-  public async testPost() {
-    return await this.PostService.getAllPosts();
+  @Get('/')
+  public async testPost(
+    @Query('page') page: number,
+    @Query('pagesize') pagesize: number,
+  ) {
+    return await this.PostService.getAllPosts(page, pagesize);
   }
 
   @Get('/')
@@ -66,7 +69,6 @@ export class PostController {
       }),
     }),
   )
-
   public async createPost(
     @Body() post: Schema.Post,
     @UploadedFiles() files: Array<Express.Multer.File>,
@@ -83,7 +85,7 @@ export class PostController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    
+
     let _imagePath: Array<ImagePost> = [];
     for (let i = 0; i < files.length; i++) {
       let pathImage = await this.CloudiaryService.uploadImage(files[i]);
