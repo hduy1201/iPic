@@ -71,7 +71,7 @@ export class PostController {
     @Body() post: Schema.Post,
     @UploadedFiles() files: Array<Express.Multer.File>,
   ) {
-    if (post.title || post.content == '') {
+    if (post.title == '') {
       throw new HttpException(
         'Please enter field required',
         HttpStatus.BAD_REQUEST,

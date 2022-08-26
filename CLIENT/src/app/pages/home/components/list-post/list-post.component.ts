@@ -5,7 +5,6 @@ import { Post } from 'src/models/post';
 import { getAllPostState } from 'src/states/post.state';
 import * as PostActions from '../../../../../actions/post.action';
 
-
 @Component({
   selector: 'app-list-post',
   templateUrl: './list-post.component.html',
