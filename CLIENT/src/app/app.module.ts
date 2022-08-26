@@ -18,6 +18,7 @@ import { createPostReducer, getAllPostReducer } from 'src/reducers/post.reducer'
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
+import { chooseReducer } from 'src/reducers/choose.reducer';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -30,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot({
       auth: authReducer,
       createPostReducer: createPostReducer,
-      getAllPostReducer: getAllPostReducer
+      getAllPostReducer: getAllPostReducer,
+      choose: chooseReducer,
     }, {}),
     EffectsModule.forRoot([
       AuthEffects,

@@ -22,7 +22,7 @@ export class AppComponent implements AfterViewInit {
   constructor(
     private store: Store<{ auth: AuthState }>,
     private element: ElementRef
-  ) {}
+  ) { }
 
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(
@@ -35,7 +35,6 @@ export class AppComponent implements AfterViewInit {
   login() {
     this.store.dispatch(AuthActions.login());
   }
-<<<<<<< HEAD
 
   onFocus() {
     this.suggestBox.classList.add('make-visible');
@@ -49,6 +48,5 @@ export class AppComponent implements AfterViewInit {
       return;
     this.suggestBox.classList.remove('make-visible');
   }
-=======
->>>>>>> 0ae5825d892f21fda25305cb3fd48d3516865d46
+
 }
