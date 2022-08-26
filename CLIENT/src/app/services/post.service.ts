@@ -14,7 +14,21 @@ export class PostService {
     return this.Http.get<Post[]>( URL + `post/all`);
   }
 
-  addPost(post: Post): Observable<Post[]> {
-    return this.Http.post<Post[]>(URL + `post/add`, post);
+  addPost(post: Post, files: Array<File>): Observable<{
+    data: Post,
+    message: string
+  }> {
+    const formData = new FormData();
+    for(let i = 0; i<files.length; i++){
+      formData.append('images', files[i])
+    }
+    formData.append('title', post.title)
+    formData.append('content', post.content)
+    formData.append('authorId', post.authorId)
+
+    return this.Http.post<{
+      data: Post,
+      message: string
+    }>(URL + `post/add`, formData );
   }
 }

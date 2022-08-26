@@ -11,10 +11,14 @@ export class PostEffectS {
   createPost$ = createEffect(() =>
     this.action$.pipe(
       ofType(PostAction.createPost),
-      switchMap((action) => this.postServices.addPost(action.post)),
-      map(() => PostAction.createPostSuccess()),
+      switchMap((action) => this.postServices.addPost(action.post, action.files)),
+      map((res) => {
+        console.log(res);
+        return PostAction.createPostSuccess({message: res.message});
+      }),
       catchError((error) => {
-        return of(PostAction.createPostFail({ error: error.message }));
+        console.log(error)
+        return of(PostAction.createPostFail({ error: error.error.message }));
       })
     )
   );
@@ -23,7 +27,9 @@ export class PostEffectS {
     this.action$.pipe(
       ofType(PostAction.getPosts),
       switchMap(() => this.postServices.getAllPosts()),
-      map((posts) => PostAction.getPostsSuccess({ posts })),
+      map((posts) => {
+        return  PostAction.getPostsSuccess({ posts })
+      }),
       catchError((error) => {
         return of(PostAction.getPostsFail({ error: error.message }));
       })

@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import { ImagePost } from 'src/models/imageNude.model';
 import { User } from './user.schema';
 
 export type PostDocument = Post & Document;
@@ -19,9 +20,12 @@ export class Post {
   content: string;
 
   @Prop({
-    default: Array
+    default: Array,
   })
-  images: string[];
+  images: Array<{
+    url: string,
+    hashTag: string
+  }>
 
   @Prop({
     required: true,
@@ -46,7 +50,8 @@ export class Post {
 
   /**Image */
   @Prop({
-    required: true
+    required: true,
+    // type: ImagePost
   })
   coverImage: string;
 
@@ -59,7 +64,7 @@ export class Post {
   @Prop({
     default: Array<string>
   })
-  links: Array<string> ;
+  links: Array<string>;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);
