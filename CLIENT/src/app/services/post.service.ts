@@ -31,4 +31,8 @@ export class PostService {
       message: string
     }>(URL + `post/add`, formData );
   }
+
+  getPost(id: string): Observable<Post> {
+    return this.Http.get<Post>(URL + `post/detail?id=${id}`);
+  }
 }

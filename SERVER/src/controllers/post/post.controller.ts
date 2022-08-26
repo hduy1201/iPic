@@ -46,7 +46,7 @@ export class PostController {
   }
 
   //GET POST WITH ID
-  @Get('/')
+  @Get('/detail')
   public async getPostById(@Query(`id`) id: string) {
     return await this.PostService.getPostById(id);
   }
