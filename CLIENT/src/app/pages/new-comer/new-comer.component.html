@@ -1,0 +1,21 @@
+<div class="background">
+  <div class="container">
+    <div class="header">
+      <span class="title">Hãy chọn chủ đề mà bạn cảm thấy thú vị</span>
+      <span>Step {{step$ | async}} of 7</span>
+    </div>
+    <div class="test">
+      <div class="topic-container">
+        <div class="topic-line" *ngFor="let topicLine of topics">
+          <div (click)="addTopic(topic.id)" *ngFor="let topic of topicLine" [id]="topic.id" class="topic"
+            [style]="'background-image: url(' + topic.picture + '); background-size: cover;'">
+            {{topic.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button>Xác nhận</button>
+    </div>
+  </div>
+</div>

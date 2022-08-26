@@ -71,6 +71,11 @@ const routes: Routes = [
         (m) => m.EditProfileModule
       ),
   },
+  {
+    path: 'new-comer',
+    loadChildren: () =>
+      import('./pages/new-comer/new-comer.module').then(m => m.NewComerModule)
+  },
 ];
 
 @NgModule({
