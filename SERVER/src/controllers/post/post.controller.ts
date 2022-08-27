@@ -35,13 +35,16 @@ export class PostController {
   ) { }
 
   //GET ALL POSTS
-  @Get('/all')
-  public async testPost() {
-    return await this.PostService.getAllPosts();
+  @Get('/')
+  public async testPost(
+    @Query('page') page: number,
+    @Query('pagesize') pagesize: number,
+  ) {
+    return await this.PostService.getAllPosts(page, pagesize);
   }
 
   //GET POST WITH ID
-  @Get('/')
+  @Get('/detail')
   public async getPostById(@Query(`id`) id: string) {
     return await this.PostService.getPostById(id);
   }
@@ -68,7 +71,7 @@ export class PostController {
     @Body() post: Schema.Post,
     @UploadedFiles() files: Array<Express.Multer.File>,
   ) {
-    if (post.title || post.content == '') {
+    if (post.title == '') {
       throw new HttpException(
         'Please enter field required',
         HttpStatus.BAD_REQUEST,

@@ -32,10 +32,12 @@ import { AuthEffects } from 'src/effects/auth.effect';
 import {
   createPostReducer,
   getAllPostReducer,
+  getPostReducer,
 } from 'src/reducers/post.reducer';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
+import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { DialogService } from './services/dialog.service';
 @NgModule({
@@ -47,14 +49,17 @@ import { DialogService } from './services/dialog.service';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    StoreModule.forRoot(
-      {
-        auth: authReducer,
-        createPostReducer: createPostReducer,
-        getAllPostReducer: getAllPostReducer,
-      },
-      {}
-    ),
+    StoreModule.forRoot({
+      auth: authReducer,
+      createPostReducer: createPostReducer,
+      getAllPostReducer: getAllPostReducer,
+      getPostReducer: getPostReducer,
+      choose: chooseReducer,
+    }, {}),
+    EffectsModule.forRoot([
+      AuthEffects,
+      PostEffectS
+    ]),
     EffectsModule.forRoot([AuthEffects, PostEffectS]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),

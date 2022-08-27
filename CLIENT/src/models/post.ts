@@ -2,7 +2,12 @@ export interface Post {
     _id: string;
     title: string;
     content: string;
-    images: string;
+    images: [
+      {
+        url: string;
+        hashTag: string;
+      }
+    ];
     tags: string;
     links: Array<string>;
     authorId: string;

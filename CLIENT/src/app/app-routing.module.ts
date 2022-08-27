@@ -37,7 +37,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'ipic',
+    path: 'ipic/:id',
     loadChildren: () =>
       import('./pages/detail/detail.module').then((m) => m.DetailModule),
   },
@@ -70,6 +70,11 @@ const routes: Routes = [
       import('./pages/edit-profile/edit-profile.module').then(
         (m) => m.EditProfileModule
       ),
+  },
+  {
+    path: 'new-comer',
+    loadChildren: () =>
+      import('./pages/new-comer/new-comer.module').then(m => m.NewComerModule)
   },
 ];
 
