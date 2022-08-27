@@ -17,11 +17,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { PostService } from 'src/services/post/post.service';
 import { UserService } from 'src/services/user/user.service';
 import * as Schema from 'src/schemas/post.schema';
-import { User } from 'src/models/user.model';
-const imageToBase64 = require('image-to-base64');
-import axios from 'axios';
-import { NudeNet } from 'src/models/nude.model';
-import { storage } from 'src/helpers/storage.helper';
 import {
   FileInterceptor,
   FilesInterceptor,
@@ -31,7 +26,7 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
 import { ImagePost } from 'src/models/imageNude.model';
-import * as path from 'path';
+
 @Controller('post')
 export class PostController {
   constructor(
