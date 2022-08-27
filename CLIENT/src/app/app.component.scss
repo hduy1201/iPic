@@ -84,6 +84,10 @@
   width: 100%;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .trendTabLine .trendTab {
   display: flex;
   color: #fff;
@@ -114,8 +118,7 @@ nb-layout-header {
   width: 90%;
   height: 40px;
   margin-left: 20px;
-  background-color: rgba(217, 217, 217, 1);
+  background-color: rgb(180, 147, 119);
   border: none;
   padding: 15px;
 }
-
