@@ -49,6 +49,11 @@ export class PostController {
     return await this.PostService.getPostById(id);
   }
 
+  @Get('/sugguest')
+  public async getPostByTitle(@Query(`title`) title: string) {
+    return await this.PostService.getPostByTitle(title);
+  }
+
   @Post('/add')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
