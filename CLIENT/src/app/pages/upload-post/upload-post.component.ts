@@ -10,7 +10,7 @@ import { createPostState, getAllPostState } from 'src/states/post.state';
 import * as PostAction from 'src/actions/post.action';
 import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
-import { DialogService } from '../../services/dialog.service'
+import { DialogService } from '../../services/dialog.service';
 @Component({
   selector: 'app-upload-post',
   templateUrl: './upload-post.component.html',
@@ -22,7 +22,7 @@ export class UploadPostComponent implements OnInit {
 
   constructor(
     private store: Store<{ createPostReducer: createPostState }>,
-    private DialogService:DialogService
+    private DialogService: DialogService
   ) {
     this.createPost$ = this.store.select((state) => state.createPostReducer);
   }
@@ -40,17 +40,16 @@ export class UploadPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.createPost$.subscribe((res) => {
-      console.log(res)
-      if(res.isSuccess == true)
-      {
-        this.DialogService.openDialog(this.dialog, res.message)
+      console.log(res);
+      if (res.isSuccess == true) {
+        this.DialogService.openDialog(this.dialog, res.message);
+        this.files = [];
+        this.postForm.reset(this.postForm.value);
       }
-
       // if(res.error != ""){
       //   this.DialogService.openDialog(this.dialog, res.error)
       // }
     });
-    
   }
 
   onSelect(event: { addedFiles: any }) {
@@ -71,5 +70,4 @@ export class UploadPostComponent implements OnInit {
       PostAction.createPost({ post: _post, files: this.files })
     );
   }
-
 }

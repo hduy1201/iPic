@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Post } from 'src/models/post';
-import { createPostState, getAllPostState } from 'src/states/post.state';
+import { createPostState, getAllPostState, getPostState } from 'src/states/post.state';
 import * as PostAction from '../actions/post.action';
 
 const initCreatePostState: createPostState = {
@@ -70,6 +70,43 @@ export const getAllPostReducer = createReducer(
   }),
 
   on(PostAction.getPostsFail, (state, { error }) => {
+    return {
+      ...state,
+      isLoading: false,
+      error: error,
+      isSuccess: false,
+    };
+  })
+);
+
+const initGetPostState: getPostState = {
+  isLoading: false,
+  post: <Post>{},
+  error: '',
+  isSuccess: false,
+};
+
+
+export const getPostReducer = createReducer(
+  initGetPostState,
+  on(PostAction.getPost, (state) => {
+    return {
+      ...state,
+      isLoading: true,
+      isSuccess: false,
+    };
+  }),
+
+  on(PostAction.getPostSuccess, (state, { post }) => {
+    return {
+      ...state,
+      isLoading: false,
+      post: post,
+      isSuccess: true,
+    };
+  }),
+
+  on(PostAction.getPostFail, (state, { error }) => {
     return {
       ...state,
       isLoading: false,

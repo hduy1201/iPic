@@ -1,26 +1,5 @@
 <div class="container">
   <div class="post-form" [formGroup]="postForm">
-    <div class="header-form">
-      <div class="option-icon">
-        <svg
-          class="gUZ ztu U9O kVc"
-          height="18"
-          width="18"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          aria-label=""
-          role="img"
-        >
-          <path
-            d="M12 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3M3 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm18 0c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3z"
-          ></path>
-        </svg>
-      </div>
-      <div class="drop-down-tag">
-        <input type="search" placeholder="Nhập #tag" />
-        <button type="submit" (click)="addPost()">Lưu</button>
-      </div>
-    </div>
     <div class="main-form">
       <div class="left-form">
         <div
@@ -67,7 +46,7 @@
         <div class="profile">
           <img
             class="avatar"
-            src="https://scontent.fsgn5-13.fna.fbcdn.net/v/t1.6435-1/173704375_2950830601873398_624268128689632794_n.jpg?stp=dst-jpg_p160x160&_nc_cat=106&ccb=1-7&_nc_sid=7206a8&_nc_ohc=2dSBZzyMZxkAX99Fc66&_nc_ht=scontent.fsgn5-13.fna&oh=00_AT__UsewgwD1l7NoHOQF2q2miUPBswU6swbSSuWdVNUMxw&oe=6325523D"
+            src="https://scontent.fsgn13-3.fna.fbcdn.net/v/t1.6435-1/152474324_454991765858054_6815372736016710457_n.jpg?stp=c86.86.1875.1875a_dst-jpg_s240x240&_nc_cat=102&ccb=1-7&_nc_sid=7206a8&_nc_ohc=fGzDAfB0234AX-oW5nI&_nc_ht=scontent.fsgn13-3.fna&oh=00_AT8NbaU1nKNkPjrmiEDV64enjSI4xlaYCj4SaopcS9b7xQ&oe=632DDF05"
           />
           <div class="account-name">Lư Hoàng Duy</div>
         </div>
@@ -88,6 +67,12 @@
             id="link"
           />
         </div>
+        <div class="drop-down-tag">
+          <input type="search" placeholder="Nhập #tag" />
+          <button type="submit" (click)="addPost()">
+            <div style="color: #fff">Lưu</div>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -101,8 +86,11 @@
       {{ data }}
     </nb-card-body>
     <nb-card-footer>
-      <button nbButton (click)="ref.close()" routerLink="/profile">
+      <button nbButton (click)="ref.close()" routerLink="/profile" style="margin-right: 20px;">
         Trở về trang cá nhân
+      </button>
+      <button nbButton (click)="ref.close()">
+        Tiếp tục thêm bài mới
       </button>
     </nb-card-footer>
   </nb-card>

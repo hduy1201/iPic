@@ -22,7 +22,7 @@ export class AppComponent implements AfterViewInit {
   constructor(
     private store: Store<{ auth: AuthState }>,
     private element: ElementRef
-  ) {}
+  ) { }
 
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(

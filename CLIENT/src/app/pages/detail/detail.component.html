@@ -3,14 +3,12 @@
     <nb-icon icon="arrow-back" style="color:black;"></nb-icon>
   </button>
 </div> -->
-<div class="dad">
+<div *ngIf="post" class="dad">
   <div class="c1" style="background-color: aliceblue  ">
 
-    <div class="linkofpic">
-      <nb-icon icon="external-link" style="color:black;"></nb-icon>
+    <div class="pic" style="height: 100%">
+      <img [src]="post.images[0].url" alt="">
     </div>
-
-
   </div>
   <div class="c2" style="background-color: aliceblue  ">
 
@@ -46,14 +44,21 @@
       font-size:medium;">link.com</div>
 
       <h1 style="margin-left: 30px">
-        iPhone 14 Pro New Renders Based on Leaks💕💕
+        {{post.title}}
       </h1>
-      <p style="margin-left: 30px">
-        iPhone 14 Pro Concept 💕💕 . Do you like it❓ . Comment your opinion below 🙋 Credit :- @konstantin_milenin . .
-        #techlogue_ #iphoneonly #apple #instagram #appleiphone #ios #top #usa #i #nyc #newyork #canada #mexico
-        #california #florida #iphone4 #iphone5 #technology #electronics #mobile #instagood #instaiphone #phone
-        #smartphone #iphone8plus #iphoneX #iphoneology #iphone8 #iphonegraphic #iphoneogram
+      <p [ngClass]="{'limitTextHeight': isReadMore}" style="margin-left: 30px" >
+        {{post.content}}
       </p>
+      <div style="
+      margin-top: 1px;
+      margin-bottom: 10px;
+      width: 20%;
+      height: 30px;
+      margin-left: 320px;
+      border: none;" type="button" (click)="showText()">
+          {{ isReadMore ? 'Xem thêm': 'Thu hồi' }}
+
+      </div>
 
 
       <span style="flex:1 1auto"></span>
@@ -130,15 +135,10 @@
         background-color:rgba(217, 217, 217, 1);
         border: none;">Hủy</button>
       </div>
-
-
-
-
-
-
-
-
     </div>
 
   </div>
+</div>
+<div *ngIf="post" >
+  loading...
 </div>
