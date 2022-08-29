@@ -39,7 +39,7 @@ import { PostEffectS } from 'src/effects/post.effect';
 import { HttpClientModule } from '@angular/common/http';
 import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
-import { DialogService } from './services/dialog.service';
+
 @NgModule({
   declarations: [AppComponent, LoadingPageComponent],
   imports: [
@@ -69,7 +69,6 @@ import { DialogService } from './services/dialog.service';
     HttpClientModule,
     NbDialogModule.forRoot(),
   ],
-  providers: [DialogService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
