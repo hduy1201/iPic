@@ -3,7 +3,7 @@
 }
 
 .searchBox {
-  background-color: rgba(217, 217, 217, 1);
+  background-color: #fff;
   border-radius: 50px;
   padding: 10px;
   width: 100%;
@@ -24,6 +24,10 @@
   padding-left: 20px;
 }
 
+.searchBox:hover {
+  background-color: #e1e1e1;
+}
+
 .suggestionContainer {
   visibility: hidden;
   display: none;
@@ -32,7 +36,7 @@
   border-radius: 15px;
   padding: 20px;
   padding-left: 30px;
-  width: inherit;
+  width: 59%;
   height: inherit;
   display: flex;
   flex-direction: column;
@@ -84,6 +88,10 @@
   width: 100%;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .trendTabLine .trendTab {
   display: flex;
   color: #fff;
@@ -106,15 +114,43 @@
 }
 
 nb-layout-header {
-  background-color: rgba(223, 185, 151, 1);
+  background: #d31027;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.tc>button {
-  border-radius: 10px;
+.home>button {
+  border-radius: 50px;
   width: 90%;
   height: 40px;
-  margin-left: 10%;
-  background-color: rgba(217, 217, 217, 1);
+  margin-left: 20px;
+  background-color: #fff;
   border: none;
   padding: 15px;
+}
+
+.home button:hover {
+  background-color: #e1e1e1;
+}
+
+.create button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  margin: 0 20px;
+}
+
+.create button:hover {
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: #fff;
+  color: #d31027;
 }

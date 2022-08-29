@@ -15,7 +15,6 @@ import { PostController } from './controllers/post/post.controller';
 import { PostService } from './services/post/post.service';
 import { PostModule } from './modules/post/post.module';
 import { MulterModule } from '@nestjs/platform-express';
-import { Cloudinary } from './providers/cloudinary';
 import { CloudiaryService } from './services/cloudiary/cloudiary.service';
 import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
 
@@ -32,7 +31,7 @@ import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
     CloudiaryModule,
   ],
   controllers: [AppController],
-  providers: [AppService, AuthService, Cloudinary, CloudiaryService],
+  providers: [AppService, AuthService, CloudiaryService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

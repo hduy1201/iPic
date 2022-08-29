@@ -7,12 +7,10 @@ export class AnimalController {
   constructor(
     private animalService: AnimalService,
     // private authService: AuthService,
-  ) {}
+  ) { }
 
   @Get('/get-all')
-  async getAnimals( @Request() req: any) {
-    const payload = req.payload;
-    console.log(payload);
+  async getAnimals() {
     return await this.animalService.getAnimals();
   }
 

@@ -37,7 +37,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'detail',
+    path: 'ipic/:id',
     loadChildren: () =>
       import('./pages/detail/detail.module').then((m) => m.DetailModule),
   },
