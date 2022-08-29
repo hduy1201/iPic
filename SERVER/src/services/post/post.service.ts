@@ -14,7 +14,7 @@ export class PostService {
   constructor(
     @InjectModel(Post.name) private postModel: Model<PostDocument>,
     private cloudiary: CloudiaryService,
-  ) {}
+  ) { }
 
   async getAllPosts(page: number, pageSize: number) {
     try {
@@ -22,6 +22,25 @@ export class PostService {
         .find()
         .skip((page - 1) * pageSize)
         .limit(pageSize);
+    } catch (error) {
+      return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async getPostByTitle(keyword: string) {
+    try {
+      const post = this.postModel.find();
+      const result = (await post).filter(post => {
+        return post.title.toLowerCase().includes(keyword.toLowerCase());
+      }).map(post => {
+        return post.title
+      }).filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      }).splice(0, 10);
+      if (!result) {
+        throw new HttpException('This post not exist 2', HttpStatus.BAD_REQUEST);
+      }
+      return result;
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }

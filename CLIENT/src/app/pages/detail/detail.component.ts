@@ -21,7 +21,7 @@ export class DetailComponent implements OnInit {
   isReadMore = true
 
   showText() {
-     this.isReadMore = !this.isReadMore
+    this.isReadMore = !this.isReadMore
   }
 
   constructor(
