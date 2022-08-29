@@ -11,7 +11,7 @@
   display: flex;
 }
 
-.searchBox > input {
+.searchBox>input {
   border: none;
   outline: none;
   width: 100%;
@@ -36,7 +36,7 @@
   border-radius: 15px;
   padding: 20px;
   padding-left: 30px;
-  width: inherit;
+  width: 59%;
   height: inherit;
   display: flex;
   flex-direction: column;
@@ -114,20 +114,19 @@
 }
 
 nb-layout-header {
-  background: #d31027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to left,
-    #ea384d,
-    #d31027
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #ea384d,
-    #d31027
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #d31027;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.home > button {
+.home>button {
   border-radius: 50px;
   width: 90%;
   height: 40px;
