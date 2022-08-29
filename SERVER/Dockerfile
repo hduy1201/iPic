@@ -1,10 +1,8 @@
 # Base image
-FROM node:16-alpine3.15
+FROM node:16
 
 # Create app directory
 WORKDIR /usr/src/app
-
-EXPOSE 3000
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
@@ -12,13 +10,13 @@ COPY package*.json ./
 # Install app dependencies
 RUN npm install
 
-RUN npm install cloudinary
-
 # Bundle app source
 COPY . .
 
 # Creates a "dist" folder with the production build
 RUN npm run build
+
+EXPOSE 3000
 
 # Start the server using the production build
 CMD [ "node", "dist/main.js" ]

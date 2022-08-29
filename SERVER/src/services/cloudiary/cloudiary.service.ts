@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UploadApiErrorResponse, UploadApiResponse, v2 } from 'cloudinary';
-import { v2 as cloudinary } from 'cloudinary';
 import * as path from 'path';
+import { UploadApiErrorResponse, UploadApiResponse, v2 } from 'cloudinary';
 
 @Injectable()
 export class CloudiaryService {
@@ -15,7 +14,7 @@ export class CloudiaryService {
       );
       console.log(imagePath);
       try {
-        let res = await cloudinary.uploader.upload(imagePath, {
+        let res = await v2.uploader.upload(imagePath, {
           folder: "iPic"
         });
         resolve(res);
