@@ -6,7 +6,7 @@ import { from } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) { }
 
   login() {
     return from(

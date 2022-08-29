@@ -20,17 +20,17 @@ export class DetailComponent implements OnInit {
   isReadMore = true
 
   showText() {
-     this.isReadMore = !this.isReadMore
+    this.isReadMore = !this.isReadMore
   }
 
   constructor(
-      private store: Store<{ getPostReducer: getPostState }>,
-      private activatedRoute: ActivatedRoute
-    ) {
-      this.getPost$ = this.store.select((state) => state.getPostReducer);
-      this.activatedRoute.params.subscribe((params:any) => {
-        this.getPost(params.id)
-      });
+    private store: Store<{ getPostReducer: getPostState }>,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.getPost$ = this.store.select((state) => state.getPostReducer);
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.getPost(params.id)
+    });
   }
   getPost$: Observable<getPostState>;
 
