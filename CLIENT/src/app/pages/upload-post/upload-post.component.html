@@ -86,12 +86,15 @@
       {{ data }}
     </nb-card-body>
     <nb-card-footer>
-      <button nbButton (click)="ref.close()" routerLink="/profile" style="margin-right: 20px;">
+      <button
+        nbButton
+        (click)="ref.close()"
+        routerLink="/profile"
+        style="margin-right: 20px"
+      >
         Trở về trang cá nhân
       </button>
-      <button nbButton (click)="ref.close()">
-        Tiếp tục thêm bài mới
-      </button>
+      <button nbButton (click)="ref.close()">Tiếp tục thêm bài mới</button>
     </nb-card-footer>
   </nb-card>
 </ng-template>

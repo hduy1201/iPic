@@ -1,9 +1,8 @@
 .dad {
   display: block;
   width: 900px;
-  height: 800px;
-  // margin-left: 130px;
-  margin: 50px auto 50px auto;
+  height: 90%;
+  margin: 40px auto;
 }
 
 .c1 {
@@ -12,10 +11,8 @@
   height: 100%;
   border-radius: 50px 0 0 50px;
   border: 1px solid transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-
-
-
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .c2 {
@@ -24,34 +21,31 @@
   height: 100%;
   border-radius: 0 50px 50px 0;
   border: 1px solid transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-
-
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.back>button>nb-icon {
+.back > button > nb-icon {
   font-size: 1.5rem;
   line-height: 2;
   width: 2em;
   height: 2em;
   color: #000000; //For unspecified status
-
 }
 
-.back>button {
+.back > button {
   float: left;
 }
 
-.b>button>nb-icon {
+.b > button > nb-icon {
   font-size: 1.5rem;
   line-height: 2;
   width: 1em;
   height: 1em;
   color: #000000; //For unspecified status
-
 }
 
-.b>button {
+.b > button {
   margin-left: 20px;
   margin-top: 40px;
 }
@@ -72,11 +66,10 @@
   text-decoration: underline;
 }
 
-.info>p {
+.info > p {
   margin-left: 90px;
   font-size: 15px;
   font-weight: bold;
-
 }
 
 .searchBox {
@@ -89,11 +82,9 @@
   width: 75%;
   height: 40px;
   display: flex;
-
-
 }
 
-.searchBox>input {
+.searchBox > input {
   border: none;
   outline: none;
   width: 100%;
@@ -103,7 +94,6 @@
   font-weight: light;
   text-align: left;
   background-color: transparent;
-
 }
 
 .linkofpic {
@@ -116,17 +106,14 @@
   width: 55%;
   height: 40px;
   display: flex;
-
-
 }
 
-.linkofpic>nb-icon {
+.linkofpic > nb-icon {
   font-size: 1.5rem;
   line-height: 2;
   width: 1em;
   height: 1em;
   color: #000000; //For unspecified status
-
 }
 
 .pic > img {
@@ -136,9 +123,21 @@
   border-radius: 50px 0 0 50px;
   border: 1px solid transparent;
 }
+
 .limitTextHeight {
   height: 20px;
   overflow: hidden;
 }
 
+nb-card {
+  height: 120%;
+  width: 120%;
+  background-color: none;
+}
 
+nb-card-body {
+  height: 100%;
+  width: 100%;
+  background-color: none;
+  overflow: hidden;
+}

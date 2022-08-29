@@ -34,6 +34,16 @@
 }
 
 .container .drop-down-tag button {
+  background-color: black;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  width: 20%;
+  height: 90%;
+  border: 0.5px solid none;
+  border-left: none;
+}
+
+.container .drop-down-tag button:hover {
   background: #d31027; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
@@ -45,14 +55,7 @@
     #ea384d,
     #d31027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  border-radius: 0 5px 5px 0;
-  border: none;
-  width: 20%;
-  height: 90%;
-  border: 0.5px solid none;
-  border-left: none;
 }
-
 
 .container .drop-down-tag input {
   border-radius: 5px 0 0 5px;
