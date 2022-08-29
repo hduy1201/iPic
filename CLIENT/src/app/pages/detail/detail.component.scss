@@ -3,26 +3,32 @@
   width: 900px;
   height: 90%;
   margin: 40px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  display: flex;
+  justify-content: baseline;
+  background: none;
 }
 
 .c1 {
-  float: left;
-  width: 450px;
   height: 100%;
-  border-radius: 50px 0 0 50px;
-  border: 1px solid transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  width: 50%;
 }
 
 .c2 {
-  float: right;
-  width: 450px;
   height: 100%;
-  border-radius: 0 50px 50px 0;
+  width: 50%;
+  border-radius: 0 30px 30px 0;
+  // border: 1px solid transparent;
+  background-color: #fff;
+}
+
+.c1 img {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px 0 0 30px;
   border: 1px solid transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  align-items: center;
 }
 
 .back > button > nb-icon {
@@ -50,6 +56,32 @@
   margin-top: 40px;
 }
 
+.b .save {
+  float: right;
+  margin-top: 30px;
+  margin-right: 40px;
+  border-radius: 5px;
+  width: 15%;
+  height: 35px;
+  border: none;
+  color: #fff;
+  background-color: #d8182f;
+}
+
+.b .follow {
+  float: right;
+  margin-right: 40px;
+  border-radius: 5px;
+  width: 20%;
+  height: 35px;
+  background-color: rgba(217, 217, 217, 1);
+  border: none;
+}
+
+.b .save:hover {
+  background-color: #8b1825;
+}
+
 .duongLink:link {
   text-decoration: none;
 }
@@ -72,29 +104,66 @@
   font-weight: bold;
 }
 
-.searchBox {
+.b .comment {
+  color: black;
   background-color: transparent;
-  border: 1px solid lightgray;
-  border-radius: 50px;
-  margin-top: 22px;
-  margin-left: 90px;
-  padding: 10px;
-  width: 75%;
-  height: 40px;
-  display: flex;
+  margin-top: 10px;
+  border: none;
+  width: 20%;
+  height: 10px;
+  font-size: 20px;
+  margin: 150px 0 10px 25px;
 }
 
-.searchBox > input {
-  border: none;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-  font-weight: light;
-  text-align: left;
-  background-color: transparent;
+.b .input-comment {
+  display: flex;
+  justify-content: baseline;
+  // border: solid black;
+  height: 100px;
+  align-items: center;
+  margin: 10px 20px 0 20px;
 }
+
+.b .input-comment img {
+  width: 11%;
+  height: 46%;
+  border-radius: 50%;
+  border: solid rgb(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+.b .input-comment input {
+  border: solid rgb(0, 0, 0, 0.1);
+  outline: none;
+  width: 80%;
+  height: 50%;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+
+// .searchBox {
+//   background-color: transparent;
+//   border: 1px solid lightgray;
+//   border-radius: 50px;
+//   margin-top: 22px;
+//   margin-left: 90px;
+//   padding: 10px;
+//   width: 75%;
+//   height: 40px;
+//   display: flex;
+// }
+
+// .searchBox > input {
+//   border: none;
+//   outline: none;
+// width: 100%;
+// height: 100%;
+//   color: rgb(0, 0, 0);
+//   font-size: 15px;
+//   font-weight: light;
+//   text-align: left;
+//   background-color: transparent;
+// }
 
 .linkofpic {
   background-color: transparent;
@@ -114,14 +183,6 @@
   width: 1em;
   height: 1em;
   color: #000000; //For unspecified status
-}
-
-.pic > img {
-  float: left;
-  width: 450px;
-  height: 100%;
-  border-radius: 50px 0 0 50px;
-  border: 1px solid transparent;
 }
 
 .limitTextHeight {
