@@ -2,37 +2,40 @@
   <nb-layout-header fixed>
     <!-- Insert header here -->
     <span style="flex: 1 auto"></span>
-    <img routerLink="/" src="../assets/logo_ipic.png"
-    height="50px" width="50px" style="margin-left: 20px" />
+    <img
+      routerLink="/"
+      src="../assets/pinterest_logo.jpg"
+      height="50px"
+      width="50px"
+      style="margin-left: 20px; border-radius: 100%"
+    />
 
-    <div class="tc">
+    <div class="home">
       <button routerLink="home" nbButton>Trang chủ</button>
-     </div>
-
-    <button routerLink="/upload-post"
-    nbButton style="color:gray ;
-    background-color: transparent;
-    border: none;
-   margin-left: 20px">Tạo</button>
-
-    <button nbButton style="background-color: transparent;
-    border: none;">
-      <nb-icon icon="arrow-ios-downward-outline"
-      style="color:gray ;;
-      "></nb-icon>
-    </button>
-
+    </div>
+    <div class="create">
+      <button routerLink="/upload-post" nbButton>Tạo</button>
+    </div>
     <div class="searchBoxContainer">
       <div class="searchBox">
-        <nb-icon icon="search" style="color:black;"></nb-icon>
-        <input id="searchInput" type="text" placeholder="Tìm kiếm" (focus)="onFocus()" (focusout)="onFocusout()">
+        <nb-icon icon="search"></nb-icon>
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="Tìm kiếm"
+          (focus)="onFocus()"
+          (focusout)="onFocusout()"
+        />
       </div>
       <div class="suggestionContainer" (mouseleave)="onFocusout()">
-        <div class="recentSearch" style="margin-bottom: 30px;">
+        <div class="recentSearch" style="margin-bottom: 30px">
           Tìm kiếm gần đây
           <div class="searchItemContainer">
-            <button *ngFor="let recentSearch of recentSearchs" class="searchItem">
-              {{recentSearch}}
+            <button
+              *ngFor="let recentSearch of recentSearchs"
+              class="searchItem"
+            >
+              {{ recentSearch }}
             </button>
           </div>
         </div>
@@ -40,16 +43,34 @@
         <div class="ideaforYou">
           Ý tưởng cho bạn
           <div class="trendTabLine">
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Motorcycle.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Motorcycle.jpg');
+                background-size: cover;
+              "
+            >
               Motorcycle
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Gaming.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Gaming.jpg');
+                background-size: cover;
+              "
+            >
               Gaming
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/History.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/History.jpg');
+                background-size: cover;
+              "
+            >
               History
             </a>
           </div>
@@ -58,38 +79,86 @@
         <div class="trendOnPinterest">
           Phổ biến trên Pinterest
           <div class="trendTabLine">
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Cats.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Cats.jpg');
+                background-size: cover;
+              "
+            >
               Cats
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Dogs.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Dogs.jpg');
+                background-size: cover;
+              "
+            >
               Dogs
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Characters.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Characters.jpg');
+                background-size: cover;
+              "
+            >
               Characters
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Drinks.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Drinks.jpg');
+                background-size: cover;
+              "
+            >
               Drinks
             </a>
           </div>
           <div class="trendTabLine">
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/DJ.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/DJ.jpg');
+                background-size: cover;
+              "
+            >
               DJ
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Jojo.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Jojo.jpg');
+                background-size: cover;
+              "
+            >
               JoJo
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Photography.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Photography.jpg');
+                background-size: cover;
+              "
+            >
               Photography
             </a>
-            <a class="trendTab" href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
-              style="background-image: url('/assets/images/Suggestion/Wallpapers.jpg'); background-size: cover;">
+            <a
+              class="trendTab"
+              href="https://www.youtube.com/watch?v=CAZ8kTQ49c8"
+              style="
+                background-image: url('/assets/images/Suggestion/Wallpapers.jpg');
+                background-size: cover;
+              "
+            >
               Wallpapers
             </a>
           </div>
@@ -97,38 +166,48 @@
       </div>
     </div>
 
-    <span style="flex:1 auto"></span>
-    <button nbButton
-    style="background-color: transparent;
-    border: none;
-    margin-right: 20px;">
-      <nb-icon icon="bell-outline" style="color:gray ;" ></nb-icon>
+    <span style="flex: 1 auto"></span>
+    <div class="bell">
+      <button
+        nbButton
+        style="background-color: transparent; border: none; margin-right: 20px"
+      >
+        <nb-icon icon="bell-outline" style="color: #fff"></nb-icon>
+      </button>
+    </div>
+    <div class="mess">
+      <button
+        nbButton
+        style="background-color: transparent; border: none; margin-right: 10px"
+      >
+        <nb-icon icon="message-circle-outline" style="color: #fff"></nb-icon>
+      </button>
+    </div>
+    <button
+      nbButton
+      style="background-color: transparent; border: none; margin-right: 10px"
+      routerLink="/profile"
+    >
+      <!-- <nb-icon icon="checkmark-circle-2" style="color: #fff"></nb-icon> -->
+      <img
+        routerLink="/"
+        src="../assets/pinterest_logo.jpg"
+        height="50px"
+        width="50px"
+        style="border-radius: 100%"
+      />
     </button>
 
-    <button nbButton
-    style="background-color: transparent;
-    border: none;
-    margin-right: 20px; ">
-      <nb-icon icon="message-circle-outline" style="color:gray"></nb-icon>
-    </button>
-
-
-    <button nbButton style="background-color: transparent;
-    border: none; margin-right:10px;" routerLink="/profile">
-      <nb-icon icon="checkmark-circle-2" style="color:black;"></nb-icon>
-    </button>
-
-    <button nbButton (click)="login()"
-    style="background-color: transparent;
-     border: none;
-     margin-right:20px;">
-      <nb-icon icon="arrow-ios-downward-outline" style="color:gray"></nb-icon>
-
+    <button
+      nbButton
+      (click)="login()"
+      style="background-color: transparent; border: none; margin-right: 20px"
+    >
+      <nb-icon icon="arrow-ios-downward-outline" style="color: #fff"></nb-icon>
     </button>
   </nb-layout-header>
 
-  <nb-layout-column style="padding: 0;">
+  <nb-layout-column style="padding: 0">
     <router-outlet></router-outlet>
   </nb-layout-column>
-
 </nb-layout>
