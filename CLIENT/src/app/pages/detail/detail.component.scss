@@ -1,7 +1,7 @@
 .dad {
   display: block;
   width: 900px;
-  height: 90%;
+  height: 80%;
   margin: 40px auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   border-radius: 30px;
@@ -19,7 +19,6 @@
   height: 100%;
   width: 50%;
   border-radius: 0 30px 30px 0;
-  // border: 1px solid transparent;
   background-color: #fff;
 }
 
@@ -43,7 +42,7 @@
   float: left;
 }
 
-.b > button > nb-icon {
+.c2 > button > nb-icon {
   font-size: 1.5rem;
   line-height: 2;
   width: 1em;
@@ -51,12 +50,12 @@
   color: #000000; //For unspecified status
 }
 
-.b > button {
+.c2 > button {
   margin-left: 20px;
   margin-top: 40px;
 }
 
-.b .save {
+.c2 .save {
   float: right;
   margin-top: 30px;
   margin-right: 40px;
@@ -68,7 +67,7 @@
   background-color: #d8182f;
 }
 
-.b .follow {
+.c2 .follow {
   float: right;
   margin-right: 40px;
   border-radius: 5px;
@@ -78,7 +77,7 @@
   border: none;
 }
 
-.b .save:hover {
+.c2 .save:hover {
   background-color: #8b1825;
 }
 
@@ -104,7 +103,7 @@
   font-weight: bold;
 }
 
-.b .comment {
+.c2 .comment {
   color: black;
   background-color: transparent;
   margin-top: 10px;
@@ -115,7 +114,7 @@
   margin: 150px 0 10px 25px;
 }
 
-.b .input-comment {
+.c2 .input-comment {
   display: flex;
   justify-content: baseline;
   // border: solid black;
@@ -124,7 +123,7 @@
   margin: 10px 20px 0 20px;
 }
 
-.b .input-comment img {
+.c2 .input-comment img {
   width: 11%;
   height: 46%;
   border-radius: 50%;
@@ -132,7 +131,7 @@
   margin-right: 20px;
 }
 
-.b .input-comment input {
+.c2 .input-comment input {
   border: solid rgb(0, 0, 0, 0.1);
   outline: none;
   width: 80%;
