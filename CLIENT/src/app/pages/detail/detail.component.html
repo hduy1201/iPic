@@ -4,103 +4,95 @@
   </button>
 </div> -->
 <div *ngIf="post" class="dad">
-  <div class="c1" style="background-color: aliceblue  ">
-
-    <div class="pic" style="height: 100%">
-      <img [src]="post.images[0].url" alt="">
-    </div>
+  <div class="c1" (click)="popUp(dialog)">
+      <img [src]="post.images[0].url" alt="" />
   </div>
-  <div class="c2" style="background-color: aliceblue  ">
-
+  <div class="c2">
     <div class="b">
-
-      <button nbButton style="background-color: transparent;
-      border: none;">
-        <nb-icon icon="more-horizontal" style="color:black;"></nb-icon>
+      <button nbButton style="background-color: transparent; border: none">
+        <nb-icon icon="more-horizontal" style="color: black"></nb-icon>
       </button>
 
-      <button nbButton style="background-color: transparent;
-      border: none;">
-        <nb-icon icon="share" style="color:black;"></nb-icon>
+      <button nbButton style="background-color: transparent; border: none">
+        <nb-icon icon="share" style="color: black"></nb-icon>
       </button>
 
-      <button nbButton style="background-color: transparent;
-      border: none;">
-        <nb-icon icon="heart-outline" style="color:black;"></nb-icon>
+      <button nbButton style="background-color: transparent; border: none">
+        <nb-icon icon="heart-outline" style="color: black"></nb-icon>
       </button>
-      <span style="flex:1 1auto"></span>
-      <button nbButton style="float: right;
-        margin-top:30px;
-        margin-right: 40px;
-        border-radius: 50px;
-        width: 15%;
-        height: 45px;
-        background-color:rgba(217, 217, 217, 1);
-        border: none;">Lưu</button>
+      <span style="flex: 1 1auto"></span>
+      <button class="save" nbButton>Lưu</button>
 
-      <div class="duongLink" style="  text-decoration: underline;
-      margin-left: 20px;
-      margin-top: 20px;
-      font-size:medium;">link.com</div>
+      <div
+        class="duongLink"
+        style="
+          text-decoration: underline;
+          margin-left: 20px;
+          margin-top: 20px;
+          font-size: medium;
+        "
+      >
+        link.com
+      </div>
 
       <h1 style="margin-left: 30px">
-        {{post.title}}
+        {{ post.title }}
       </h1>
-      <p [ngClass]="{'limitTextHeight': isReadMore}" style="margin-left: 30px" >
-        {{post.content}}
+      <p [ngClass]="{ limitTextHeight: isReadMore }" style="margin-left: 30px">
+        {{ post.content }}
       </p>
-      <div style="
-      margin-top: 1px;
-      margin-bottom: 10px;
-      width: 20%;
-      height: 30px;
-      margin-left: 320px;
-      border: none;" type="button" (click)="showText()">
-          {{ isReadMore ? 'Xem thêm': 'Thu hồi' }}
-
+      <div
+        style="
+          margin-top: 1px;
+          margin-bottom: 10px;
+          width: 20%;
+          height: 30px;
+          margin-left: 320px;
+          border: none;
+        "
+        type="button"
+        (click)="showText()"
+      >
+        {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
       </div>
 
-
-      <span style="flex:1 1auto"></span>
+      <span style="flex: 1 auto"></span>
       <div>
-        <img src="../assets/logo_ipic.png" height="50px" width="10%" style="float: left;
-        margin-left:20px;
-        border-radius: 200%;" />
+        <img
+          src="../assets/pinterest_logo.jpg"
+          height="100%"
+          width="10%"
+          style="
+            float: left;
+            margin-left: 20px;
+            border-radius: 50%;
+            border: solid rgb(0, 0, 0, 0.2);
+          "
+        />
       </div>
-      <div>
-        <button nbButton style="float: right;
-        margin-right: 40px;
-        border-radius: 50px;
-        width: 20%;
-        height: 45px;
-        background-color:rgba(217, 217, 217, 1);
-        border: none;">Theo dõi</button>
-      </div>
+      <!-- <div>
+        <button class="follow" nbButton>Theo dõi</button>
+      </div> -->
 
       <div class="info">
-        <p>Ahmed <br>
-          800 người theo dõi </p>
+        <p>
+          Ahmed <br />
+          <!-- 800 người theo dõi -->
+        </p>
       </div>
 
-      <button nbButton style="color:black;
-      background-color: transparent;
-      margin-top:10px;
-      border: none;
-      width: 20%;
-      height: 10px;
-      font-size:20px;
-      margin-left: 40px">Nhận xét</button>
+      <div class="comment">Nhận xét</div>
 
-      <button nbButton style="background-color: transparent;
-       border: none;
-       margin-right:0px;
-       margin-top:10px;">
-        <nb-icon icon="arrow-ios-downward-outline" style="color:black;"></nb-icon>
-      </button>
+      <div class="input-comment">
+        <img src="../assets/pinterest_logo.jpg" />
+        <input type="text" placeholder="Thêm nhận xét ..." />
+      </div>
 
+      <!-- <span style="flex: 0 auto"></span> -->
 
-
+      <!-- <span style="flex: 1 1auto"></span>
       <div>
+<<<<<<< HEAD
         <img src = "../assets/logo_ipic.png" height="50px" width="10%" style="float: left;
         margin-left:20px;
         border-radius: 200%;
@@ -123,22 +115,65 @@
         height: 45px;
         background-color:rgba(217, 217, 217, 1);
         border: none;">Đã xong</button>
+=======
+        <button
+        class=""
+          nbButton
+          style="
+            float: right;
+            margin-right: 50px;
+            margin-top: 20px;
+            border-radius: 5px;
+            width: 20%;
+            height: 35px;
+            background-color: rgba(217, 217, 217, 1);
+            border: none;
+          "
+        >
+          Đã xong
+        </button>
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
       </div>
 
       <div>
-        <button nbButton style="
-        margin-left: 160px;
-        margin-top:20px;
-        border-radius: 50px;
-        width: 15%;
-        height: 45px;
-        background-color:rgba(217, 217, 217, 1);
-        border: none;">Hủy</button>
-      </div>
+        <button
+          nbButton
+          style="
+            margin-left: 160px;
+            margin-top: 20px;
+            border-radius: 5px;
+            width: 15%;
+            height: 35px;
+            background-color: #d9d9d9;
+            border: none;
+          "
+        >
+          Hủy
+        </button>
+      </div> -->
     </div>
-
   </div>
 </div>
-<div *ngIf="post" >
-  loading...
-</div>
+<!-- <div *ngIf="post">loading...</div> -->
+
+<!-- PopUp Image -->
+<ng-template id="dialog-success" #dialog let-data let-ref="dialogRef">
+  <nb-card style="margin: 0; border: none">
+    <!-- <nb-card-header>Thêm bài viết thành công</nb-card-header> -->
+    <nb-card-body style="padding: 0; border: none">
+      <img
+        [src]="post.images[0].url"
+        alt=""
+        style="width: 100%; height: 100%"
+      />
+    </nb-card-body>
+    <!-- <nb-card-footer>
+      <button nbButton (click)="ref.close()" routerLink="/profile" style="margin-right: 20px;">
+        Trở về trang cá nhân
+      </button>
+      <button nbButton (click)="ref.close()">
+        Tiếp tục thêm bài mới
+      </button>
+    </nb-card-footer> -->
+  </nb-card>
+</ng-template>

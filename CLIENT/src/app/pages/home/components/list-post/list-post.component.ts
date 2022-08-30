@@ -41,8 +41,9 @@ export class ListPostComponent implements OnInit {
         res.posts.map((post) => {
           this.posts.push(post);
         });
-        console.log(res.posts);
+        console.log(res);
       }
     });
   }
+  ////ahihi đồ ngok =)))
 }
