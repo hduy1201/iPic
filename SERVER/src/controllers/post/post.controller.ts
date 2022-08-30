@@ -32,7 +32,7 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) { }
+  ) {}
 
   //GET ALL POSTS
   @Get('/')
@@ -143,6 +143,4 @@ export class PostController {
       console.log(pathImage.url);
     }
   }
-
-
 }
