@@ -9,7 +9,7 @@
       width="50px"
       style="margin-left: 20px; border-radius: 100%"
     />
-
+    <!-- "../assets/pinterest_logo.jpg" -->
     <div class="home">
       <button routerLink="home" nbButton>Trang chủ</button>
     </div>
@@ -191,13 +191,24 @@
       <!-- <nb-icon icon="checkmark-circle-2" style="color: #fff"></nb-icon> -->
       <img
         routerLink="/"
+        *ngIf="user"
         src="../assets/pinterest_logo.jpg"
         height="50px"
         width="50px"
         style="border-radius: 100%"
       />
-    </button>
 
+      <img
+        routerLink="/"
+        *ngIf="user"
+        src={{user.photoURL}}
+        height="50px"
+        width="50px"
+        style="border-radius: 100%"
+      />
+
+    </button>
+    
     <button
       nbButton
       (click)="login()"

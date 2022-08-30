@@ -3,6 +3,8 @@ import { idToken } from '@angular/fire/auth';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'src/states/auth.state';
 import * as AuthActions from '../actions/auth.action';
+import { AuthService } from '../app/services/auth.service'
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,8 @@ export class AppComponent implements AfterViewInit {
 
   constructor(
     private store: Store<{ auth: AuthState }>,
-    private element: ElementRef
+    private element: ElementRef,
+    private AuthService:AuthService
   ) { }
 
   ngAfterViewInit(): void {
@@ -47,5 +50,14 @@ export class AppComponent implements AfterViewInit {
     )
       return;
     this.suggestBox.classList.remove('make-visible');
+  }
+
+  public user! : User;
+
+  biding() {
+    this.AuthService.user$.subscribe (res => {
+      console.log(res)
+      this.user = res
+    });
   }
 }

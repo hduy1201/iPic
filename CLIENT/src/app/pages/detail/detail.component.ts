@@ -7,6 +7,8 @@ import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
 import { DialogService } from '../../services/dialog.service'
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../.././services/auth.service'
+import { User } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-detail',
@@ -25,7 +27,8 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private store: Store<{ getPostReducer: getPostState }>,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private AuthService:AuthService
   ) {
     this.getPost$ = this.store.select((state) => state.getPostReducer);
     this.activatedRoute.params.subscribe((params: any) => {
@@ -33,13 +36,13 @@ export class DetailComponent implements OnInit {
     });
   }
   getPost$: Observable<getPostState>;
-
+  
 
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
       console.log(res.post)
       this.post = res.post
-    });
+    });    
   }
 
   public post!: Post;
@@ -49,5 +52,6 @@ export class DetailComponent implements OnInit {
     this.store.dispatch(PostAction.getPost({ id }));
   }
 
-
+  
 }
+
