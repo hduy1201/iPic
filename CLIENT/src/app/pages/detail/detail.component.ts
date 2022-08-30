@@ -25,14 +25,14 @@ export class DetailComponent implements OnInit {
   }
 
   constructor(
-      private store: Store<{ getPostReducer: getPostState }>,
-      private activatedRoute: ActivatedRoute,
-      private dialogService: NbDialogService
-    ) {
-      this.getPost$ = this.store.select((state) => state.getPostReducer);
-      this.activatedRoute.params.subscribe((params:any) => {
-        this.getPost(params.id)
-      });
+    private store: Store<{ getPostReducer: getPostState }>,
+    private activatedRoute: ActivatedRoute,
+    private dialogService: NbDialogService
+  ) {
+    this.getPost$ = this.store.select((state) => state.getPostReducer);
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.getPost(params.id)
+    });
   }
   getPost$: Observable<getPostState>;
 
@@ -55,3 +55,4 @@ export class DetailComponent implements OnInit {
     this.dialogService.open(dialog)
   }
 }
+
