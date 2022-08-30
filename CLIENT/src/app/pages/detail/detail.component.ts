@@ -7,7 +7,12 @@ import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
 import { DialogService } from '../../services/dialog.service'
 import { ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
+import { AuthService } from '../.././services/auth.service'
+import { User } from '@angular/fire/auth';
+=======
 import { NbDialogService } from '@nebular/theme';
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
 
 @Component({
   selector: 'app-detail',
@@ -25,6 +30,16 @@ export class DetailComponent implements OnInit {
   }
 
   constructor(
+<<<<<<< HEAD
+    private store: Store<{ getPostReducer: getPostState }>,
+    private activatedRoute: ActivatedRoute,
+    private AuthService:AuthService
+  ) {
+    this.getPost$ = this.store.select((state) => state.getPostReducer);
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.getPost(params.id)
+    });
+=======
       private store: Store<{ getPostReducer: getPostState }>,
       private activatedRoute: ActivatedRoute,
       private dialogService: NbDialogService
@@ -33,15 +48,16 @@ export class DetailComponent implements OnInit {
       this.activatedRoute.params.subscribe((params:any) => {
         this.getPost(params.id)
       });
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
   }
   getPost$: Observable<getPostState>;
-
+  
 
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
       console.log(res.post)
       this.post = res.post
-    });
+    });    
   }
 
   public post!: Post;
@@ -51,7 +67,12 @@ export class DetailComponent implements OnInit {
     this.store.dispatch(PostAction.getPost({ id }));
   }
 
+<<<<<<< HEAD
+  
+=======
   popUp(dialog: TemplateRef<any>) {
     this.dialogService.open(dialog)
   }
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
 }
+
