@@ -2,9 +2,20 @@
   <nb-layout-header fixed>
     <!-- Insert header here -->
     <span style="flex: 1 auto"></span>
+<<<<<<< HEAD
+    <img
+      routerLink="/"
+      src="../assets/pinterest_logo.jpg"
+      height="50px"
+      width="50px"
+      style="margin-left: 20px; border-radius: 100%"
+    />
+    <!-- "../assets/pinterest_logo.jpg" -->
+=======
     <img routerLink="/" src="../assets/pinterest_logo.jpg" height="50px" width="50px"
       style="margin-left: 20px; border-radius: 100%" />
 
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
     <div class="home">
       <button routerLink="home" nbButton>Trang chủ</button>
     </div>
@@ -121,10 +132,38 @@
     </div>
     <button nbButton style="background-color: transparent; border: none; margin-right: 10px" routerLink="/profile">
       <!-- <nb-icon icon="checkmark-circle-2" style="color: #fff"></nb-icon> -->
+<<<<<<< HEAD
+      <img
+        routerLink="/"
+        *ngIf="user"
+        src="../assets/pinterest_logo.jpg"
+        height="50px"
+        width="50px"
+        style="border-radius: 100%"
+      />
+
+      <img
+        routerLink="/"
+        *ngIf="user"
+        src={{user.photoURL}}
+        height="50px"
+        width="50px"
+        style="border-radius: 100%"
+      />
+
+    </button>
+    
+    <button
+      nbButton
+      (click)="login()"
+      style="background-color: transparent; border: none; margin-right: 20px"
+    >
+=======
       <img routerLink="/" src="../assets/pinterest_logo.jpg" height="50px" width="50px" style="border-radius: 100%" />
     </button>
 
     <button nbButton (click)="login()" style="background-color: transparent; border: none; margin-right: 20px">
+>>>>>>> a3b2206c99a17e424a6ffa74e88048118b5240c3
       <nb-icon icon="arrow-ios-downward-outline" style="color: #fff"></nb-icon>
     </button>
   </nb-layout-header>
