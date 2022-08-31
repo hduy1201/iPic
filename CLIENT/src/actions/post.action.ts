@@ -4,7 +4,7 @@ import { Post } from 'src/models/post';
 //CREATE POST
 export const createPost = createAction(
   '[Post] Post',
-  props<{ post: Post; files: Array<File> }>()
+  props<{ post: Post; files: Array<File>}>()
 );
 
 export const createPostSuccess = createAction(
