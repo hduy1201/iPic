@@ -17,6 +17,7 @@ import { PostModule } from './modules/post/post.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CloudiaryService } from './services/cloudiary/cloudiary.service';
 import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
+import { CommentModule } from './modules/comment/comment.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
     ),
     AnimalModule,
     PostModule,
+    CommentModule,
     UserModule,
     MulterModule.register({ dest: './uploads/images' }),
     CloudiaryModule,
