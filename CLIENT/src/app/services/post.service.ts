@@ -12,7 +12,6 @@ export class PostService {
   constructor(private Http: HttpClient, private AuthService: AuthService) {
     this.AuthService.user$.subscribe((user: any) => {
       if (user) {
-        console.log(user.accessToken);
         this.idToken = user.accessToken;
       }
     });

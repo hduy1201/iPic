@@ -40,6 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { DialogService } from './services/dialog.service';
+import { UserEffects } from 'src/effects/user.effect';
+import { registerUserReducer } from 'src/reducers/user.reducer';
 
 @NgModule({
   declarations: [AppComponent, LoadingPageComponent],
@@ -50,18 +52,18 @@ import { DialogService } from './services/dialog.service';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    StoreModule.forRoot({
-      auth: authReducer,
-      createPostReducer: createPostReducer,
-      getAllPostReducer: getAllPostReducer,
-      getPostReducer: getPostReducer,
-      choose: chooseReducer,
-    }, {}),
-    EffectsModule.forRoot([
-      AuthEffects,
-      PostEffectS
-    ]),
-    EffectsModule.forRoot([AuthEffects, PostEffectS]),
+    StoreModule.forRoot(
+      {
+        auth: authReducer,
+        createPostReducer: createPostReducer,
+        getAllPostReducer: getAllPostReducer,
+        getPostReducer: getPostReducer,
+        choose: chooseReducer,
+        registerUserReducer: registerUserReducer,
+      },
+      {}
+    ),
+    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
@@ -73,4 +75,4 @@ import { DialogService } from './services/dialog.service';
   providers: [DialogService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

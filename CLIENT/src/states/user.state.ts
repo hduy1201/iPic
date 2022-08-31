@@ -1,8 +1,5 @@
-import { User } from "src/models/user";
-
 export interface registerUserState {
-    isLoading: boolean;
-    isSuccess: boolean;
-    user: User;
+    message: string,
+    isSuccess: boolean,
     error: string;
 }

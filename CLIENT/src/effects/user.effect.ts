@@ -11,9 +11,15 @@ export class UserEffects {
   registerUser$ = createEffect(() =>
     this.action$.pipe(
       ofType(UserAction.registerUser),
-      switchMap(( ) => this.userService.registerUser()),
-      map(() => {
-        return UserAction.registerUserSuccess()
+      switchMap((action) => {
+        console.log(action)
+        return this.userService.registerUser(action.email, action.firstName, action.lastName)
+      }),
+      map((action) => {
+        console.log(action)
+        return UserAction.registerUserSuccess({
+          message: "Registed successfuly"
+        })
       }),
       catchError((error) => {
         return of(UserAction.registerUserFail({ error: error}))

@@ -4,36 +4,37 @@ import { registerUserState } from 'src/states/user.state';
 import * as UserAction from '../actions/user.action';
 
 const initCreateUserState: registerUserState = {
-  isLoading: false,
   isSuccess: false,
-  user: <User>{},
   error: '',
+  message: ''
 };
 
 export const registerUserReducer = createReducer(
   initCreateUserState,
-  on(UserAction.registerUser, (state) => {
+  on(UserAction.registerUser, (state,action) => {
     return {
       ...state,
-      isLoading: true,
       isSuccess: false,
+      error: '',
+      message: ''
     };
   }),
 
-  on(UserAction.registerUserSuccess, (state) => {
+  on(UserAction.registerUserSuccess, (state, action) => {
     return {
       ...state,
-      isLoading: false,
       isSuccess: true,
+      message: action.message,
+      error: ''
     };
   }),
 
   on(UserAction.registerUserFail, (state, action) => {
     return {
       ...state,
-      isLoading: false,
-      isSuccess: true,
+      isSuccess: false,
       error: action.error,
+      message: action.error
     };
   })
 );
