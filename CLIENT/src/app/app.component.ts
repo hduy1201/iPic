@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { idToken } from '@angular/fire/auth';
 import { Store } from '@ngrx/store';
+import { Observable, Subject, of, switchMap } from 'rxjs';
 import { AuthState } from 'src/states/auth.state';
 import * as AuthActions from '../actions/auth.action';
+import { SuggestKeywordService } from './services/suggest-keyword.service';
 import { AuthService } from '../app/services/auth.service'
 import { User } from '@angular/fire/auth';
 
@@ -19,19 +21,28 @@ export class AppComponent implements AfterViewInit {
   suggestBox: any;
   input: any;
 
+  keywordsChange$ = new Subject<string>();
+  keywords$ = new Observable<string[]>();
   idToken$ = this.store.select((state) => state.auth.idToken);
 
   constructor(
     private store: Store<{ auth: AuthState }>,
     private element: ElementRef,
-    private AuthService:AuthService
-  ) { }
+    private AuthService: AuthService,
+    private suggestKeywords: SuggestKeywordService
+
+  ) {
+    this.biding();
+    this.keywords$ = this.keywordsChange$.pipe(
+      switchMap(key => this.suggestKeywords.getSuggestKeyword(key))
+    );
+  }
+
 
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(
       '.suggestionContainer'
     );
-
     this.input = this.element.nativeElement.querySelector('#searchInput');
   }
 
@@ -52,10 +63,10 @@ export class AppComponent implements AfterViewInit {
     this.suggestBox.classList.remove('make-visible');
   }
 
-  public user! : User;
+  public user!: User;
 
   biding() {
-    this.AuthService.user$.subscribe (res => {
+    this.AuthService.user$.subscribe(res => {
       console.log(res)
       this.user = res
     });

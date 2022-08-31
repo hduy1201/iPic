@@ -13,17 +13,17 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(
-    private AuthService:AuthService
+    private AuthService: AuthService
   ) { }
-public user! : User;
+  public user!: User;
 
 
   ngOnInit(): void {
-    this.AuthService.user$.subscribe (res => {
-        console.log(res)
-        this.user = res
+    this.AuthService.user$.subscribe(res => {
+      console.log(res)
+      this.user = res
     });
-    }
   }
+}
 
 

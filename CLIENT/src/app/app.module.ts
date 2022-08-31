@@ -42,6 +42,7 @@ import { LoadingPageComponent } from './pages/loading-page/loading-page.componen
 import { DialogService } from './services/dialog.service';
 import { UserEffects } from 'src/effects/user.effect';
 import { registerUserReducer } from 'src/reducers/user.reducer';
+import { SuggestKeywordService } from './services/suggest-keyword.service';
 
 @NgModule({
   declarations: [AppComponent, LoadingPageComponent],
@@ -72,7 +73,7 @@ import { registerUserReducer } from 'src/reducers/user.reducer';
     HttpClientModule,
     NbDialogModule.forRoot(),
   ],
-  providers: [DialogService],
+  providers: [DialogService, SuggestKeywordService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

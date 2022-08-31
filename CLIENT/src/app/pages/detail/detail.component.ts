@@ -27,23 +27,23 @@ export class DetailComponent implements OnInit {
   }
 
   constructor(
-      private store: Store<{ getPostReducer: getPostState }>,
-      private activatedRoute: ActivatedRoute,
-      private dialogService: NbDialogService
-    ) {
-      this.getPost$ = this.store.select((state) => state.getPostReducer);
-      this.activatedRoute.params.subscribe((params:any) => {
-        this.getPost(params.id)
-      });
+    private store: Store<{ getPostReducer: getPostState }>,
+    private activatedRoute: ActivatedRoute,
+    private dialogService: NbDialogService
+  ) {
+    this.getPost$ = this.store.select((state) => state.getPostReducer);
+    this.activatedRoute.params.subscribe((params: any) => {
+      this.getPost(params.id)
+    });
   }
   getPost$: Observable<getPostState>;
-  
+
 
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
       console.log(res.post)
       this.post = res.post
-    });    
+    });
   }
 
   public post!: Post;
