@@ -32,7 +32,7 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) { }
+  ) {}
 
   //GET ALL POSTS
   @Get('/')
@@ -49,7 +49,11 @@ export class PostController {
     return await this.PostService.getPostById(id);
   }
 
-  //CREATE POST
+  @Get('/suggest')
+  public async getPostByTitle(@Query(`title`) title: string) {
+    return await this.PostService.getPostByTitle(title);
+  }
+
   @Post('/add')
   @UseInterceptors(
     FilesInterceptor('images', 5, {
@@ -139,6 +143,4 @@ export class PostController {
       console.log(pathImage.url);
     }
   }
-
-
 }

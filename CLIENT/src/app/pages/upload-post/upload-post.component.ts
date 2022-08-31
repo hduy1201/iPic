@@ -43,8 +43,9 @@ export class UploadPostComponent implements OnInit {
       console.log(res);
       if (res.isSuccess == true) {
         this.DialogService.openDialog(this.dialog, res.message);
+        this.files = [];
+        this.postForm.reset(this.postForm.value);
       }
-
       // if(res.error != ""){
       //   this.DialogService.openDialog(this.dialog, res.error)
       // }

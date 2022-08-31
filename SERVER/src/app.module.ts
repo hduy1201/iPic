@@ -18,6 +18,9 @@ import { MulterModule } from '@nestjs/platform-express';
 import { CloudiaryService } from './services/cloudiary/cloudiary.service';
 import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
 import { CommentModule } from './modules/comment/comment.module';
+import { TagService } from './services/tag/tag.service';
+import { TagController } from './controllers/tag/tag.controller';
+import { TagModule } from './modules/tag/tag.module';
 
 @Module({
   imports: [
@@ -31,6 +34,7 @@ import { CommentModule } from './modules/comment/comment.module';
     UserModule,
     MulterModule.register({ dest: './uploads/images' }),
     CloudiaryModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, CloudiaryService],
