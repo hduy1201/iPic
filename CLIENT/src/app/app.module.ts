@@ -40,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { DialogService } from './services/dialog.service';
+import { SuggestKeywordService } from './services/suggest-keyword.service';
 
 @NgModule({
   declarations: [AppComponent, LoadingPageComponent],
@@ -70,7 +71,7 @@ import { DialogService } from './services/dialog.service';
     HttpClientModule,
     NbDialogModule.forRoot(),
   ],
-  providers: [DialogService],
+  providers: [DialogService, SuggestKeywordService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

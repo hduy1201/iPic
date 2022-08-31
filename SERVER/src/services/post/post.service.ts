@@ -29,18 +29,34 @@ export class PostService {
 
   async getPostByTitle(keyword: string) {
     try {
-      const post = this.postModel.find();
-      const result = (await post).filter(post => {
-        return post.title.toLowerCase().includes(keyword.toLowerCase());
-      }).map(post => {
-        return post.title
-      }).filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      }).splice(0, 10);
-      if (!result) {
-        throw new HttpException('This post not exist 2', HttpStatus.BAD_REQUEST);
+      const post = (await this.postModel.find()).map((post) => post.title.toLowerCase());
+      let dict = [];
+      let vecSearch = this.stringToVec(keyword, dict);
+
+
+      let vectors = [];
+      for (let i = 0; i < post.length; i++) {
+        let vec = this.stringToVec(post[i], dict);
+        vectors.push(vec);
       }
-      return result;
+
+      let distances = [];
+      for (let i = 0; i < vectors.length; i++) {
+        let distance = this.distance(vecSearch, vectors[i]);
+        distances.push(distance);
+      }
+
+      let result = [];
+      for (let i = 0; i < distances.length; i++) {
+        result.push({
+          title: post[i],
+          distance: distances[i],
+        });
+      };
+
+      result.sort((a, b) => a.distance - b.distance);
+
+      return result.map((post) => post.title).splice(0, 10);
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
@@ -90,5 +106,38 @@ export class PostService {
     return await this.cloudiary.uploadImage(file).catch(() => {
       throw new BadRequestException('Invalid file type.');
     });
+  }
+
+  //Day la noi code ko duoc inject qua cho khac va chi phuc vu cho nhung ham tren
+  private distance(vector1: any, vector2: any) {
+    let dist = 0;
+    if (vector1.length != vector2.length) {
+      let maxlenth = Math.max(vector1.length, vector2.length);
+      for (let i = vector1.length; i < maxlenth; i++) {
+        vector1.push(0);
+      }
+      for (let i = vector2.length; i < maxlenth; i++) {
+        vector2.push(0);
+      }
+    }
+    for (let i = 0; i < vector1.length; i++) {
+      dist += Math.pow(vector1[i] - vector2[i], 2);
+    }
+    return Math.sqrt(dist);
+  }
+
+  private stringToVec(textInput: string, dict: any) {
+    textInput = textInput.replace(/[^\w\s]/gi, '')
+    let words = textInput.split(' ').map((w) => w.toLowerCase());
+    let vec = [];
+    for (let i = 0; i < words.length; i++) {
+      if (dict.indexOf(words[i]) == -1) {
+        dict.push(words[i]);
+      }
+    }
+    for (let i = 0; i < dict.length; i++) {
+      vec.push(words.indexOf(dict[i]) == -1 ? 0 : 1);
+    }
+    return vec;
   }
 }
