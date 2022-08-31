@@ -24,8 +24,10 @@ export class AppComponent implements AfterViewInit {
   constructor(
     private store: Store<{ auth: AuthState }>,
     private element: ElementRef,
-    private AuthService:AuthService
-  ) { }
+    private AuthService: AuthService
+  ) {
+    this.biding();
+  }
 
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(
@@ -52,10 +54,10 @@ export class AppComponent implements AfterViewInit {
     this.suggestBox.classList.remove('make-visible');
   }
 
-  public user! : User;
+  public user!: User;
 
   biding() {
-    this.AuthService.user$.subscribe (res => {
+    this.AuthService.user$.subscribe(res => {
       console.log(res)
       this.user = res
     });
