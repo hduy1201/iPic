@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
 import { ImagePost } from 'src/models/imageNude.model';
+import { Tag } from './tag.schema';
 import { User } from './user.schema';
 
 export type PostDocument = Post & Document;
@@ -29,29 +30,29 @@ export class Post {
 
   @Prop({
     required: true,
-    type: mongoose.Schema.Types.ObjectId, ref: "Users"
+    type: mongoose.Schema.Types.ObjectId, ref: "users"
   })
   authorId: string;
 
   @Prop({
-    default: Array
+    default: Array,
   })
-  tags: [];
+  tags: string;
 
   @Prop({
     default: Array,
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
   })
   likes: [];
 
   @Prop({
-    default: Array
+    default: Array,
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'comments' }]
   })
   comments: [];
 
-  /**Image */
   @Prop({
     required: true,
-    // type: ImagePost
   })
   coverImage: string;
 

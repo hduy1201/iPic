@@ -1,6 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { TagModel } from 'src/models/tag.model';
-import { tag } from 'src/schemas/tag.schema';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { TagService } from '../../services/tag/tag.service'
 
 
@@ -14,8 +12,14 @@ export class TagController {
     getAll() {
         return this.TagService.findAll();
     }
+
     @Post('create')
     create(@Body() tag: any) {
         return this.TagService.create(tag);
+    }
+
+    @Get('get-by-name')
+    async getByName(@Body() body: any) {
+        return await this.TagService.findByName(body.name);
     }
 }

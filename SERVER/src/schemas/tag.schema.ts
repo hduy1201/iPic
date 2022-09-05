@@ -10,7 +10,7 @@ export type TagDocument = TagModel & Document;
     timestamps: true
   }
 )
-export class tag {
+export class Tag {
   @Prop(
     {
       required: true
@@ -18,13 +18,10 @@ export class tag {
   )
   name: string;
 
-  @Prop()
-  image: string;
-
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'posts' }],
     default: Array
   })
   posts: Array<Post>
 }
-export const TagSchema = SchemaFactory.createForClass(tag);
+export const TagSchema = SchemaFactory.createForClass(Tag);

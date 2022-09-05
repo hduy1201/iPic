@@ -16,15 +16,14 @@ import { PostService } from 'src/services/post/post.service';
 import { UserService } from 'src/services/user/user.service';
 import * as Schema from 'src/schemas/post.schema';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { CloudiaryService } from 'src/services/cloudiary/cloudiary.service';
-import { ImagePost } from 'src/models/imageNude.model';
 import { multerOptions } from '../../utils/multerOptions';
+import { handlePostService } from './handlePost'
 @Controller('post')
 export class PostController {
   constructor(
     private PostService: PostService,
-    private CloudiaryService: CloudiaryService,
     private UserService: UserService,
+    private handlePost: handlePostService
   ) { }
 
   //GET ALL POSTS
@@ -32,8 +31,11 @@ export class PostController {
   public async testPost(
     @Query('page') page: number,
     @Query('pagesize') pagesize: number,
+    @Req() req: any
   ) {
-    return await this.PostService.getAllPosts(page, pagesize);
+    // const userEmail = req.payload.email;
+
+    return await this.PostService.getAllPosts(page, pagesize, 'trong.phamtranduc@gmail.com');
   }
 
   //GET POST WITH ID
@@ -56,41 +58,33 @@ export class PostController {
     @UploadedFiles() files: Array<Express.Multer.File>,
     @Req() req: any,
   ) {
+
+    //MIDDLEWARE JWT
     const payload = req.payload;
-    let user: any = await this.UserService.findUserByEmail(payload.email);
-    if (!user) return;
+
+    const EMAIL = "trong.phamtranduc@gmail.com" //JUST FOR TEST
+
+    let user: any = await this.UserService.findUserByEmail(EMAIL);
+
+    if (!user) {
+      this.handlePost.isValidUser();
+    }
 
     if (post.title == '') {
-      throw new HttpException(
-        'Please enter field required',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.handlePost.checkValidate();
     }
     if (!files || files.length == 0) {
-      throw new HttpException(
-        'Please choose at least one picture!',
-        HttpStatus.BAD_REQUEST,
-      );
+      this.handlePost.isValidImages();
     }
 
-    let _imagePath: Array<ImagePost> = [];
+    const images = await this.handlePost.uploadImages(files);
 
-    const RATE_TEST = 0.7; //safe neu safe test < 0.7;
-
-    for (let i = 0; i < files.length; i++) {
-      let pathImage = await this.CloudiaryService.uploadImage(files[i]);
-      _imagePath.push({
-        url: pathImage.url,
-        // hashTag: await this.nudePost(files[i])
-        hashTag: 'Warning 18+',
-      });
-    }
-
-    post.images = _imagePath;
-    post.coverImage = _imagePath[0].url;
+    post.images = images;
+    post.coverImage = images[0].url;
     post.authorId = user._id;
 
-    let postSave = await this.PostService.createPost(post);
+    const postSave: any = await this.PostService.createPost(post);
+
     return {
       message: 'Created Post Successfully!!!',
       data: postSave,

@@ -43,6 +43,11 @@ export class User {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
   })
   posts: Post[];
+
+  @Prop({
+    default: Array['Default']
+  })
+  interests: Array<String>
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
