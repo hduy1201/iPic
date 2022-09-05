@@ -198,7 +198,9 @@ export class NewComerComponent implements OnInit {
   chose$ = this.store.select('choose', 'chose');
 
   addTopic(choice: string) {
+    console.log(choice);
     let topic = this.ele.nativeElement.querySelector(`#${choice}`);
+    console.log(topic);
     let step = 0;
     this.step$.pipe(take(1)).subscribe((s) => (step = s));
 

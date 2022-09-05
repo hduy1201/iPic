@@ -1,3 +1,30 @@
 <body>
     <app-list-post></app-list-post>
 </body>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+        <nb-card-header>Xin chào bạn!!</nb-card-header>
+        <nb-card-body>
+            <div class="container">
+                <div class="header">
+                    <span class="title">Hãy chọn chủ đề mà bạn cảm thấy thú vị</span>
+                    <span>Step {{step$ | async}} of 7</span>
+                </div>
+                <div class="test">
+                    <div class="topic-container">
+                        <div class="topic-line" *ngFor="let topicLine of topics">
+                            <div (click)="addTopic(topic)" *ngFor="let topic of topicLine" [id]="topic.id" class="topic"
+                                [style]="'background-image: url(' + topic.picture + '); background-size: cover;'">
+                                {{topic.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nb-card-body>
+        <nb-card-footer>
+            <button style="float: right;" nbButton (click)="ref.close()">Close Dialog</button>
+        </nb-card-footer>
+    </nb-card>
+</ng-template>

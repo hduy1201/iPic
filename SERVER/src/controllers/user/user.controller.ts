@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Put, Query, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Put, Query, Res } from '@nestjs/common';
 import { User } from 'src/schemas/user.schema';
 import { UserService } from 'src/services/user/user.service';
 import { Response } from 'express';
@@ -31,4 +31,10 @@ export class UserController {
   public async updateUser(@Query(`id`) id: string, @Body() user: User) {
     return await this.userService.updateUser(id, user);
   }
+
+  @Get('/profile/:email')
+  public async getProfile(@Param(`email`) email: string) {
+    return await this.userService.findUserByEmail(email);
+  }
+
 }

@@ -8,13 +8,17 @@ import { User } from '../../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private Http: HttpClient) {}
+  constructor(private Http: HttpClient) { }
 
-  registerUser(email: string, firstName: string , lastName: string): Observable<User> {
+  registerUser(email: string, firstName: string, lastName: string): Observable<User> {
     return this.Http.post<User>(URL + `user/register`, {
       email,
       firstName,
       lastName
     })
+  }
+
+  getProfile(email: string) {
+    return this.Http.get(URL + `user/profile/${email}`);
   }
 }

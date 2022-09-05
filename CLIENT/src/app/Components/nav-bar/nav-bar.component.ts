@@ -41,7 +41,6 @@ export class NavBarComponent implements OnInit {
   ) {
     this.authState$ = this.store.select((state) => state.auth);
     this.authState$.subscribe((res) => {
-
     });
   }
 
