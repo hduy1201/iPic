@@ -1,145 +1,112 @@
-<!-- <div class="back"><button nbButton style="background-color: transparent;
-    border: none;">
-    <nb-icon icon="arrow-back" style="color:black;"></nb-icon>
-  </button>
-</div> -->
-<div *ngIf="post" class="dad">
-  <div class="c1" (click)="popUp(dialog)">
-    <img [src]="post.images[0].url" alt="" />
-  </div>
-  <div class="c2">
-    <button nbButton style="background-color: transparent; border: none">
-      <nb-icon icon="more-horizontal" style="color: black"></nb-icon>
-    </button>
-
-    <button nbButton style="background-color: transparent; border: none">
-      <nb-icon icon="share" style="color: black"></nb-icon>
-    </button>
-
-    <button nbButton style="background-color: transparent; border: none">
-      <nb-icon icon="heart-outline" style="color: black"></nb-icon>
-    </button>
-    <span style="flex: 1 1auto"></span>
-    <button class="save" nbButton>Lưu</button>
-
-    <div
-      class="duongLink"
-      style="
-        text-decoration: underline;
-        margin-left: 20px;
-        margin-top: 20px;
-        font-size: medium;
-      "
-    >
-      link.com
-    </div>
-
-    <h1 style="margin-left: 30px">
-      {{ post.title }}
-    </h1>
-    <p [ngClass]="{ limitTextHeight: isReadMore }" style="margin-left: 30px">
-      {{ post.content }}
-    </p>
-    <div
-      style="
-        margin-top: 1px;
-        margin-bottom: 10px;
-        width: 20%;
-        height: 30px;
-        margin-left: 320px;
-        border: none;
-      "
-      type="button"
-      (click)="showText()"
-    >
-      {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
-    </div>
-
-    <span style="flex: 1 auto"></span>
-    <div>
-      <img
-        src="../assets/pinterest_logo.jpg"
-        height="100%"
-        width="10%"
-        style="
-          float: left;
-          margin-left: 20px;
-          border-radius: 50%;
-          border: solid rgb(0, 0, 0, 0.2);
-        "
-      />
-    </div>
-    <!-- <div>
-        <button class="follow" nbButton>Theo dõi</button>
-      </div> -->
-
-    <div class="info">
-      <p>
-        Ahmed <br />
-        <!-- 800 người theo dõi -->
-      </p>
-    </div>
-
-    <div class="comment">Nhận xét</div>
-
-    <div class="input-comment">
-      <img src="../assets/pinterest_logo.jpg" />
-      <input type="text" placeholder="Thêm nhận xét ..." />
-    </div>
-
-    <!-- <span style="flex: 0 auto"></span> -->
-
-    <!-- <span style="flex: 1 1auto"></span>
-      <div>
-        <button
-        class=""
-          nbButton
-          style="
-            float: right;
-            margin-right: 50px;
-            margin-top: 20px;
-            border-radius: 5px;
-            width: 20%;
-            height: 35px;
-            background-color: rgba(217, 217, 217, 1);
-            border: none;
-          "
-        >
-          Đã xong
-        </button>
+<div class="container">
+  <div class="post-form" *ngIf="post">
+    <div class="main-form">
+      <div class="left-form" (click)="popUp(dialog)">
+        <div
+          class="bg-image"
+          [ngStyle]="{ 'background-image': 'url(' + post.images[0].url + ')' }"
+        ></div>
+        <div class="bg-text">
+          <img
+            style="object-fit: contain"
+            width="100%"
+            height="100%"
+            [src]="post.images[0].url"
+          />
+        </div>
       </div>
-
-      <div>
-        <button
-          nbButton
-          style="
-            margin-left: 160px;
-            margin-top: 20px;
-            border-radius: 5px;
-            width: 15%;
-            height: 35px;
-            background-color: #d9d9d9;
-            border: none;
-          "
-        >
-          Hủy
-        </button>
-      </div> -->
+      <div class="right-form">
+        <!-- <div class="title">
+          <button
+            class="like"
+            nbButton
+            style="background-color: transparent; border: none"
+          >
+            <nb-icon icon="heart-outline" style="color: black"></nb-icon>
+          </button>
+          <button class="save" nbButton>Lưu</button>
+        </div>
+        <div class="link" style="margin: 0 0 20px 0">link.com</div>
+        <div class="profile">
+          <h1>
+            {{ post.title }}
+          </h1>
+          <p [ngClass]="{ limitTextHeight: isReadMore }">
+            {{ post.content }}
+          </p>
+          <div
+            style="
+              margin-top: 1px;
+              margin-bottom: 10px;
+              width: 20%;
+              height: 30px;
+              margin-left: 320px;
+              border: none;
+            "
+            type="button"
+            (click)="showText()"
+          >
+            {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
+          </div>
+        </div>
+        <div class="description" for="description">
+          <div>
+            <img
+              src="../assets/pinterest_logo.jpg"
+              height="100%"
+              width="10%"
+              style="
+                float: left;
+                margin-left: 20px;
+                border-radius: 50%;
+                border: solid rgb(0, 0, 0, 0.2);
+              "
+            />
+          </div> -->
+          <!-- <div>
+              <button class="follow" nbButton>Theo dõi</button>
+            </div> -->
+      
+          <!-- <div class="info">
+            <p>
+              Ahmed <br />
+              800 người theo dõi
+            </p>
+          </div>
+      
+          <div class="comment">Nhận xét</div>
+      
+          <div class="input-comment">
+            <img src="../assets/pinterest_logo.jpg" />
+            <input type="text" placeholder="Thêm nhận xét ..." />
+          </div>
+        </div> -->
+        <!-- <div class="website-link" for="link">
+          <input
+            class="input-link"
+            type="url"
+            placeholder="Chia sẻ thêm liên kết liên quan đến bài của bạn"
+            id="link"
+          />
+        </div>
+        <div class="drop-down-tag">
+          <input type="search" placeholder="Nhập #tag" />
+          <button type="submit">
+            <div style="color: #fff">Lưu</div>
+          </button>
+        </div> -->
+      </div>
+    </div>
   </div>
 </div>
-<!-- <div *ngIf="post">loading...</div> -->
 
 <!-- PopUp Image -->
 <ng-template id="dialog-success" #dialog let-data let-ref="dialogRef">
   <nb-card style="margin: 0; border: none">
     <!-- <nb-card-header>Thêm bài viết thành công</nb-card-header> -->
-    <nb-card-body style="padding: 0; border: none">
-      <img
-        [src]="post.images[0].url"
-        alt=""
-        style="width: 100%; height: 100%"
-      />
-    </nb-card-body>
+    <!-- <nb-card-body style="padding: 0; border: none"> -->
+    <img [src]="post.images[0].url" alt="" style="width: 100%; height: 100%" />
+    <!-- </nb-card-body> -->
     <!-- <nb-card-footer>
       <button nbButton (click)="ref.close()" routerLink="/profile" style="margin-right: 20px;">
         Trở về trang cá nhân

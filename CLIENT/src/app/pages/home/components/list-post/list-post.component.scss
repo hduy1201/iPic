@@ -14,12 +14,8 @@
   .container .box img {
     width: 100%;
     border-radius: 8px;
+    cursor: pointer;
   }
-
-  // .container .box img:hover {
-  //   width: 105%;
-  //   padding: 10px;
-  // }
   
   @media (max-width: 1200px) {
     .container {
