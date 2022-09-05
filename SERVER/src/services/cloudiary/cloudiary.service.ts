@@ -12,7 +12,6 @@ export class CloudiaryService {
         __dirname,
         '../../../uploads/images/' + file.filename,
       );
-      console.log(imagePath);
       try {
         let res = await v2.uploader.upload(imagePath, {
           folder: "iPic"

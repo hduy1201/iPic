@@ -8,35 +8,51 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Post, PostDocument } from 'src/schemas/post.schema';
 import { CloudiaryService } from '../cloudiary/cloudiary.service';
-
+import { handlePostService } from '../../controllers/post/handlePost';
+import { UserService } from '../../services/user/user.service';
 @Injectable()
 export class PostService {
   constructor(
     @InjectModel(Post.name) private postModel: Model<PostDocument>,
     private cloudiary: CloudiaryService,
+    private handlePost: handlePostService,
+    private UserService: UserService
   ) { }
 
-  async getAllPosts(page: number, pageSize: number) {
+  async getAllPosts(page: number, pageSize: number, email: string) {
     try {
+
+      const user = await this.UserService.findUserByEmail(email);
+
+      const regex = user['interests'].join("|");
+
       return await this.postModel
-        .find()
+        .find({
+          tags: {
+            $regex: regex,
+            $options: "i"
+          }
+        })
+        .sort({
+          createdAt: -1
+        })
         .skip((page - 1) * pageSize)
-        .limit(pageSize);
+        .limit(pageSize)
+
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
   }
 
-  async getPostByTitle(keyword: string) {
+  async getPostByTitle(keyword: string, page: number, pageSize: number) {
     try {
-      const post = (await this.postModel.find()).map((post) => post.title.toLowerCase());
+      const post = (await this.postModel.find());
       let dict = [];
       let vecSearch = this.stringToVec(keyword, dict);
 
-
       let vectors = [];
       for (let i = 0; i < post.length; i++) {
-        let vec = this.stringToVec(post[i], dict);
+        let vec = this.stringToVec(post[i].title.toLowerCase(), dict);
         vectors.push(vec);
       }
 
@@ -49,14 +65,14 @@ export class PostService {
       let result = [];
       for (let i = 0; i < distances.length; i++) {
         result.push({
-          title: post[i],
+          post: post[i],
           distance: distances[i],
         });
       };
 
       result.sort((a, b) => a.distance - b.distance);
 
-      return result.map((post) => post.title).splice(0, 10);
+      return result.map((post) => post.post).splice((page - 1) * pageSize, pageSize);
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
@@ -77,8 +93,18 @@ export class PostService {
   async createPost(post: Post) {
     try {
       let createPost = new this.postModel(post);
-      console.log(post);
-      return await createPost.save();
+
+      //UPDATE POST TO TAG
+
+      let savePost, updateTags;
+
+      [savePost, updateTags] = await Promise.all([
+        this.handlePost.handleTags(createPost.tags, createPost._id),
+        createPost.save()
+      ])
+
+      return savePost;
+
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }

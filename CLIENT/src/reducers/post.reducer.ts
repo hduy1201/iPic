@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Post } from 'src/models/post';
-import { createPostState, getAllPostState, getPostState } from 'src/states/post.state';
+import { createPostState, getAllPostState, getPostState, getSearchPostState } from 'src/states/post.state';
 import * as PostAction from '../actions/post.action';
 
 const initCreatePostState: createPostState = {
@@ -57,6 +57,8 @@ export const getAllPostReducer = createReducer(
       ...state,
       isLoading: true,
       isSuccess: false,
+      error: '',
+      posts: []
     };
   }),
 
@@ -66,6 +68,7 @@ export const getAllPostReducer = createReducer(
       isLoading: false,
       posts: posts,
       isSuccess: true,
+      error: ''
     };
   }),
 
@@ -75,9 +78,47 @@ export const getAllPostReducer = createReducer(
       isLoading: false,
       error: error,
       isSuccess: false,
+      posts: []
     };
   })
 );
+
+const initGetSearchPostState: getSearchPostState = {
+  isLoading: false,
+  posts: <Post[]>[],
+  error: '',
+  isSuccess: false,
+};
+
+export const getSearchPostReducer = createReducer(
+  initGetSearchPostState,
+  on(PostAction.getSearchPosts, (state) => {
+    return {
+      ...state,
+      isLoading: true,
+      isSuccess: false,
+    };
+  }),
+
+  on(PostAction.getSearchPostsSuccess, (state, { posts }) => {
+    return {
+      ...state,
+      isLoading: false,
+      posts: posts,
+      isSuccess: true,
+    };
+  }),
+
+  on(PostAction.getSearchPostsFail, (state, { error }) => {
+    return {
+      ...state,
+      isLoading: false,
+      error: error,
+      isSuccess: false,
+    };
+  })
+);
+
 
 const initGetPostState: getPostState = {
   isLoading: false,

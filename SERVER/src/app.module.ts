@@ -2,7 +2,6 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
-  RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,23 +10,20 @@ import { AnimalModule } from './modules/animal/animal.module';
 import { AuthMiddleware } from './middlewares/auth.middleware';
 import { AuthService } from './services/auth/auth.service';
 import { UserModule } from './modules/user/user.module';
-import { PostController } from './controllers/post/post.controller';
-import { PostService } from './services/post/post.service';
 import { PostModule } from './modules/post/post.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CloudiaryService } from './services/cloudiary/cloudiary.service';
 import { CloudiaryModule } from './modules/cloudiary/cloudiary.module';
 import { CommentModule } from './modules/comment/comment.module';
-import { TagService } from './services/tag/tag.service';
-import { TagController } from './controllers/tag/tag.controller';
 import { TagModule } from './modules/tag/tag.module';
+import { ShareModule } from './modules/share.module';
 
 @Module({
   imports: [
-    // MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
-    MongooseModule.forRoot(
-      'mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority',
-    ),
+    MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
+    // MongooseModule.forRoot(
+    //   'mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority',
+    // ),
     AnimalModule,
     PostModule,
     CommentModule,
@@ -35,6 +31,7 @@ import { TagModule } from './modules/tag/tag.module';
     MulterModule.register({ dest: './uploads/images' }),
     CloudiaryModule,
     TagModule,
+    ShareModule
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, CloudiaryService],
@@ -46,10 +43,10 @@ export class AppModule implements NestModule {
       //   path: '/post/:id',
       //   method: RequestMethod.POST,
       // },
-      {
-        path: 'post/add',
-        method: RequestMethod.POST,
-      },
+      // {
+      //   path: 'post/add',
+      //   method: RequestMethod.POST,
+      // },
       // {
       //   path: '/post/update',
       //   method: RequestMethod.PUT,

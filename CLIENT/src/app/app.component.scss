@@ -1,5 +1,8 @@
-.searchBoxContainer {
-  width: 60%;
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .searchBox {
@@ -163,3 +166,4 @@ nb-layout-header {
   background-color: #fff;
   color: #d31027;
 }
+

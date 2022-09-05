@@ -22,7 +22,7 @@ export class AppComponent implements AfterViewInit {
   input: any;
 
   keywordsChange$ = new Subject<string>();
-  keywords$ = new Observable<string[]>();
+  keywords$ = new Observable<any>();
   idToken$ = this.store.select((state) => state.auth.idToken);
 
   constructor(
