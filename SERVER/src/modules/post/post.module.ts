@@ -7,6 +7,7 @@ import { UserModule } from '../user/user.module';
 import { NudenetMiddleware } from '../../middlewares/nudenet.middleware';
 import { CloudiaryModule } from '../cloudiary/cloudiary.module';
 import { NudeNetClass } from 'src/helpers/nudenet.helper';
+import { AuthService } from 'src/services/auth/auth.service';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Post.name, schema: PostSchema }]),
@@ -14,7 +15,7 @@ import { NudeNetClass } from 'src/helpers/nudenet.helper';
     CloudiaryModule,
   ],
   controllers: [PostController],
-  providers: [PostService, NudeNetClass],
+  providers: [PostService, NudeNetClass, AuthService],
   exports: [],
 })
 export class PostModule implements NestModule {

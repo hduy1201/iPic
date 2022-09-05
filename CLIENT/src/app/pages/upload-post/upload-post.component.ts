@@ -64,7 +64,6 @@ export class UploadPostComponent implements OnInit {
   addPost() {
     let _post = {
       ...this.postForm.value,
-      authorId: '62fca2631f36f5757d7a8d2b',
     };
     this.store.dispatch(
       PostAction.createPost({ post: _post, files: this.files })
