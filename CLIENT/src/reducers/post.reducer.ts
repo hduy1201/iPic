@@ -57,6 +57,8 @@ export const getAllPostReducer = createReducer(
       ...state,
       isLoading: true,
       isSuccess: false,
+      error: '',
+      posts: []
     };
   }),
 
@@ -66,6 +68,7 @@ export const getAllPostReducer = createReducer(
       isLoading: false,
       posts: posts,
       isSuccess: true,
+      error: ''
     };
   }),
 
@@ -75,6 +78,7 @@ export const getAllPostReducer = createReducer(
       isLoading: false,
       error: error,
       isSuccess: false,
+      posts: []
     };
   })
 );
