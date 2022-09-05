@@ -5,6 +5,11 @@ import * as admin from 'firebase-admin';
 export class AuthService {
   constructor() {}
   async verifyToken(idToken: string) {
-    return await admin.auth().verifyIdToken(idToken);
+    try {
+      let verifiedToken = await admin.auth().verifyIdToken(idToken);
+      return verifiedToken;
+    } catch {
+      return null;
+    }
   }
 }

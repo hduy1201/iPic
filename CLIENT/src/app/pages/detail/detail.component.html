@@ -5,92 +5,91 @@
 </div> -->
 <div *ngIf="post" class="dad">
   <div class="c1" (click)="popUp(dialog)">
-      <img [src]="post.images[0].url" alt="" />
+    <img [src]="post.images[0].url" alt="" />
   </div>
   <div class="c2">
-    <div class="b">
-      <button nbButton style="background-color: transparent; border: none">
-        <nb-icon icon="more-horizontal" style="color: black"></nb-icon>
-      </button>
+    <button nbButton style="background-color: transparent; border: none">
+      <nb-icon icon="more-horizontal" style="color: black"></nb-icon>
+    </button>
 
-      <button nbButton style="background-color: transparent; border: none">
-        <nb-icon icon="share" style="color: black"></nb-icon>
-      </button>
+    <button nbButton style="background-color: transparent; border: none">
+      <nb-icon icon="share" style="color: black"></nb-icon>
+    </button>
 
-      <button nbButton style="background-color: transparent; border: none">
-        <nb-icon icon="heart-outline" style="color: black"></nb-icon>
-      </button>
-      <span style="flex: 1 1auto"></span>
-      <button class="save" nbButton>Lưu</button>
+    <button nbButton style="background-color: transparent; border: none">
+      <nb-icon icon="heart-outline" style="color: black"></nb-icon>
+    </button>
+    <span style="flex: 1 1auto"></span>
+    <button class="save" nbButton>Lưu</button>
 
-      <div
-        class="duongLink"
+    <div
+      class="duongLink"
+      style="
+        text-decoration: underline;
+        margin-left: 20px;
+        margin-top: 20px;
+        font-size: medium;
+      "
+    >
+      link.com
+    </div>
+
+    <h1 style="margin-left: 30px">
+      {{ post.title }}
+    </h1>
+    <p [ngClass]="{ limitTextHeight: isReadMore }" style="margin-left: 30px">
+      {{ post.content }}
+    </p>
+    <div
+      style="
+        margin-top: 1px;
+        margin-bottom: 10px;
+        width: 20%;
+        height: 30px;
+        margin-left: 320px;
+        border: none;
+      "
+      type="button"
+      (click)="showText()"
+    >
+      {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
+    </div>
+
+    <span style="flex: 1 auto"></span>
+    <div>
+      <img
+        src="../assets/pinterest_logo.jpg"
+        height="100%"
+        width="10%"
         style="
-          text-decoration: underline;
+          float: left;
           margin-left: 20px;
-          margin-top: 20px;
-          font-size: medium;
+          border-radius: 50%;
+          border: solid rgb(0, 0, 0, 0.2);
         "
-      >
-        link.com
-      </div>
-
-      <h1 style="margin-left: 30px">
-        {{ post.title }}
-      </h1>
-      <p [ngClass]="{ limitTextHeight: isReadMore }" style="margin-left: 30px">
-        {{ post.content }}
-      </p>
-      <div
-        style="
-          margin-top: 1px;
-          margin-bottom: 10px;
-          width: 20%;
-          height: 30px;
-          margin-left: 320px;
-          border: none;
-        "
-        type="button"
-        (click)="showText()"
-      >
-        {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
-      </div>
-
-      <span style="flex: 1 auto"></span>
-      <div>
-        <img
-          src="../assets/pinterest_logo.jpg"
-          height="100%"
-          width="10%"
-          style="
-            float: left;
-            margin-left: 20px;
-            border-radius: 50%;
-            border: solid rgb(0, 0, 0, 0.2);
-          "
-        />
-      </div>
-      <!-- <div>
+      />
+    </div>
+    <!-- <div>
         <button class="follow" nbButton>Theo dõi</button>
       </div> -->
 
-      <div class="info">
-        <p>
-          Ahmed <br />
-          <!-- 800 người theo dõi -->
-        </p>
-      </div>
+    <div class="info">
+      <p>
+        Ahmed <br />
+        <!-- 800 người theo dõi -->
+      </p>
+    </div>
 
-      <div class="comment">Nhận xét</div>
+    <div class="comment">Nhận xét</div>
 
-      <div class="input-comment">
-        <img src="../assets/pinterest_logo.jpg" />
-        <input type="text" placeholder="Thêm nhận xét ..." />
-      </div>
+    <div class="input-comment">
+      <img src="../assets/pinterest_logo.jpg" />
+      <input type="text" placeholder="Thêm nhận xét ..." />
+    </div>
 
-      <!-- <span style="flex: 0 auto"></span> -->
+    <!-- <span style="flex: 0 auto"></span> -->
 
-      <!-- <span style="flex: 1 1auto"></span>
+    <!-- <span style="flex: 1 1auto"></span>
       <div>
         <button
         class=""
@@ -126,7 +125,6 @@
           Hủy
         </button>
       </div> -->
-    </div>
   </div>
 </div>
 <!-- <div *ngIf="post">loading...</div> -->

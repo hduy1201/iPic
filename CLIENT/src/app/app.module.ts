@@ -41,6 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { DialogService } from './services/dialog.service';
+import { UserEffects } from 'src/effects/user.effect';
+import { registerUserReducer } from 'src/reducers/user.reducer';
 import { SuggestKeywordService } from './services/suggest-keyword.service';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-bar-not-logged.component';
@@ -53,19 +55,19 @@ import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-ba
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    StoreModule.forRoot({
-      auth: authReducer,
-      createPostReducer: createPostReducer,
-      getAllPostReducer: getAllPostReducer,
-      getSearchPostReducer: getSearchPostReducer,
-      getPostReducer: getPostReducer,
-      choose: chooseReducer,
-    }, {}),
-    EffectsModule.forRoot([
-      AuthEffects,
-      PostEffectS
-    ]),
-    EffectsModule.forRoot([AuthEffects, PostEffectS]),
+    StoreModule.forRoot(
+      {
+        auth: authReducer,
+        createPostReducer: createPostReducer,
+        getAllPostReducer: getAllPostReducer,
+        getPostReducer: getPostReducer,
+        choose: chooseReducer,
+        getSearchPostReducer: getSearchPostReducer,
+        registerUserReducer: registerUserReducer,
+      },
+      {}
+    ),
+    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,

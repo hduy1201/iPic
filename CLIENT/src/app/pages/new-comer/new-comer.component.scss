@@ -109,13 +109,19 @@
 .button-container>button {
   width: 80%;
   height: 40px;
-  background-color: #ecbc7c;
+  color: #fff;
+  background-color: #d8182f;
   border: none;
   border-radius: 25px;
   margin: 5px;
   cursor: pointer;
 }
 
+.button-container>button:hover  {
+  background-color: #8b1825;
+}
+
 .button-container>button:active {
-  background-color: #b18c5c;
+  color: #9c9c9c;
+  background-color: #4e0f16;
 }

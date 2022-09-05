@@ -61,6 +61,7 @@ export class SearchComponent implements OnInit {
       PostActions.getSearchPosts({ keyword: this.keyword, page: this.page, pageSize: 20 })
     );
     this.getSearchPost$.subscribe((res) => {
+      console.log(res);
       if (res.isSuccess) {
         res.posts.map((post) => {
           this.posts.push(post);

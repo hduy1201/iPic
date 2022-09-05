@@ -12,6 +12,7 @@
 .container .post-form {
   width: 100%;
   background: #efefef;
+  border-radius: 8px;
 }
 
 .container .post-form .header-form {
@@ -55,6 +56,7 @@
     #ea384d,
     #d31027
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  cursor: pointer;
 }
 
 .container .drop-down-tag input {
@@ -73,13 +75,9 @@
   justify-content: space-between;
 }
 
-.container .main-form .left-form {
-  width: 50%;
-}
-
 .container .main-form .right-form {
   width: 50%;
-  margin: 20px;
+  margin: 20px 20px 20px 0;
 }
 
 ngx-dropzone,
