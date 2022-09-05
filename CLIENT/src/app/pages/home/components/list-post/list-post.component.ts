@@ -34,7 +34,7 @@ export class ListPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(
-      PostActions.getPosts({ page: this.page, pageSize: 20 })
+      PostActions.getPosts({ page: this.page, pageSize: 30 })
     );
     this.getAllPost$.subscribe((res) => {
       if (res.isSuccess) {
