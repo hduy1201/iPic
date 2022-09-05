@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post, Put, Query, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Put, Query, Req, Res } from '@nestjs/common';
 import { User } from 'src/schemas/user.schema';
 import { UserService } from 'src/services/user/user.service';
 import { Response } from 'express';
@@ -35,6 +35,22 @@ export class UserController {
   @Get('/profile/:email')
   public async getProfile(@Param(`email`) email: string) {
     return await this.userService.findUserByEmail(email);
+  }
+
+  @Put('/save-interests')
+  public async saveInterests(
+    @Body('interests') interests: string[],
+    @Req() request: any
+  ) {
+
+    const email = request.payload.email;
+    console.log(interests);
+    console.log(email);
+    await this.userService.saveInterests(interests, email);
+
+    return {
+      message: "Interests saved successfully"
+    }
   }
 
 }

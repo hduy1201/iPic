@@ -24,7 +24,10 @@
             </div>
         </nb-card-body>
         <nb-card-footer>
-            <button style="float: right;" nbButton (click)="ref.close()">Close Dialog</button>
+            <div style="display: flex; gap: 1rem; float: right;">
+                <button nbButton (click)="ref.close()">Đóng</button>
+                <button (click)="saveInterests()" nbButton>Lưu</button>
+            </div>
         </nb-card-footer>
     </nb-card>
 </ng-template>

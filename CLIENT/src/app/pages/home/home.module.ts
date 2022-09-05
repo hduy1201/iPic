@@ -21,5 +21,6 @@ import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
     NbDialogModule.forChild(),
   ],
   exports: [HomeComponent, ListPostComponent],
+  providers: []
 })
 export class HomeModule { }

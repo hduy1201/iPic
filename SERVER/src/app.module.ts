@@ -2,6 +2,7 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
+  RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -71,6 +72,10 @@ export class AppModule implements NestModule {
       //   path: '/user/update',
       //   method: RequestMethod.PUT,
       // }
+      {
+        path: '/user/save-interests',
+        method: RequestMethod.PUT,
+      }
     );
   }
 }

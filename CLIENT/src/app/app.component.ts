@@ -5,7 +5,7 @@ import { Observable, Subject, of, switchMap } from 'rxjs';
 import { AuthState } from 'src/states/auth.state';
 import * as AuthActions from '../actions/auth.action';
 import { SuggestKeywordService } from './services/suggest-keyword.service';
-import { AuthService } from '../app/services/auth.service'
+import { AuthService } from '../app/services/auth.service';
 import { User } from '@angular/fire/auth';
 
 @Component({
@@ -30,14 +30,12 @@ export class AppComponent implements AfterViewInit {
     private element: ElementRef,
     private AuthService: AuthService,
     private suggestKeywords: SuggestKeywordService
-
   ) {
     this.biding();
     this.keywords$ = this.keywordsChange$.pipe(
-      switchMap(key => this.suggestKeywords.getSuggestKeyword(key))
+      switchMap((key) => this.suggestKeywords.getSuggestKeyword(key))
     );
   }
-
 
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(

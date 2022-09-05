@@ -1,10 +1,9 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { chooseState } from 'src/states/choose.state';
+import { chooseState, saveInterestState } from 'src/states/choose.state';
 import * as chooseActions from 'src/actions/choose.action';
-import { AuthState } from 'src/states/auth.state';
 import { Observable, take } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
@@ -31,27 +30,27 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic1',
-        name: 'Anime',
+        name: '#Anime',
         picture: '/assets/topics/anime.jpg',
       },
       {
         id: 'topic2',
-        name: 'Illustrations',
+        name: '#Illustrations',
         picture: '/assets/topics/illustrations.jpg',
       },
       {
         id: 'topic3',
-        name: 'Drawing Techniques',
+        name: '#Drawing Techniques',
         picture: '/assets/topics/Drawing.jpg',
       },
       {
         id: 'topic4',
-        name: 'Woodworking',
+        name: '#Woodworking',
         picture: '/assets/topics/wood.jpg',
       },
       {
         id: 'topic5',
-        name: 'Body Goals',
+        name: '#Body Goals',
         picture: '/assets/topics/body.jpg',
       },
     ],
@@ -60,27 +59,27 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic6',
-        name: 'Cats',
+        name: '#Cats',
         picture: '/assets/topics/cat.jpg',
       },
       {
         id: 'topic7',
-        name: 'Dogs',
+        name: '#Dogs',
         picture: '/assets/topics/dog.jpg',
       },
       {
         id: 'topic8',
-        name: 'Cute Animals',
+        name: '#Cute Animals',
         picture: '/assets/topics/cute-animals.jpg',
       },
       {
         id: 'topic9',
-        name: 'Pets',
+        name: '#Pets',
         picture: '/assets/topics/pets.jpg',
       },
       {
         id: 'topic10',
-        name: 'Birds',
+        name: '#Birds',
         picture: '/assets/topics/bird.jpg',
       },
     ],
@@ -89,27 +88,27 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic11',
-        name: 'Phone Accessories',
+        name: '#Phone Accessories',
         picture: '/assets/topics/Phukien.jpg',
       },
       {
         id: 'topic12',
-        name: 'iPhone',
+        name: '#iPhone',
         picture: '/assets/topics/iPhone.jpg',
       },
       {
         id: 'topic13',
-        name: 'Samsung Galaxy',
+        name: '#Samsung Galaxy',
         picture: '/assets/topics/samsung.jpg',
       },
       {
         id: 'topic14',
-        name: 'Galaxy',
+        name: '#Galaxy',
         picture: '/assets/topics/galaxy.jpg',
       },
       {
         id: 'topic15',
-        name: 'Wallpaper',
+        name: '#Wallpaper',
         picture: '/assets/topics/wallpaper.jpg',
       },
     ],
@@ -118,27 +117,27 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic16',
-        name: 'Furry',
+        name: '#Furry',
         picture: '/assets/topics/furry.jpg',
       },
       {
         id: 'topic17',
-        name: 'Character',
+        name: '#Character',
         picture: '/assets/topics/char.jpg',
       },
       {
         id: 'topic18',
-        name: 'My Liitle Pony',
+        name: '#My Liitle Pony',
         picture: '/assets/topics/mlp.jpg',
       },
       {
         id: 'topic19',
-        name: 'Cartoon',
+        name: '#Cartoon',
         picture: '/assets/topics/cartoon.jpg',
       },
       {
         id: 'topic20',
-        name: 'Fursuit',
+        name: '#Fursuit',
         picture: '/assets/topics/fursuit.jpg',
       },
     ],
@@ -147,27 +146,27 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic21',
-        name: 'Cars',
+        name: '#Cars',
         picture: '/assets/topics/car.jpg',
       },
       {
         id: 'topic22',
-        name: 'Motorcycles',
+        name: '#Motorcycles',
         picture: '/assets/topics/motor.jpg',
       },
       {
         id: 'topic23',
-        name: 'Foods',
+        name: '#Foods',
         picture: '/assets/topics/food.jpg',
       },
       {
         id: 'topic24',
-        name: 'Drinks',
+        name: '#Drinks',
         picture: '/assets/topics/drinks.jpg',
       },
       {
         id: 'topic25',
-        name: 'Bar',
+        name: '#Bar',
         picture: '/assets/topics/bar.jpg',
       },
     ],
@@ -176,39 +175,43 @@ export class HomeComponent implements OnInit {
     [
       {
         id: 'topic26',
-        name: 'Comics',
+        name: '#Comics',
         picture: '/assets/topics/comics.jpg',
       },
       {
         id: 'topic27',
-        name: 'Travel',
+        name: '#Travel',
         picture: '/assets/topics/travel.jpg',
       },
       {
         id: 'topic28',
-        name: 'Sports',
+        name: '#Sports',
         picture: '/assets/topics/sports.jpg',
       },
       {
         id: 'topic29',
-        name: 'Football',
+        name: '#Football',
         picture: '/assets/topics/football.jpg',
       },
       {
         id: 'topic30',
-        name: 'Basketball',
+        name: '#Basketball',
         picture: '/assets/topics/basketball.jpg',
       },
     ],
   ];
 
+  public chooseState$: Observable<saveInterestState>;
   constructor(
-    private store: Store<{ choose: chooseState }>,
+    private store: Store<{ choose: chooseState, saveInterestsReducer: saveInterestState }>,
     private ele: ElementRef,
     private dialogService: NbDialogService,
     private AuthService: AuthService,
-    private UserService: UserService
-  ) { }
+    private UserService: UserService,
+  ) {
+    this.chooseState$ = this.store.select(state => state.saveInterestsReducer);
+  }
+
   ngOnInit(): void {
     this.chose$.subscribe((chose) => console.log(chose));
     this.AuthService.user$.subscribe((user) => {
@@ -220,6 +223,13 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+    this.chooseState$.subscribe((state) => {
+      if (state.isSuccess) {
+        // this.dialogRef.close();
+        window.location.reload();
+      }
+    }
+    );
   }
   step$ = this.store.select('choose', 'step');
   chose$ = this.store.select('choose', 'chose');
@@ -237,5 +247,12 @@ export class HomeComponent implements OnInit {
       topic.classList.remove('active');
       this.store.dispatch(chooseActions.removeTopic({ choice: choice.name }));
     }
+  }
+
+  saveInterests() {
+    this.chose$.subscribe((chose) => {
+      if (chose.length == 0) return;
+      this.store.dispatch(chooseActions.saveInterests({ interests: chose }));
+    });
   }
 }

@@ -1,203 +1,180 @@
-.dad {
-  display: block;
-  width: 1000px;
-  height: 80%;
+.container {
+  padding: 0;
   margin: 40px auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-  border-radius: 30px;
+  width: 65%;
+  height: 90%;
   display: flex;
-  justify-content: baseline;
-  background: none;
-}
-
-.c1 {
-  height: 100%;
-  width: 50%;
-}
-
-.c2 {
-  height: 100%;
-  width: 50%;
-  border-radius: 0 30px 30px 0;
   background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
 
-.c1 img {
-  height: 100%;
+.post-form {
   width: 100%;
-  border-radius: 30px 0 0 30px;
-  border: 1px solid transparent;
-  align-items: center;
+  background: #efefef;
+  border-radius: 8px;
 }
 
-.back > button > nb-icon {
-  font-size: 1.5rem;
-  line-height: 2;
-  width: 2em;
-  height: 2em;
-  color: #000000; //For unspecified status
+.post-form .header-form {
+  width: 100%;
+  height: 8%;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.back > button {
-  float: left;
+.option-icon {
+  padding: 1.5%;
+  width: 5%;
 }
 
-.c2 > button > nb-icon {
-  font-size: 1.5rem;
-  line-height: 2;
-  width: 1em;
-  height: 1em;
-  color: #000000; //For unspecified status
+.post-form .drop-down-tag {
+  width: 100%;
+  height: 10%;
 }
 
-.c2 > button {
-  margin-left: 20px;
-  margin-top: 40px;
+.drop-down-tag button {
+  background-color: black;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  width: 20%;
+  height: 90%;
+  border: 0.5px solid none;
+  border-left: none;
 }
 
-.c2 .save {
-  float: right;
-  margin-top: 30px;
-  margin-right: 40px;
+.drop-down-tag button:hover {
+  background: #d31027;
+  background: -webkit-linear-gradient(to left, #ea384d, #d31027);
+  background: linear-gradient(to left, #ea384d, #d31027);
+  cursor: pointer;
+}
+
+.drop-down-tag input {
+  border-radius: 5px 0 0 5px;
+  border: none;
+  width: 80%;
+  height: 90%;
+  border: 0.5px solid none;
+  border-right: none;
+}
+
+.main-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-form {
+  height: 100%;
+  width: 50%;
+  position: relative;
+  z-index: 1;
+
+  .bg-image {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .bg-text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    height: 80%;
+  }
+}
+
+.img img {
+  filter: none;
+}
+
+.right-form {
+  width: 50%;
+  margin: 20px;
+}
+
+.right-form .title {
+  display: inline-block;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.right-form .like {
+  margin-right: 75%;
+  height: 100%;
+}
+
+.right-form .save {
   border-radius: 5px;
-  width: 15%;
-  height: 35px;
   border: none;
   color: #fff;
   background-color: #d8182f;
+  width: 15%;
+  height: 30px;
 }
 
-.c2 .follow {
-  float: right;
-  margin-right: 40px;
-  border-radius: 5px;
-  width: 20%;
-  height: 35px;
-  background-color: rgba(217, 217, 217, 1);
-  border: none;
+.right-form .profile {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.c2 .save:hover {
-  background-color: #8b1825;
-}
-
-.duongLink:link {
-  text-decoration: none;
-}
-
-.duongLink:visited {
-  text-decoration: none;
-}
-
-.duongLink:hover {
-  text-decoration: underline;
-}
-
-.duongLink:active {
-  text-decoration: underline;
-}
-
-.info > p {
-  margin-left: 90px;
-  font-size: 15px;
+.right-form .account-name {
+  width: 50%;
+  padding: 25px 0;
+  margin: 0 0 0 15px;
   font-weight: bold;
 }
 
-.c2 .comment {
-  color: black;
-  background-color: transparent;
-  margin-top: 10px;
-  border: none;
-  width: 20%;
-  height: 10px;
-  font-size: 20px;
-  margin: 8rem 0 10px 25px;
+.right-form .avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
 }
 
-.c2 .input-comment {
-  display: flex;
-  justify-content: baseline;
-  // border: solid black;
-  height: 100px;
-  align-items: center;
-  margin: 10px 20px 0 20px;
-}
-
-.c2 .input-comment img {
-  width: 11%;
-  height: 46%;
-  border-radius: 50%;
-  border: solid rgb(0, 0, 0, 0.2);
-  margin-right: 20px;
-}
-
-.c2 .input-comment input {
-  border: solid rgb(0, 0, 0, 0.1);
-  outline: none;
-  width: 80%;
-  height: 50%;
-  border-radius: 8px;
-  padding: 0 10px;
-}
-
-// .searchBox {
-//   background-color: transparent;
-//   border: 1px solid lightgray;
-//   border-radius: 50px;
-//   margin-top: 22px;
-//   margin-left: 90px;
-//   padding: 10px;
-//   width: 75%;
-//   height: 40px;
-//   display: flex;
-// }
-
-// .searchBox > input {
-//   border: none;
-//   outline: none;
-// width: 100%;
-// height: 100%;
-//   color: rgb(0, 0, 0);
-//   font-size: 15px;
-//   font-weight: light;
-//   text-align: left;
-//   background-color: transparent;
-// }
-
-.linkofpic {
-  background-color: transparent;
-  border: 1px solid lightgray;
-  border-radius: 50px;
-  // margin-top: 930px;
-  margin-left: 30px;
-  padding: 10px;
-  width: 55%;
-  height: 40px;
-  display: flex;
-}
-
-.linkofpic > nb-icon {
-  font-size: 1.5rem;
-  line-height: 2;
-  width: 1em;
-  height: 1em;
-  color: #000000; //For unspecified status
-}
-
-.limitTextHeight {
-  height: 20px;
-  overflow: hidden;
-}
-
-nb-card {
-  height: 120%;
-  width: 120%;
-  background-color: none;
-}
-
-nb-card-body {
-  height: 100%;
+.right-form .description {
   width: 100%;
-  background-color: none;
-  overflow: hidden;
+  height: 25%;
+}
+
+.right-form .input-description {
+  width: 100%;
+  height: 30%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: #efefef;
+}
+
+.right-form .website-link {
+  width: 100%;
+  height: 10%;
+  margin-top: 30%;
+}
+
+.right-form .input-link {
+  width: 100%;
+  height: 30%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1rem;
+  background-color: #efefef;
+}
+
+input:focus {
+  outline: none !important;
 }
