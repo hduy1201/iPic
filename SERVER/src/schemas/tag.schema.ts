@@ -6,18 +6,25 @@ import { Post } from './post.schema';
 export type TagDocument = TagModel & Document;
 
 @Schema(
-    {
-        timestamps : true
-    }
+  {
+    timestamps: true
+  }
 )
 export class tag {
-  @Prop()
+  @Prop(
+    {
+      required: true
+    }
+  )
   name: string;
-  
-//   @Prop({
-//      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Posts' }],
-//      default: Array
-//   })
-//   posts: Array<any>
+
+  @Prop()
+  image: string;
+
+  @Prop({
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'posts' }],
+    default: Array
+  })
+  posts: Array<Post>
 }
 export const TagSchema = SchemaFactory.createForClass(tag);

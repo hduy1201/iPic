@@ -6,14 +6,14 @@ import { tag, TagDocument } from 'src/schemas/tag.schema';
 
 @Injectable()
 export class TagService {
-    constructor(@InjectModel(tag.name) private TagModel: Model<TagDocument>) {}
+  constructor(@InjectModel(tag.name) private TagModel: Model<TagDocument>) { }
 
-    async create(createTagDto: TagModel): Promise<TagModel> {
-        const createdTag = new this.TagModel(createTagDto);
-        return createdTag.save();
-      }
-    
-      async findAll(): Promise<tag[]> {
-        return this.TagModel.find().exec();
-      }
+  async create(createTagDto: TagModel): Promise<TagModel> {
+    const createdTag = new this.TagModel(createTagDto);
+    return createdTag.save();
+  }
+
+  async findAll(): Promise<tag[]> {
+    return await this.TagModel.find();
+  }
 }

@@ -7,15 +7,15 @@ import { TagService } from '../../services/tag/tag.service'
 @Controller('tag')
 export class TagController {
     constructor(
-        private TagService:TagService
-    ) {}
+        private TagService: TagService
+    ) { }
 
     @Get('get-all')
     getAll() {
         return this.TagService.findAll();
     }
     @Post('create')
-    create(@Body() tag: TagModel) {
+    create(@Body() tag: any) {
         return this.TagService.create(tag);
     }
 }
