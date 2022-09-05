@@ -25,8 +25,10 @@ export class AppComponent implements AfterViewInit {
     private store: Store<{ auth: AuthState }>,
     private element: ElementRef,
     private AuthService:AuthService
-  ) { }
-
+  ) { 
+    this.biding();
+   }
+   
   ngAfterViewInit(): void {
     this.suggestBox = this.element.nativeElement.querySelector(
       '.suggestionContainer'
