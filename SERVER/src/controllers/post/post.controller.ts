@@ -32,7 +32,7 @@ export class PostController {
   constructor(
     private PostService: PostService,
     private CloudiaryService: CloudiaryService,
-  ) {}
+  ) { }
 
   //GET ALL POSTS
   @Get('/')
@@ -50,8 +50,12 @@ export class PostController {
   }
 
   @Get('/suggest')
-  public async getPostByTitle(@Query(`title`) title: string) {
-    return await this.PostService.getPostByTitle(title);
+  public async getPostByTitle(
+    @Query(`title`) title: string,
+    @Query('page') page: number,
+    @Query('pagesize') pagesize: number
+  ) {
+    return await this.PostService.getPostByTitle(title, page, pagesize);
   }
 
   @Post('/add')

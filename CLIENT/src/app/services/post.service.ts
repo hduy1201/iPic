@@ -7,11 +7,17 @@ import { URL } from '../../configs/baseURL';
   providedIn: 'root',
 })
 export class PostService {
-  constructor(private Http: HttpClient) {}
+  constructor(private Http: HttpClient) { }
 
   getAllPosts(page: number, pagesize: number): Observable<Post[]> {
     return this.Http.get<Post[]>(
       URL + `post?page=${page}&pagesize=${pagesize}`
+    );
+  }
+
+  getSearchPosts(keyword: string, page: number, pagesize: number): Observable<Post[]> {
+    return this.Http.get<Post[]>(
+      URL + `post/suggest?title=${keyword}&page=${page}&pagesize=${pagesize}`
     );
   }
 

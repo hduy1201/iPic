@@ -1,0 +1,2 @@
+<app-home *ngIf="(idToken$ | async)"></app-home>
+<app-home-not-logged *ngIf="!(idToken$ | async)"></app-home-not-logged>

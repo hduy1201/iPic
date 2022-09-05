@@ -16,6 +16,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     InfiniteScrollModule,
   ],
-  exports: [ListPostComponent],
+  exports: [HomeComponent, ListPostComponent],
 })
-export class HomeModule {}
+export class HomeModule { }

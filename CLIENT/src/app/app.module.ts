@@ -33,6 +33,7 @@ import {
   createPostReducer,
   getAllPostReducer,
   getPostReducer,
+  getSearchPostReducer
 } from 'src/reducers/post.reducer';
 import { authReducer } from 'src/reducers/auth.reducer';
 import { PostEffectS } from 'src/effects/post.effect';
@@ -41,9 +42,10 @@ import { chooseReducer } from 'src/reducers/choose.reducer';
 import { LoadingPageComponent } from './pages/loading-page/loading-page.component';
 import { DialogService } from './services/dialog.service';
 import { SuggestKeywordService } from './services/suggest-keyword.service';
-
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-bar-not-logged.component';
 @NgModule({
-  declarations: [AppComponent, LoadingPageComponent],
+  declarations: [AppComponent, LoadingPageComponent, NavBarComponent, NavBarNotLoggedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,6 +57,7 @@ import { SuggestKeywordService } from './services/suggest-keyword.service';
       auth: authReducer,
       createPostReducer: createPostReducer,
       getAllPostReducer: getAllPostReducer,
+      getSearchPostReducer: getSearchPostReducer,
       getPostReducer: getPostReducer,
       choose: chooseReducer,
     }, {}),
