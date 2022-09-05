@@ -9,30 +9,28 @@ import { CloudiaryService } from '../cloudiary/cloudiary.service';
 export class CommentService {
     constructor(
         @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
-        private cloudiary: CloudiaryService,) {}
+        private cloudiary: CloudiaryService,) { }
 
-        async creatComment(comment: Comment) {
-            let creatComment = new this.commentModel(comment);
-            //creatComment._id
-            await creatComment.save();
+    async creatComment(comment: Comment) {
+        let creatComment = new this.commentModel(comment);
+        //creatComment._id
+        await creatComment.save();
 
-            /*await postModel.findByIdAndUpdate(
-                comment.postId, 
-                {
-                    $push: {comments: creatComment._id}});
-            */
-        }
-        async updateComment(id: string, comment: Comment) {
-            return await this.commentModel.updateOne(
-                {_id: id},
-                {$push: {comments: comment}},
-                );
-        }
-    
-        async deleteComment(id: string) {
-            return await this.commentModel.findByIdAndDelete(id);
-        }
-        
+        /*await postModel.findByIdAndUpdate(
+            comment.postId, 
+            {
+                $push: {comments: creatComment._id}});
+        */
+    }
+    async updateComment(id: string, comment: Comment) {
+        return await this.commentModel.updateOne(
+            { _id: id },
+            { $push: { comments: comment } },
+        );
+    }
 
-    
+    async deleteComment(id: string) {
+        return await this.commentModel.findByIdAndDelete(id);
+    }
+
 }

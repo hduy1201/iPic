@@ -44,16 +44,15 @@ export class PostService {
     }
   }
 
-  async getPostByTitle(keyword: string) {
+  async getPostByTitle(keyword: string, page: number, pageSize: number) {
     try {
-      const post = (await this.postModel.find()).map((post) => post.title.toLowerCase());
+      const post = (await this.postModel.find());
       let dict = [];
       let vecSearch = this.stringToVec(keyword, dict);
 
-
       let vectors = [];
       for (let i = 0; i < post.length; i++) {
-        let vec = this.stringToVec(post[i], dict);
+        let vec = this.stringToVec(post[i].title.toLowerCase(), dict);
         vectors.push(vec);
       }
 
@@ -66,14 +65,14 @@ export class PostService {
       let result = [];
       for (let i = 0; i < distances.length; i++) {
         result.push({
-          title: post[i],
+          post: post[i],
           distance: distances[i],
         });
       };
 
       result.sort((a, b) => a.distance - b.distance);
 
-      return result.map((post) => post.title).splice(0, 10);
+      return result.map((post) => post.post).splice((page - 1) * pageSize, pageSize);
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }

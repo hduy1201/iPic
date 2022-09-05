@@ -6,35 +6,14 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./pages/landing-page/landing-page.module').then(
-        (m) => m.LandingPageModule
+      import('./pages/welcome-page/welcome-page.module').then(
+        (m) => m.WelcomePageModule
       ),
   },
   {
     path: 'headers',
     loadChildren: () =>
       import('./pages/headers/headers.module').then((m) => m.HeadersModule),
-  },
-  {
-    path: 'section2_landing_page',
-    loadChildren: () =>
-      import('./pages/section2-landing-page/section2-landing-page.module').then(
-        (m) => m.Section2LandingPageModule
-      ),
-  },
-  {
-    path: 'section3_landing_page',
-    loadChildren: () =>
-      import('./pages/section3-landing-page/section3-landing-page.module').then(
-        (m) => m.Section3LandingPageModule
-      ),
-  },
-  {
-    path: 'section1-landing-page',
-    loadChildren: () =>
-      import('./pages/section1-landing-page/section1-landing-page.module').then(
-        (m) => m.Section1LandingPageModule
-      ),
   },
   {
     path: 'ipic/:id',
@@ -76,6 +55,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/new-comer/new-comer.module').then(m => m.NewComerModule)
   },
+  {
+    path: 'search',
+    loadChildren: () =>
+      import('./pages/search/search.module').then(m => m.SearchModule)
+  },
+  { path: 'welcome-page', loadChildren: () => import('./pages/welcome-page/welcome-page.module').then(m => m.WelcomePageModule) },
+  { path: 'home-not-logged', loadChildren: () => import('./pages/home-not-logged/home-not-logged.module').then(m => m.HomeNotLoggedModule) },
 ];
 
 @NgModule({

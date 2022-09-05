@@ -6,7 +6,7 @@ import * as PostAction from '../actions/post.action';
 
 @Injectable()
 export class PostEffectS {
-  constructor(private action$: Actions, private postServices: PostService) {}
+  constructor(private action$: Actions, private postServices: PostService) { }
 
   createPost$ = createEffect(() =>
     this.action$.pipe(
@@ -40,16 +40,31 @@ export class PostEffectS {
     )
   );
 
+  getSearchAllPost$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(PostAction.getSearchPosts),
+      switchMap((action) =>
+        this.postServices.getSearchPosts(action.keyword, action.page, action.pageSize)
+      ),
+      map((posts) => {
+        return PostAction.getSearchPostsSuccess({ posts });
+      }),
+      catchError((error) => {
+        return of(PostAction.getSearchPostsFail({ error: error.message }));
+      })
+    )
+  );
+
   getPost$ = createEffect(() =>
-  this.action$.pipe(
-    ofType(PostAction.getPost),
-    switchMap((action) => this.postServices.getPost(action.id)),
-    map((post) => {
-      return  PostAction.getPostSuccess({ post })
-    }),
-    catchError((error) => {
-      return of(PostAction.getPostFail({ error: error.message }));
-    })
-  )
+    this.action$.pipe(
+      ofType(PostAction.getPost),
+      switchMap((action) => this.postServices.getPost(action.id)),
+      map((post) => {
+        return PostAction.getPostSuccess({ post })
+      }),
+      catchError((error) => {
+        return of(PostAction.getPostFail({ error: error.message }));
+      })
+    )
   )
 }

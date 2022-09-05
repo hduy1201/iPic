@@ -1,0 +1,13 @@
+<div class="relevant">
+    <div class="item" *ngFor="let item of relevantKeyword">
+        <div style="width: 100%;">
+            {{ item }}
+        </div>
+    </div>
+</div>
+<div class="item-container" infinite-scroll [infiniteScrollDistance]="scrollDistance"
+    [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown($event)">
+    <div class="box" *ngFor="let post of posts">
+        <img [src]="post.coverImage" [routerLink]="['/ipic/' + post._id]" />
+    </div>
+</div>
