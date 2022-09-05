@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getHello() {
     return {
-      message: "Welcome to iPic API 🥳🥳🥳"
+      message: "Welcome to iPic Server 🥳🥳🥳"
     }
   }
 }

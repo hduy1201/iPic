@@ -5,7 +5,7 @@ import { User, UserDocument } from 'src/schemas/user.schema';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async createUser(user: User) {
     try {
@@ -67,6 +67,14 @@ export class UserService {
         throw new HttpException('Update Failure', HttpStatus.BAD_REQUEST);
       }
       return updateUser;
+    } catch (error) {
+      return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async findUserByEmail(email: string) {
+    try {
+      return await this.userModel.findOne({ email });
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }

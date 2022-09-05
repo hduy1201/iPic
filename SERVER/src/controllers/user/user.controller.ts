@@ -19,6 +19,7 @@ export class UserController {
 
   @Post('/register')
   public async createUser(@Body() user: User, @Res() res: Response) {
+    console.log(user)
     const _user = await this.userService.createUser(user);
     res.status(HttpStatus.CREATED).send({
       message: "Registered User Successfully!!!",

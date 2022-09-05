@@ -7,6 +7,8 @@ import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
 import { DialogService } from '../../services/dialog.service'
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../.././services/auth.service'
+import { User } from '@angular/fire/auth';
 import { NbDialogService } from '@nebular/theme';
 
 @Component({

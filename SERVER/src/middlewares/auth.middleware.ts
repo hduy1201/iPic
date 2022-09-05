@@ -8,12 +8,12 @@ import { AuthService } from 'src/services/auth/auth.service';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   async use(req: any, res: any, next: () => void) {
     let idToken = req.headers['authorization'];
     if (idToken == undefined) {
-      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
 
     const bearer = idToken.split(' ');
@@ -23,8 +23,8 @@ export class AuthMiddleware implements NestMiddleware {
       if (verifiedToken == null) {
         throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
       }
-      next();
       req.payload = verifiedToken;
+      next()
     } catch (error) {
       console.log(error);
       throw new HttpException('Forbidden', HttpStatus.FORBIDDEN);
