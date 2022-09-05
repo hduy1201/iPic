@@ -23,6 +23,13 @@ export class PostService {
     );
   }
 
+  getSearchPosts(keyword: string, page: number, pagesize: number): Observable<Post[]> {
+    let result = this.Http.get<Post[]>(
+      URL + `post/suggest?title=${keyword}&page=${page}&pagesize=${pagesize}`
+    );
+    return result;
+  }
+
   addPost(
     post: Post,
     files: Array<File>

@@ -31,6 +31,22 @@ export const getPostsFail = createAction(
   '[Post] Get All Posts Fail',
   props<{ error: string }>()
 );
+//LIST SEARCH POST
+export const getSearchPosts = createAction(
+  '[Post] Get Search Posts',
+  props<{ keyword: string; page: number; pageSize: number }>()
+);
+
+export const getSearchPostsSuccess = createAction(
+  '[Post] Get Search Posts Success',
+  props<{ posts: Post[] }>()
+);
+
+export const getSearchPostsFail = createAction(
+  '[Post] Get Search Posts Fail',
+  props<{ error: string }>()
+);
+
 
 //DETAIL POST
 export const getPost = createAction('[Post] Get Post', props<{ id: string }>());
