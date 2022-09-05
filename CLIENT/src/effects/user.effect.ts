@@ -12,11 +12,9 @@ export class UserEffects {
     this.action$.pipe(
       ofType(UserAction.registerUser),
       switchMap((action) => {
-        console.log(action)
         return this.userService.registerUser(action.email, action.firstName, action.lastName)
       }),
-      map((action) => {
-        console.log(action)
+      map(() => {
         return UserAction.registerUserSuccess({
           message: "Registed successfuly"
         })
