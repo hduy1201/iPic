@@ -10,7 +10,7 @@ import { Store } from '@ngrx/store';
 import { BehaviorSubject, from, Observable } from 'rxjs';
 import { registerUserState } from 'src/states/user.state';
 import * as userActions from '../../actions/user.action';
-import {registerUserReducer} from '../../reducers/user.reducer'
+import { registerUserReducer } from '../../reducers/user.reducer'
 
 @Injectable({
   providedIn: 'root',
@@ -26,9 +26,8 @@ export class AuthService {
       if (user) {
         this.user$.next(user);
         //goi api register
-        
-        if(user.email == "") return;
-        console.log(user)
+
+        if (user.email == "") return;
         this.store.dispatch(userActions.registerUser({
           email: user.email || '',
           firstName: user.displayName || 'user',
@@ -36,9 +35,9 @@ export class AuthService {
         }))
       }
     });
-    this.registerUser$ = this.store.select(state=> state.registerUserReducer);
-    this.registerUser$.subscribe(res=>{
-      console.log(res)
+    this.registerUser$ = this.store.select(state => state.registerUserReducer);
+    this.registerUser$.subscribe(res => {
+      // console.log(res)
     })
   }
 
@@ -60,5 +59,9 @@ export class AuthService {
         }
       })
     );
+  }
+
+  async logOut() {
+    return await this.auth.signOut();
   }
 }

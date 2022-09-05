@@ -26,6 +26,7 @@ import {
   NbSidebarModule,
   NbContextMenuModule,
   NbDialogModule,
+  NbToastrModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AuthEffects } from 'src/effects/auth.effect';
@@ -46,6 +47,7 @@ import { registerUserReducer } from 'src/reducers/user.reducer';
 import { SuggestKeywordService } from './services/suggest-keyword.service';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-bar-not-logged.component';
+import { ToastService } from './services/toast.service';
 @NgModule({
   declarations: [AppComponent, LoadingPageComponent, NavBarComponent, NavBarNotLoggedComponent],
   imports: [
@@ -75,8 +77,9 @@ import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-ba
     NbIconModule,
     HttpClientModule,
     NbDialogModule.forRoot(),
+    NbToastrModule.forRoot(),
   ],
-  providers: [DialogService, SuggestKeywordService],
+  providers: [DialogService, SuggestKeywordService, ToastService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

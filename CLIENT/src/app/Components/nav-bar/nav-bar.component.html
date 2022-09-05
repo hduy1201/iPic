@@ -301,13 +301,18 @@
         </div>
     </div>
 </div>
-<button nbButton style="background-color: transparent; border: none; margin-right: 10px" routerLink="/profile">
+<button *ngIf="user.email" nbButton style="background-color: transparent; border: none; margin-right: 10px"
+    routerLink="/profile">
     <!-- <nb-icon icon="checkmark-circle-2" style="color: #fff"></nb-icon> -->
-    <img *ngIf="user" [src]="user.photoURL" height="50px" width="50px" style="border-radius: 100%" />
-    <img *ngIf="!user" routerLink="/" src="../assets/pictures/khang01.jpg" height="50px" width="50px"
-        style="border-radius: 100%" />
+    <img [src]="user.photoURL" height="50px" width="50px" style="border-radius: 100%" />
 </button>
 
-<button nbButton (click)="login()" style="background-color: transparent; border: none; margin-right: 20px">
+<button *ngIf="user.email" (click)="sigOut()" nbButton
+    style="background-color: transparent; border: none; margin-right: 20px">
     <nb-icon icon="arrow-ios-downward-outline" style="color: #fff"></nb-icon>
+</button>
+
+<button *ngIf="!user.email" (click)="signIn()" nbButton
+    style="background-color: transparent; border: none; margin-right: 20px">
+    login
 </button>

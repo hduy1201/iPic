@@ -22,5 +22,30 @@ export const authReducer = createReducer(
     ...state,
     isAuthenticated: false,
     error: action.error,
+  })),
+
+  on(AuthActions.logOut, (state) => {
+    return {
+      ...state,
+      isAuthenticated: false,
+      idToken: '',
+      error: ''
+    };
+  }),
+
+  on(AuthActions.logOutSuccess, (state) => ({
+    ...state,
+    isAuthenticated: false,
+    idToken: '',
+    error: ''
+  })),
+
+  on(AuthActions.logOutFailure, (state, action) => ({
+    ...state,
+    error: action.error,
+    idToken: '',
+    isAuthenticated: false,
   }))
+
 );
+
