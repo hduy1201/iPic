@@ -42,6 +42,20 @@
   flex-direction: column;
 }
 
+
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+}
+
 .ideaforYou {
   margin-top: 10px;
 }

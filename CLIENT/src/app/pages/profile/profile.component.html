@@ -12,7 +12,8 @@
 
 
     <div class="hub-button">
-        <button class="button-share" (click)="getName()">Chia Sẻ</button>
+        <button class="button-share" (click)="open(dialog)">Chia Sẻ</button>
+        
         <button class="button-file">Chỉnh sửa hồ sơ</button>
     </div>
 
@@ -24,5 +25,40 @@
     <div>
         <app-list-post></app-list-post>
     </div>
+
+    <ng-template #dialog let-data let-ref="dialogRef">
+        <nb-card>
+          <nb-card-header class="share-width">Chia sẻ với</nb-card-header>
+            <nb-card-body style="display:flex; gap: 30px;">
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/logo_whatsapp_ico.png">
+                </div>
+                
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/f_logo_RGB-Blue_1024.png">
+                </div>
+                
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/logo-messenger-inkythuatso-2-01-30-15-47-51.jpg">
+                </div>
+
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/copy.jpg">
+                </div>
+
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/gmail.png">
+                </div>
+            </nb-card-body>
+                
+            <nb-card-footer>
+                <p class="text">Gửi trên ipic</p>
+                <div>
+                    <img class="button-logo" src="../../../assets/pictures/search.jpg">
+                </div>
+          </nb-card-footer>
+        </nb-card>
+    </ng-template>
+  
 
 </div>

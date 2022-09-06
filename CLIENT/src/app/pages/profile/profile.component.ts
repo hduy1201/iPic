@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { User } from '@angular/fire/auth';
+import { NbDialogService } from '@nebular/theme';
 import { AuthService } from '../.././services/auth.service'
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -13,17 +15,21 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(
-    private AuthService:AuthService
+    private AuthService: AuthService,
+    private dialogService: NbDialogService
   ) { }
-public user! : User;
-
+  public user!: User;
 
   ngOnInit(): void {
-    this.AuthService.user$.subscribe (res => {
-        console.log(res)
-        this.user = res
+    this.AuthService.user$.subscribe(res => {
+      // console.log(res)
+      this.user = res
     });
-    }
   }
+
+  open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context: 'this is some additional data passed to dialog' });
+  }
+}
 
 

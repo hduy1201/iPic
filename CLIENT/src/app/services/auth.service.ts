@@ -6,13 +6,13 @@ import { BehaviorSubject, from } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth) { 
+  constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         this.user$.next(user);
       }
     })
-   }
+  }
 
   public user$ = new BehaviorSubject<User>(<User>{});
 
