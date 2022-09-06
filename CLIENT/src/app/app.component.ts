@@ -64,8 +64,8 @@ export class AppComponent implements AfterViewInit {
   public user!: User;
 
   biding() {
-    this.AuthService.user$.subscribe((res) => {
-      this.user = res;
+    this.AuthService.user$.subscribe(res => {
+      this.user = res
     });
   }
 }

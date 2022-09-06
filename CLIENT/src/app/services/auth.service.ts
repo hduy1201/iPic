@@ -28,22 +28,19 @@ export class AuthService {
       if (user) {
         this.user$.next(user);
         //goi api register
-        if (user.email == '') return;
-        this.store.dispatch(
-          userActions.registerUser({
-            email: user.email || '',
-            firstName: user.displayName || 'user',
-            lastName: user.displayName || 'user',
-          })
-        );
+
+        if (user.email == "") return;
+        this.store.dispatch(userActions.registerUser({
+          email: user.email || '',
+          firstName: user.displayName || 'user',
+          lastName: user.displayName || 'user'
+        }))
       }
     });
-    this.registerUser$ = this.store.select(
-      (state) => state.registerUserReducer
-    );
-    // this.registerUser$.subscribe((res) => {
-    //   console.log(res);
-    // });
+    this.registerUser$ = this.store.select(state => state.registerUserReducer);
+    this.registerUser$.subscribe(res => {
+      // console.log(res)
+    })
   }
 
   public user$ = new BehaviorSubject<User>(<User>{});
@@ -63,5 +60,9 @@ export class AuthService {
         }
       })
     );
+  }
+
+  async logOut() {
+    return await this.auth.signOut();
   }
 }

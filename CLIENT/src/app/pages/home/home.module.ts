@@ -7,6 +7,7 @@ import { ListPostComponent } from './components/list-post/list-post.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [HomeComponent, ListPostComponent],
@@ -15,7 +16,11 @@ import { FormsModule } from '@angular/forms';
     HomeRoutingModule,
     FormsModule,
     InfiniteScrollModule,
+    NbCardModule,
+    NbButtonModule,
+    NbDialogModule.forChild(),
   ],
   exports: [HomeComponent, ListPostComponent],
+  providers: []
 })
 export class HomeModule { }

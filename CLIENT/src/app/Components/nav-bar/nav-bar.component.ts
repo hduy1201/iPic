@@ -8,11 +8,8 @@ import * as AuthActions from '../../../actions/auth.action';
 import { SuggestKeywordService } from '../../services/suggest-keyword.service';
 import { AuthService } from '../../../app/services/auth.service'
 import { User } from '@angular/fire/auth';
-import { getSearchPostState } from 'src/states/post.state';
-import * as PostActions from '../../../actions/post.action';
-import { Post } from 'src/models/post';
 import { DOCUMENT } from '@angular/common';
-
+import { ToastService } from './../../services/toast.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -31,6 +28,7 @@ export class NavBarComponent implements OnInit {
   keywordsPost$: any;
   keywordsChange$ = new Subject<string>();
   idToken$ = this.store.select((state) => state.auth.idToken);
+  authState$: Observable<AuthState>;
 
   constructor(
     private store: Store<{ auth: AuthState }>,
@@ -38,14 +36,19 @@ export class NavBarComponent implements OnInit {
     private suggestKeywords: SuggestKeywordService,
     private AuthService: AuthService,
     private router: Router,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private ToastService: ToastService
   ) {
+    this.authState$ = this.store.select((state) => state.auth);
+    this.authState$.subscribe((res) => {
+    });
   }
 
   ngOnInit(): void {
     this.keywordsChange$.subscribe((key) => {
       this.keywordsPost$ = this.suggestKeywords.getSuggestKeyword(key)
     })
+    this.biding();
   }
 
   ngAfterViewInit(): void {
@@ -116,8 +119,18 @@ export class NavBarComponent implements OnInit {
 
   biding() {
     this.AuthService.user$.subscribe(res => {
-      console.log(res)
       this.user = res
     });
+  }
+
+  sigOut() {
+    this.store.dispatch(AuthActions.logOut());
+    this.AuthService.user$.next(<User>{});
+    this.user = <User>{};
+    this.ToastService.showToast('primary', "Đăng xuất thành công!");
+  }
+
+  signIn() {
+    this.store.dispatch(AuthActions.login());
   }
 }

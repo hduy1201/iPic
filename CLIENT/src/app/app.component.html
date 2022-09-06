@@ -1,7 +1,6 @@
 <nb-layout>
   <nb-layout-header fixed>
-    <app-nav-bar class="nav-bar" *ngIf="(idToken$ | async)"></app-nav-bar>
-    <app-nav-bar-not-logged class="nav-bar-not-logged" *ngIf="!(idToken$ | async)"></app-nav-bar-not-logged>
+    <app-nav-bar class="nav-bar"></app-nav-bar>
   </nb-layout-header>
   <nb-layout-column style=" padding: 0">
     <router-outlet></router-outlet>

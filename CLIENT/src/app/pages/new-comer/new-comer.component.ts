@@ -74,27 +74,27 @@ export class NewComerComponent implements OnInit {
     [
       {
         id: 'topic11',
-        name: 'Phone Accessories',
+        name: '#Phone Accessories',
         picture: '/assets/topics/Phukien.jpg',
       },
       {
         id: 'topic12',
-        name: 'iPhone',
+        name: '#iPhone',
         picture: '/assets/topics/iPhone.jpg',
       },
       {
         id: 'topic13',
-        name: 'Samsung Galaxy',
+        name: '#Samsung Galaxy',
         picture: '/assets/topics/samsung.jpg',
       },
       {
         id: 'topic14',
-        name: 'Galaxy',
+        name: '#Galaxy',
         picture: '/assets/topics/galaxy.jpg',
       },
       {
         id: 'topic15',
-        name: 'Wallpaper',
+        name: '#Wallpaper',
         picture: '/assets/topics/wallpaper.jpg',
       },
     ],
@@ -103,27 +103,27 @@ export class NewComerComponent implements OnInit {
     [
       {
         id: 'topic16',
-        name: 'Furry',
+        name: '#Furry',
         picture: '/assets/topics/furry.jpg',
       },
       {
         id: 'topic17',
-        name: 'Character',
+        name: '#Character',
         picture: '/assets/topics/char.jpg',
       },
       {
         id: 'topic18',
-        name: 'My Liitle Pony',
+        name: '#My Liitle Pony',
         picture: '/assets/topics/mlp.jpg',
       },
       {
         id: 'topic19',
-        name: 'Cartoon',
+        name: '#Cartoon',
         picture: '/assets/topics/cartoon.jpg',
       },
       {
         id: 'topic20',
-        name: 'Fursuit',
+        name: '#Fursuit',
         picture: '/assets/topics/fursuit.jpg',
       },
     ],
@@ -132,27 +132,27 @@ export class NewComerComponent implements OnInit {
     [
       {
         id: 'topic21',
-        name: 'Cars',
+        name: '#Cars',
         picture: '/assets/topics/car.jpg',
       },
       {
         id: 'topic22',
-        name: 'Motorcycles',
+        name: '#Motorcycles',
         picture: '/assets/topics/motor.jpg',
       },
       {
         id: 'topic23',
-        name: 'Foods',
+        name: '#Foods',
         picture: '/assets/topics/food.jpg',
       },
       {
         id: 'topic24',
-        name: 'Drinks',
+        name: '#Drinks',
         picture: '/assets/topics/drinks.jpg',
       },
       {
         id: 'topic25',
-        name: 'Bar',
+        name: '#Bar',
         picture: '/assets/topics/bar.jpg',
       },
     ],
@@ -161,27 +161,27 @@ export class NewComerComponent implements OnInit {
     [
       {
         id: 'topic26',
-        name: 'Comics',
+        name: '#Comics',
         picture: '/assets/topics/comics.jpg',
       },
       {
         id: 'topic27',
-        name: 'Travel',
+        name: '#Travel',
         picture: '/assets/topics/travel.jpg',
       },
       {
         id: 'topic28',
-        name: 'Sports',
+        name: '#Sports',
         picture: '/assets/topics/sports.jpg',
       },
       {
         id: 'topic29',
-        name: 'Football',
+        name: '#Football',
         picture: '/assets/topics/football.jpg',
       },
       {
         id: 'topic30',
-        name: 'Basketball',
+        name: '#Basketball',
         picture: '/assets/topics/basketball.jpg',
       },
     ],
@@ -198,7 +198,9 @@ export class NewComerComponent implements OnInit {
   chose$ = this.store.select('choose', 'chose');
 
   addTopic(choice: string) {
+    console.log(choice);
     let topic = this.ele.nativeElement.querySelector(`#${choice}`);
+    console.log(topic);
     let step = 0;
     this.step$.pipe(take(1)).subscribe((s) => (step = s));
 
