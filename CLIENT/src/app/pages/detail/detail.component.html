@@ -2,17 +2,9 @@
   <div class="post-form" *ngIf="post">
     <div class="main-form">
       <div class="left-form" (click)="popUp(dialog)">
-        <div
-          class="bg-image"
-          [ngStyle]="{ 'background-image': 'url(' + post.images[0].url + ')' }"
-        ></div>
+        <div class="bg-image" [ngStyle]="{ 'background-image': 'url(' + post.images[0].url + ')' }"></div>
         <div class="bg-text">
-          <img
-            style="object-fit: contain"
-            width="100%"
-            height="100%"
-            [src]="post.images[0].url"
-          />
+          <img style="object-fit: contain" width="100%" height="100%" [src]="post.images[0].url" />
         </div>
       </div>
       <div class="right-form">
@@ -63,11 +55,11 @@
               "
             />
           </div> -->
-          <!-- <div>
+        <!-- <div>
               <button class="follow" nbButton>Theo dõi</button>
             </div> -->
-      
-          <!-- <div class="info">
+
+        <!-- <div class="info">
             <p>
               Ahmed <br />
               800 người theo dõi

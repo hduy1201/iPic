@@ -226,7 +226,7 @@ export class HomeComponent implements OnInit {
     this.chooseState$.subscribe((state) => {
       if (state.isSuccess) {
         // this.dialogRef.close();
-        window.location.reload();
+        // window.location.reload();
       }
     }
     );
