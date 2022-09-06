@@ -20,10 +20,10 @@ import { ShareModule } from './modules/share.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
-    // MongooseModule.forRoot(
-    //   'mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority',
-    // ),
+    // MongooseModule.forRoot("mongodb://localhost:3001/iPic"),
+    MongooseModule.forRoot(
+      'mongodb+srv://admin:admin@cluster0.eai7qjd.mongodb.net/iPic?retryWrites=true&w=majority',
+    ),
     AnimalModule,
     PostModule,
     CommentModule,
