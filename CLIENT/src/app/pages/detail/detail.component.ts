@@ -1,5 +1,4 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { getPostState } from 'src/states/post.state';
 import * as PostAction from 'src/actions/post.action';
@@ -7,9 +6,8 @@ import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
 import { DialogService } from '../../services/dialog.service';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../.././services/auth.service';
-import { User } from '@angular/fire/auth';
 import { NbDialogService } from '@nebular/theme';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-detail',
@@ -45,7 +43,8 @@ export class DetailComponent implements OnInit {
   }
 
   public post!: Post;
-
+  public user!: User;
+  
   getPost(id: string) {
     this.store.dispatch(PostAction.getPost({ id }));
   }

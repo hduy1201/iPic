@@ -2,13 +2,21 @@
   <div class="post-form" *ngIf="post">
     <div class="main-form">
       <div class="left-form" (click)="popUp(dialog)">
-        <div class="bg-image" [ngStyle]="{ 'background-image': 'url(' + post.images[0].url + ')' }"></div>
+        <div
+          class="bg-image"
+          [ngStyle]="{ 'background-image': 'url(' + post.images[0].url + ')' }"
+        ></div>
         <div class="bg-text">
-          <img style="object-fit: contain" width="100%" height="100%" [src]="post.images[0].url" />
+          <img
+            style="object-fit: contain"
+            width="100%"
+            height="100%"
+            [src]="post.images[0].url"
+          />
         </div>
       </div>
       <div class="right-form">
-        <div class="title">
+        <div class="reaction">
           <button
             class="like"
             nbButton
@@ -18,48 +26,36 @@
           </button>
           <button class="save" nbButton>Lưu</button>
         </div>
-        <div class="link" style="margin: 0 0 20px 0">link.com</div>
-        <div class="profile">
-          <h1>
+        <div>link.com</div>
+        <div class="description">
+          <div class="title">
             {{ post.title }}
-          </h1>
+          </div>
           <p [ngClass]="{ limitTextHeight: isReadMore }">
             {{ post.content }}
           </p>
-          <div
-            style="
-              margin-top: 1px;
-              margin-bottom: 10px;
-              width: 20%;
-              height: 30px;
-              margin-left: 320px;
-              border: none;
-            "
-            type="button"
-            (click)="showText()"
-          >
+          <div class="option" type="button" (click)="showText()">
             {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
           </div>
         </div>
-        <div class="description" for="description">
-          <div>
-            <img
-              src="../assets/pinterest_logo.jpg"
-              height="100%"
-              width="10%"
-              style="
-                float: left;
-                margin-left: 20px;
-                border-radius: 50%;
-                border: solid rgb(0, 0, 0, 0.2);
-              "
-            />
-          </div> -->
-        <!-- <div>
+        <div class="profile">
+          <img src="../assets/iPic_Logo_PNG.png" />
+          <div>Author name</div>
+        </div>
+        <div class="comment">Nhận xét</div>
+        <div class="input-comment">
+          <img src="../assets/iPic_Logo_PNG.png" />
+          <input type="text" placeholder="Thêm nhận xét ..." />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div>
               <button class="follow" nbButton>Theo dõi</button>
             </div> -->
 
-        <!-- <div class="info">
+<!-- <div class="info">
             <p>
               Ahmed <br />
               800 người theo dõi
@@ -73,7 +69,7 @@
             <input type="text" placeholder="Thêm nhận xét ..." />
           </div>
         </div> -->
-        <!-- <div class="website-link" for="link">
+<!-- <div class="website-link" for="link">
           <input
             class="input-link"
             type="url"
@@ -92,7 +88,7 @@
   </div>
 </div>
 
-<!-- PopUp Image -->
+<-- PopUp Image -->
 <ng-template id="dialog-success" #dialog let-data let-ref="dialogRef">
   <nb-card style="margin: 0; border: none">
     <!-- <nb-card-header>Thêm bài viết thành công</nb-card-header> -->

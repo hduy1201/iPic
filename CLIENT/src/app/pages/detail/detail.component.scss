@@ -1,8 +1,8 @@
 .container {
   padding: 0;
   margin: 40px auto;
-  width: 65%;
-  height: 90%;
+  width: 65vw;
+  height: 80vh;
   display: flex;
   background-color: #fff;
   border-radius: 8px;
@@ -26,37 +26,6 @@
 .option-icon {
   padding: 1.5%;
   width: 5%;
-}
-
-.post-form .drop-down-tag {
-  width: 100%;
-  height: 10%;
-}
-
-.drop-down-tag button {
-  background-color: black;
-  border-radius: 0 5px 5px 0;
-  border: none;
-  width: 20%;
-  height: 90%;
-  border: 0.5px solid none;
-  border-left: none;
-}
-
-.drop-down-tag button:hover {
-  background: #d31027;
-  background: -webkit-linear-gradient(to left, #ea384d, #d31027);
-  background: linear-gradient(to left, #ea384d, #d31027);
-  cursor: pointer;
-}
-
-.drop-down-tag input {
-  border-radius: 5px 0 0 5px;
-  border: none;
-  width: 80%;
-  height: 90%;
-  border: 0.5px solid none;
-  border-right: none;
 }
 
 .main-form {
@@ -104,19 +73,19 @@
   margin: 20px;
 }
 
-.right-form .title {
+.reaction {
   display: inline-block;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.right-form .like {
+.like {
   margin-right: 75%;
   height: 100%;
 }
 
-.right-form .save {
+.save {
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -125,56 +94,62 @@
   height: 30px;
 }
 
-.right-form .profile {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.title {
+  font-weight: bold;
+  font-size: 2.5rem;
+  padding: 20px 0;
 }
 
-.right-form .account-name {
-  width: 50%;
-  padding: 25px 0;
-  margin: 0 0 0 15px;
+.description .option {
+  width: 100%;
+  display: inline-flex;
+  justify-content: right;
+}
+
+.profile {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  margin: 20px 0;
+}
+
+.profile img {
+  height: 100%;
+  border-radius: 50%;
+  border: solid rgba(0, 0, 0, 0.2);
+}
+
+.profile div {
+  margin: auto 0 auto 3%;
   font-weight: bold;
 }
 
-.right-form .avatar {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 100%;
+.comment {
+  font-size: 1.2rem;
+  margin: 20px 10px;
 }
 
-.right-form .description {
-  width: 100%;
-  height: 25%;
-}
-
-.right-form .input-description {
-  width: 100%;
-  height: 30%;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: #efefef;
-}
-
-.right-form .website-link {
+.input-comment {
   width: 100%;
   height: 10%;
-  margin-top: 30%;
+  display: flex;
+  margin: 10px 0;
 }
 
-.right-form .input-link {
-  width: 100%;
-  height: 30%;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  font-size: 1rem;
-  background-color: #efefef;
+.input-comment img {
+  height: 100%;
+  border-radius: 50%;
+  border: solid rgba(0, 0, 0, 0.2);
 }
 
-input:focus {
-  outline: none !important;
+.input-comment input {
+  width: 70%;
+  border: none;
+  border-radius: 7%;
+  margin: 0 0 0 3%;
+}
+
+.limitTextHeight {
+  height: 5.1vh;
+  overflow: hidden;
 }
