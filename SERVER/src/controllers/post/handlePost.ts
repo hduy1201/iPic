@@ -98,11 +98,11 @@ export class handlePostService {
     }
 
     waringImage() {
-        return "Waring 18+";
+        return "Warning 18+";
     }
 
     notWaringImage() {
-        return "Not Waring 18+";
+        return "Not Warning 18+";
     }
 
 }

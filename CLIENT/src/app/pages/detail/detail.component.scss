@@ -22,6 +22,10 @@
 }
 
 .left-form {
+  border: solid rgba(0, 0, 0, 0.1);
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
   height: 100%;
   width: 50%;
   position: relative;
@@ -57,7 +61,7 @@
 .right-form {
   width: 50%;
   height: 100%;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 30px;
 }
 
 .reaction {
@@ -86,6 +90,11 @@
   font-weight: bold;
   font-size: 2.5rem;
   padding: 20px 0;
+}
+
+.description {
+  width: 100%;
+  height: 20%;
 }
 
 .description .option {
