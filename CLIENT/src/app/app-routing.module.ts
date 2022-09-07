@@ -62,6 +62,7 @@ const routes: Routes = [
   },
   { path: 'welcome-page', loadChildren: () => import('./pages/welcome-page/welcome-page.module').then(m => m.WelcomePageModule) },
   { path: 'home-not-logged', loadChildren: () => import('./pages/home-not-logged/home-not-logged.module').then(m => m.HomeNotLoggedModule) },
+  { path: 'tag/:tag', loadChildren: () => import('./pages/tag/tag.module').then(m => m.TagModule) },
 ];
 
 @NgModule({

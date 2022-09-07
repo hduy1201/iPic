@@ -12,7 +12,6 @@
 .post-form {
   width: 100%;
   background: #efefef;
-  border-radius: 8px;
 }
 
 .post-form .header-form {
@@ -152,4 +151,8 @@
 .limitTextHeight {
   height: 5.1vh;
   overflow: hidden;
+}
+
+.tags {
+  padding: 10px 0 10px 0;
 }

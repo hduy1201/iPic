@@ -10,10 +10,12 @@ import { Post, PostDocument } from 'src/schemas/post.schema';
 import { CloudiaryService } from '../cloudiary/cloudiary.service';
 import { handlePostService } from '../../controllers/post/handlePost';
 import { UserService } from '../../services/user/user.service';
+import { User, UserDocument } from 'src/schemas/user.schema';
 @Injectable()
 export class PostService {
   constructor(
     @InjectModel(Post.name) private postModel: Model<PostDocument>,
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
     private cloudiary: CloudiaryService,
     private handlePost: handlePostService,
     private UserService: UserService
@@ -31,13 +33,15 @@ export class PostService {
           tags: {
             $regex: regex,
             $options: "i"
-          }
+          },
+          status: "public"
         })
         .sort({
           createdAt: -1
         })
         .skip((page - 1) * pageSize)
         .limit(pageSize)
+        .populate("authorId", "firstName email -_id", this.userModel)
 
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
@@ -80,7 +84,9 @@ export class PostService {
 
   async getPostById(id: string) {
     try {
-      const post = await this.postModel.findById(id);
+      const post = await this.postModel
+        .findById(id)
+        .populate("authorId", "firstName email -_id", this.userModel);
       if (!post) {
         throw new HttpException('This post not exist', HttpStatus.BAD_REQUEST);
       }

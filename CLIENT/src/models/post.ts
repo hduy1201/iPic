@@ -10,7 +10,10 @@ export interface Post {
   ];
   tags: string;
   links: Array<string>;
-  authorId: string;
+  authorId: {
+    email: string,
+    firstName: string
+  };
   likes: string;
   comments: string;
   coverImage: string;

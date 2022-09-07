@@ -45,7 +45,7 @@ export class User {
   posts: Post[];
 
   @Prop({
-    default: Array['Default']
+    default: Array
   })
   interests: Array<String>
 }

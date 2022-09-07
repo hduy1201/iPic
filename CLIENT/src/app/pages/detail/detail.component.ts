@@ -23,6 +23,8 @@ export class DetailComponent implements OnInit {
     this.isReadMore = !this.isReadMore;
   }
 
+  public tags: string[] = [];
+
   constructor(
     private store: Store<{ getPostReducer: getPostState }>,
     private activatedRoute: ActivatedRoute,
@@ -37,19 +39,24 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
-      console.log(res.post);
       this.post = res.post;
+      this.tags = res.post.tags.split(",");
+      console.log(this.tags)
     });
   }
 
   public post!: Post;
   public user!: User;
-  
+
   getPost(id: string) {
     this.store.dispatch(PostAction.getPost({ id }));
   }
 
   popUp(dialog: TemplateRef<any>) {
     this.dialogService.open(dialog);
+  }
+
+  chooseTag(tag: string) {
+    console.log(tag);
   }
 }

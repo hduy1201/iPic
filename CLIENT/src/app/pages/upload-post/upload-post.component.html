@@ -2,13 +2,7 @@
   <div class="post-form" [formGroup]="postForm">
     <div class="main-form">
       <div class="left-form">
-        <div
-          class="custom-dropzone"
-          ngx-dropzone
-          [accept]="'image/*'"
-          (change)="onSelect($event)"
-          for="image"
-        >
+        <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)" for="image">
           <ngx-dropzone-label id="image">
             <div class="upload-content">
               <i class="fa fa-arrow-down" aria-hidden="true"></i>
@@ -23,52 +17,29 @@
               </p>
             </div>
           </ngx-dropzone-label>
-          <ngx-dropzone-image-preview
-            ngProjectAs="ngx-dropzone-preview"
-            *ngFor="let f of files"
-            [file]="f"
-            [removable]="true"
-            (removed)="onRemove(f)"
-          >
+          <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+            [removable]="true" (removed)="onRemove(f)">
           </ngx-dropzone-image-preview>
         </div>
       </div>
       <div class="right-form">
         <div for="title">
-          <input
-            class="title"
-            type="text"
-            placeholder="Tạo tiêu đề"
-            id="title"
-            formControlName="title"
-          />
+          <input class="title" type="text" placeholder="Tạo tiêu đề" id="title" formControlName="title" />
         </div>
         <div class="profile">
-          <img
-            class="avatar"
-            src="https://scontent.fsgn13-3.fna.fbcdn.net/v/t1.6435-1/152474324_454991765858054_6815372736016710457_n.jpg?stp=c86.86.1875.1875a_dst-jpg_s240x240&_nc_cat=102&ccb=1-7&_nc_sid=7206a8&_nc_ohc=fGzDAfB0234AX-oW5nI&_nc_ht=scontent.fsgn13-3.fna&oh=00_AT8NbaU1nKNkPjrmiEDV64enjSI4xlaYCj4SaopcS9b7xQ&oe=632DDF05"
-          />
-          <div class="account-name">Lư Hoàng Duy</div>
+          <img class="avatar" [src]="user.photoURL" />
+          <div class="account-name">{{user.displayName}}</div>
         </div>
         <div class="description" for="description">
-          <input
-            class="input-description"
-            type="text"
-            placeholder="Nhập mô tả bài viết của bạn ở đây..."
-            id="description"
-            formControlName="content"
-          />
+          <input class="input-description" type="text" placeholder="Nhập mô tả bài viết của bạn ở đây..."
+            id="description" formControlName="content" />
         </div>
         <div class="website-link" for="link">
-          <input
-            class="input-link"
-            type="url"
-            placeholder="Chia sẻ thêm liên kết liên quan đến bài của bạn"
-            id="link"
-          />
+          <input class="input-link" type="url" placeholder="Chia sẻ thêm liên kết liên quan đến bài của bạn"
+            id="link" />
         </div>
         <div class="drop-down-tag">
-          <input type="search" placeholder="Nhập #tag" />
+          <input formControlName="tags" type="search" placeholder="Nhập #tag" />
           <button type="submit" (click)="addPost()">
             <div style="color: #fff">Lưu</div>
           </button>
@@ -86,12 +57,7 @@
       {{ data }}
     </nb-card-body>
     <nb-card-footer>
-      <button
-        nbButton
-        (click)="ref.close()"
-        routerLink="/profile"
-        style="margin-right: 20px"
-      >
+      <button nbButton (click)="ref.close()" routerLink="/profile" style="margin-right: 20px">
         Trở về trang cá nhân
       </button>
       <button nbButton (click)="ref.close()">Tiếp tục thêm bài mới</button>

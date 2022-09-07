@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
-import { NbCardModule, NbIconModule, NbSelectModule, NbSidebarModule } from '@nebular/theme';
+import { NbCardModule, NbIconModule, NbSelectModule, NbSidebarModule, NbTooltipModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 
@@ -20,6 +20,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbIconModule,
     NbEvaIconsModule,
     NbSelectModule,
+    NbTooltipModule
   ]
 })
 export class DetailModule { }

@@ -45,17 +45,16 @@
 }
 
 .container .drop-down-tag button:hover {
-  background: #d31027; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to left,
-    #ea384d,
-    #d31027
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #ea384d,
-    #d31027
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #d31027;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left,
+      #ea384d,
+      #d31027);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   cursor: pointer;
 }
 
@@ -136,14 +135,14 @@ ngx-dropzone-label,
 
 .right-form .account-name {
   width: 50%;
-  padding: 25px 0;
+  padding: 15px 0;
   margin: 0 0 0 15px;
   font-weight: bold;
 }
 
 .right-form .avatar {
-  width: 4rem;
-  height: 4rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 100%;
 }
 
