@@ -22,9 +22,20 @@
             nbButton
             style="background-color: transparent; border: none"
           >
-            <nb-icon icon="heart-outline"></nb-icon>
+            <nb-icon
+              icon="heart-outline"
+              nbTooltip="Thích"
+              nbTooltipPlacement="bottom"
+            ></nb-icon>
           </button>
-          <button class="save" nbButton>Lưu</button>
+          <button
+            class="save"
+            nbTooltip="Lưu"
+            nbTooltipPlacement="bottom"
+            nbButton
+          >
+            Lưu
+          </button>
         </div>
         <div class="tags">
           <span *ngFor="let tag of tags">
@@ -39,9 +50,9 @@
           <p [ngClass]="{ limitTextHeight: isReadMore }">
             {{ post.content }}
           </p>
-          <!-- <div class="option" type="button" (click)="showText()">
-            {{ isReadMore ? "Xem thêm" : "Thu hồi" }}
-          </div> -->
+          <div class="option" type="button" (click)="showText()">
+            <!-- {{ isReadMore ? "Xem thêm" : "Thu hồi" }} -->
+          </div>
         </div>
         <div class="profile">
           <img
@@ -54,30 +65,40 @@
         <div class="output-comment">
           <div class="single-comment">
             <div class="left">
-              <img src="../../../assets/iPic_Logo_PNG.png"/>
+              <img src="../../../assets/iPic_Logo_PNG.png" />
             </div>
             <div class="right">
-              <div id="usname">Username</div>
-              <div>This is comment</div>
+              <div class="up">
+                <div id="usname">Username</div>
+                <div id="content">This is comment</div>
+              </div>
+              <div class="down">
+                <div id="time">12:30</div>
+              </div>
             </div>
           </div>
           <div class="single-comment">
             <div class="left">
-              <img src="../../../assets/iPic_Logo_PNG.png"/>
+              <img src="../../../assets/iPic_Logo_PNG.png" />
             </div>
             <div class="right">
-              <div id="usname">Username</div>
-              <div>This is comment</div>
+              <div class="up">
+                <div id="usname">Username</div>
+                <div id="content">This is comment</div>
+              </div>
+              <div class="down">
+                <div id="time">12:30</div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- <div class="input-comment">
+        <div class="input-comment">
           <img
             style="width: 50px; height: 50px; border-radius: 50%"
             src="../assets/iPic_Logo_PNG.png"
           />
           <input type="text" placeholder="Thêm nhận xét ..." />
-        </div> -->
+        </div>
       </div>
     </div>
   </div>
