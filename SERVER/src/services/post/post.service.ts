@@ -11,15 +11,25 @@ import { CloudiaryService } from '../cloudiary/cloudiary.service';
 import { handlePostService } from '../../controllers/post/handlePost';
 import { UserService } from '../../services/user/user.service';
 import { User, UserDocument } from 'src/schemas/user.schema';
+import { Comment, CommentDocument } from 'src/schemas/comment.schema';
 @Injectable()
 export class PostService {
   constructor(
     @InjectModel(Post.name) private postModel: Model<PostDocument>,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
     private cloudiary: CloudiaryService,
     private handlePost: handlePostService,
     private UserService: UserService
   ) { }
+
+  async getTest() {
+    try {
+      return await this.postModel.find().populate("authorId", "", this.userModel);
+    } catch (error) {
+      return error;
+    }
+  }
 
   async getAllPosts(page: number, pageSize: number, email: string) {
     try {
@@ -86,7 +96,15 @@ export class PostService {
     try {
       const post = await this.postModel
         .findById(id)
-        .populate("authorId", "firstName email -_id", this.userModel);
+        .populate("authorId", "firstName email -_id", this.userModel)
+        .populate({
+          path: "comments",
+          model: this.commentModel,
+          populate: {
+            path: "userId",
+            model: this.userModel,
+          }
+        })
       if (!post) {
         throw new HttpException('This post not exist', HttpStatus.BAD_REQUEST);
       }
@@ -102,11 +120,12 @@ export class PostService {
 
       //UPDATE POST TO TAG
 
-      let savePost, updateTags;
+      let savePost, updateTags, updateUser;
 
-      [savePost, updateTags] = await Promise.all([
+      [savePost, updateTags, updateUser] = await Promise.all([
         this.handlePost.handleTags(createPost.tags, createPost._id),
-        createPost.save()
+        this.UserService.updatePostUser(createPost.authorId, createPost._id),
+        createPost.save(),
       ])
 
       return savePost;

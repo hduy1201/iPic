@@ -1,8 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
-import { ImagePost } from 'src/models/imageNude.model';
-import { Tag } from './tag.schema';
-import { User } from './user.schema';
 
 export type PostDocument = Post & Document;
 

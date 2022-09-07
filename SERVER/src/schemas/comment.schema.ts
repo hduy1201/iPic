@@ -10,7 +10,7 @@ export type CommentDocument = Comment & Document;
 export class Comment {
     @Prop({
         required: true,
-        type: mongoose.Schema.Types.ObjectId, ref: "Users"
+        type: mongoose.Schema.Types.ObjectId, ref: "users"
     })
     userId: string;
 
@@ -32,11 +32,11 @@ export class Comment {
 
     @Prop({
         required: true,
-        type: mongoose.Schema.Types.ObjectId, ref: "Posts"
+        type: mongoose.Schema.Types.ObjectId, ref: "posts"
     })
-    postId: string; 
+    postId: string;
 
-   
+
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

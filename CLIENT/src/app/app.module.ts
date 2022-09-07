@@ -52,6 +52,8 @@ import { ToastService } from './services/toast.service';
 import { InterestEffect } from 'src/effects/interest.effect';
 import { ListPostItemComponent } from './Components/list-post-item/list-post-item.component';
 import { ShareModule } from './modules/share.module';
+import { createCommentReducer } from 'src/reducers/comment.reducer';
+import { CommentEffect } from 'src/effects/comment.effect';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,6 @@ import { ShareModule } from './modules/share.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShareModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -76,11 +77,13 @@ import { ShareModule } from './modules/share.module';
         choose: chooseReducer,
         getSearchPostReducer: getSearchPostReducer,
         registerUserReducer: registerUserReducer,
-        saveInterestsReducer: saveInterestsReducer
+        saveInterestsReducer: saveInterestsReducer,
+        createCommentReducer: createCommentReducer
       },
       {}
     ),
-    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects, InterestEffect]),
+    ShareModule,
+    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects, InterestEffect, CommentEffect]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,

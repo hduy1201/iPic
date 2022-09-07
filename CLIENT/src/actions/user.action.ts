@@ -1,6 +1,5 @@
 import { createAction, props } from "@ngrx/store";
 
-
 export const registerUser = createAction(
     '[User] Register',
     props<{
@@ -21,3 +20,4 @@ export const registerUserFail = createAction(
     '[User] Register Fail',
     props<{ error: string }>()
 )
+

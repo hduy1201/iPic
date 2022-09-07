@@ -61,4 +61,8 @@ export class PostService {
   getPost(id: string): Observable<Post> {
     return this.Http.get<Post>(URL + `post/detail?id=${id}`);
   }
+
+  getAllPost() {
+    return this.Http.get(URL + "post/get-all-post");
+  }
 }

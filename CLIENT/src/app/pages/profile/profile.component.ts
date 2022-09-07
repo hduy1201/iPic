@@ -1,6 +1,8 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { NbDialogService } from '@nebular/theme';
+import { UserService } from 'src/app/services/user.service';
+import { Post } from 'src/models/post';
 import { AuthService } from '../.././services/auth.service'
 
 @Component({
@@ -10,20 +12,30 @@ import { AuthService } from '../.././services/auth.service'
 })
 export class ProfileComponent implements OnInit {
 
-  getName() {
-    console.log("Khang")
-  }
-
   constructor(
     private AuthService: AuthService,
-    private dialogService: NbDialogService
+    private dialogService: NbDialogService,
+    private userService: UserService
+
   ) { }
   public user!: User;
 
+  public posts: Array<Post> = [];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //Add '${implements OnChanges}' to the class.
+    console.log('he')
+  }
+
   ngOnInit(): void {
-    this.AuthService.user$.subscribe(res => {
-      // console.log(res)
-      this.user = res
+    this.AuthService.user$.subscribe(async res => {
+      if (res.email) {
+        this.user = res
+        let tem: any = await this.userService.getProfile(res.email).toPromise();
+        this.posts = tem.posts;
+        console.log(this.posts);
+      }
     });
   }
 

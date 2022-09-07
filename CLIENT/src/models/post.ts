@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Post {
   _id: string;
   title: string;
@@ -15,7 +17,18 @@ export interface Post {
     firstName: string
   };
   likes: string;
-  comments: string;
+  comments: Comment[];
   coverImage: string;
   status: string;
+}
+
+export interface Comment {
+  content: string,
+  comments: [],
+  createdAt: string,
+  image: string,
+  postId: Post,
+  updatedAt: string,
+  userId: User,
+
 }
