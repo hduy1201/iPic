@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit {
     this.getPost$.subscribe((res) => {
       this.post = res.post;
       this.tags = res.post.tags.split(',');
-      console.log(this.tags);
+      console.log(this.post);
     });
   }
 
