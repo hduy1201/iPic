@@ -43,6 +43,7 @@ export class PostService {
     }
     formData.append('title', post.title);
     formData.append('content', post.content);
+    formData.append('tags', post.tags);
 
     var header = {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.idToken}`),

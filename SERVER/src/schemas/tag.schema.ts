@@ -22,6 +22,11 @@ export class Tag {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'posts' }],
     default: Array
   })
-  posts: Array<Post>
+  posts: Post[]
+
+  @Prop({
+    type: { type: mongoose.Schema.Types.ObjectId, ref: 'users' },
+  })
+  authorId: string
 }
 export const TagSchema = SchemaFactory.createForClass(Tag);

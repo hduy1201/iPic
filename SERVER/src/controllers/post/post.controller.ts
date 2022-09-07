@@ -63,6 +63,8 @@ export class PostController {
     @Req() req: any,
   ) {
 
+    console.log(post);
+
     //MIDDLEWARE JWT
     const payload = req.payload;
 

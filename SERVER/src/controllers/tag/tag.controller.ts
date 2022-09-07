@@ -22,4 +22,9 @@ export class TagController {
     async getByName(@Body() body: any) {
         return await this.TagService.findByName(body.name);
     }
+
+    @Get('test')
+    async getTest() {
+        return await this.TagService.findAll();
+    }
 }

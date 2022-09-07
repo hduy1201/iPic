@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
       },
       {
         id: 'topic5',
-        name: '#Body Goals',
+        name: '#Nude',
         picture: '/assets/topics/body.jpg',
       },
     ],
@@ -226,7 +226,7 @@ export class HomeComponent implements OnInit {
     this.chooseState$.subscribe((state) => {
       if (state.isSuccess) {
         // this.dialogRef.close();
-        // window.location.reload();
+        window.location.reload();
       }
     }
     );

@@ -9,7 +9,6 @@ import { CloudiaryModule } from '../cloudiary/cloudiary.module';
 import { NudeNetClass } from 'src/helpers/nudenet.helper';
 import { AuthService } from 'src/services/auth/auth.service';
 import { handlePostService } from 'src/controllers/post/handlePost';
-import { TagService } from 'src/services/tag/tag.service';
 import { TagModule } from '../tag/tag.module';
 import { User, UserSchema } from 'src/schemas/user.schema';
 @Module({
@@ -30,7 +29,8 @@ import { User, UserSchema } from 'src/schemas/user.schema';
     handlePostService,
   ],
   exports: [
-    handlePostService
+    handlePostService,
+    PostService
   ],
 })
 export class PostModule implements NestModule {

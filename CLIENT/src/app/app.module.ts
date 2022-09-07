@@ -49,11 +49,19 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { NavBarNotLoggedComponent } from './Components/nav-bar-not-logged/nav-bar-not-logged.component';
 import { ToastService } from './services/toast.service';
 import { InterestEffect } from 'src/effects/interest.effect';
+import { ListPostItemComponent } from './Components/list-post-item/list-post-item.component';
+import { ShareModule } from './modules/share.module';
 @NgModule({
-  declarations: [AppComponent, LoadingPageComponent, NavBarComponent, NavBarNotLoggedComponent],
+  declarations: [
+    AppComponent,
+    LoadingPageComponent,
+    NavBarComponent,
+    NavBarNotLoggedComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ShareModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

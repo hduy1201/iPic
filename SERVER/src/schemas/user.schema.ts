@@ -40,7 +40,7 @@ export class User {
 
   @Prop({
     default: Array,
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'posts' }],
   })
   posts: Post[];
 

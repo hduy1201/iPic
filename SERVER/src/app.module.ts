@@ -32,7 +32,7 @@ import { ShareModule } from './modules/share.module';
     MulterModule.register({ dest: './uploads/images' }),
     CloudiaryModule,
     TagModule,
-    ShareModule
+    ShareModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthService, CloudiaryService],

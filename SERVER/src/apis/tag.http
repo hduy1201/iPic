@@ -1,0 +1,4 @@
+###
+GET http://localhost:3000/post/detail?id=6315aec0b1d346387b5c7f0f
+###
+GET http://localhost:3000/select-tag/get-all

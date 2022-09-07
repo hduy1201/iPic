@@ -8,8 +8,10 @@ import { Tag, TagDocument } from 'src/schemas/tag.schema';
 @Injectable()
 export class TagService {
   constructor(
+    // @InjectModel(User.name) private UserModel: Model<UserDocument>,
     @InjectModel(Tag.name) private TagModel: Model<TagDocument>,
-    @InjectModel(Post.name) private PostModel: Model<PostDocument>,
+    @InjectModel(Post.name) private postModel: Model<PostDocument>,
+
   ) { }
 
   async create(createTagDto: TagModel) {
@@ -27,7 +29,22 @@ export class TagService {
   }
 
   async findAll() {
-    return await this.TagModel.find();
+    let posts: any = await this.TagModel.find();
+    posts.map(
+      async (post, index) => {
+        post.posts.map(async (value, j) => {
+          console.log(value)
+          let res = await this.postModel.findById(value);
+          console.log(res);
+        })
+        // for (let i = 0; i < post.posts.length; i++) {
+        //   console.log(post.posts[i])
+        //   // let res = await this.PostModel.findById(post.post[i]);
+        //   // console.log(res);
+        // }
+      }
+    )
+    return posts;
   }
 
   async findByName(name: string) {
@@ -35,7 +52,7 @@ export class TagService {
 
       return await this.TagModel.findOne({
         name,
-      }).populate("posts", " ", this.PostModel).exec();
+      }).populate("posts", " ", this.postModel).exec();
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
@@ -72,4 +89,15 @@ export class TagService {
       return error;
     }
   }
+
+  async findPostById(id: string) {
+    try {
+      let post = await this.postModel.findById(id);
+      console.log(post);
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+
 }
