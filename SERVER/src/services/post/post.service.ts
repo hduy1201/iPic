@@ -11,11 +11,13 @@ import { CloudiaryService } from '../cloudiary/cloudiary.service';
 import { handlePostService } from '../../controllers/post/handlePost';
 import { UserService } from '../../services/user/user.service';
 import { User, UserDocument } from 'src/schemas/user.schema';
+import { Comment, CommentDocument } from 'src/schemas/comment.schema';
 @Injectable()
 export class PostService {
   constructor(
     @InjectModel(Post.name) private postModel: Model<PostDocument>,
     @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
     private cloudiary: CloudiaryService,
     private handlePost: handlePostService,
     private UserService: UserService
@@ -94,7 +96,15 @@ export class PostService {
     try {
       const post = await this.postModel
         .findById(id)
-        .populate("authorId", "firstName email -_id", this.userModel);
+        .populate("authorId", "firstName email -_id", this.userModel)
+        .populate({
+          path: "comments",
+          model: this.commentModel,
+          populate: {
+            path: "userId",
+            model: this.userModel,
+          }
+        })
       if (!post) {
         throw new HttpException('This post not exist', HttpStatus.BAD_REQUEST);
       }

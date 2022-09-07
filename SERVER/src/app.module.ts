@@ -48,10 +48,10 @@ export class AppModule implements NestModule {
         path: 'post/add',
         method: RequestMethod.POST,
       },
-      // {
-      //   path: '/post/update',
-      //   method: RequestMethod.PUT,
-      // },
+      {
+        path: '/comment/create-comment',
+        method: RequestMethod.POST,
+      },
       // {
       //   path: '/post/delete',
       //   method: RequestMethod.DELETE,

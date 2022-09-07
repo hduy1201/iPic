@@ -27,6 +27,7 @@ import {
   NbContextMenuModule,
   NbDialogModule,
   NbToastrModule,
+  NbTooltipModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AuthEffects } from 'src/effects/auth.effect';
@@ -51,6 +52,8 @@ import { ToastService } from './services/toast.service';
 import { InterestEffect } from 'src/effects/interest.effect';
 import { ListPostItemComponent } from './Components/list-post-item/list-post-item.component';
 import { ShareModule } from './modules/share.module';
+import { createCommentReducer } from 'src/reducers/comment.reducer';
+import { CommentEffect } from 'src/effects/comment.effect';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,12 +77,13 @@ import { ShareModule } from './modules/share.module';
         choose: chooseReducer,
         getSearchPostReducer: getSearchPostReducer,
         registerUserReducer: registerUserReducer,
-        saveInterestsReducer: saveInterestsReducer
+        saveInterestsReducer: saveInterestsReducer,
+        createCommentReducer: createCommentReducer
       },
       {}
     ),
     ShareModule,
-    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects, InterestEffect]),
+    EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects, InterestEffect, CommentEffect]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbLayoutModule,
@@ -88,6 +92,7 @@ import { ShareModule } from './modules/share.module';
     HttpClientModule,
     NbDialogModule.forRoot(),
     NbToastrModule.forRoot(),
+    NbTooltipModule
   ],
   providers: [DialogService, SuggestKeywordService, ToastService],
   bootstrap: [AppComponent],

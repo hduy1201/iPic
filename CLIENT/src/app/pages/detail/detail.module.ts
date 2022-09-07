@@ -6,6 +6,7 @@ import { DetailComponent } from './detail.component';
 import { NbCardModule, NbIconModule, NbSelectModule, NbSidebarModule, NbTooltipModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ShareModule } from 'src/app/modules/share.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ShareModule } from 'src/app/modules/share.module';
     NbEvaIconsModule,
     NbSelectModule,
     NbTooltipModule,
-    ShareModule
+    ShareModule,
+    FormsModule
   ]
 })
 export class DetailModule { }

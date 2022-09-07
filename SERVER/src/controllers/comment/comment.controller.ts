@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Post, Req } from '@nestjs/common';
 import { CommentService } from 'src/services/comment/comment.service';
 import { Comment } from 'src/schemas/comment.schema';
 
@@ -9,15 +9,18 @@ export class CommentController {
     ) { }
 
     //CREATE COMMENT
-    @Post('create')
-    public async create(@Body() comment: Comment ) {
-        return await this.CommentService.creatComment(comment);
+    @Post('create-comment')
+    public async create(
+        @Body() body: any,
+        @Req() req: any
+    ) {
+        return await this.CommentService.creatComment(body.content, body.postId, req.payload.email);
     }
     //DELETE COMMENT
     @Delete('delete')
     public async deleteComment(@Body('id') id: string) {
         return await this.CommentService.deleteComment(id);
     }
- 
+
 }
 //
