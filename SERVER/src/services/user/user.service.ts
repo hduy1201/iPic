@@ -1,11 +1,15 @@
 import { HttpException, HttpStatus, Injectable, Res } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Post, PostDocument } from 'src/schemas/post.schema';
 import { User, UserDocument } from 'src/schemas/user.schema';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) { }
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Post.name) private postModel: Model<PostDocument>,
+  ) { }
 
   async createUser(user: User) {
     try {
@@ -74,7 +78,7 @@ export class UserService {
 
   async findUserByEmail(email: string) {
     try {
-      return await this.userModel.findOne({ email });
+      return await this.userModel.findOne({ email }).populate("posts", "", this.postModel);
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
@@ -89,6 +93,21 @@ export class UserService {
       );
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  async updatePostUser(userId: string, postId) {
+    try {
+      return await this.userModel.findByIdAndUpdate(
+        userId,
+        {
+          $push: {
+            posts: postId
+          }
+        }
+      )
+    } catch (error) {
+
     }
   }
 }

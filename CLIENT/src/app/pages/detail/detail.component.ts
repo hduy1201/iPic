@@ -4,10 +4,10 @@ import { getPostState } from 'src/states/post.state';
 import * as PostAction from 'src/actions/post.action';
 import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
-import { DialogService } from '../../services/dialog.service';
 import { ActivatedRoute } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { User } from 'src/models/user';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-detail',
@@ -24,11 +24,13 @@ export class DetailComponent implements OnInit {
   }
 
   public tags: string[] = [];
+  public posts: any;
 
   constructor(
     private store: Store<{ getPostReducer: getPostState }>,
     private activatedRoute: ActivatedRoute,
-    private dialogService: NbDialogService
+    private dialogService: NbDialogService,
+    private PostService: PostService
   ) {
     this.getPost$ = this.store.select((state) => state.getPostReducer);
     this.activatedRoute.params.subscribe((params: any) => {
@@ -41,8 +43,10 @@ export class DetailComponent implements OnInit {
     this.getPost$.subscribe((res) => {
       this.post = res.post;
       this.tags = res.post.tags.split(',');
-      console.log(this.tags);
     });
+    this.PostService.getAllPost().subscribe(res => {
+      this.posts = <Post[]>res;
+    })
   }
 
   public post!: Post;

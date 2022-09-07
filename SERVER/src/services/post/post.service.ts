@@ -21,6 +21,14 @@ export class PostService {
     private UserService: UserService
   ) { }
 
+  async getTest() {
+    try {
+      return await this.postModel.find().populate("authorId", "", this.userModel);
+    } catch (error) {
+      return error;
+    }
+  }
+
   async getAllPosts(page: number, pageSize: number, email: string) {
     try {
 
@@ -102,11 +110,12 @@ export class PostService {
 
       //UPDATE POST TO TAG
 
-      let savePost, updateTags;
+      let savePost, updateTags, updateUser;
 
-      [savePost, updateTags] = await Promise.all([
+      [savePost, updateTags, updateUser] = await Promise.all([
         this.handlePost.handleTags(createPost.tags, createPost._id),
-        createPost.save()
+        this.UserService.updatePostUser(createPost.authorId, createPost._id),
+        createPost.save(),
       ])
 
       return savePost;

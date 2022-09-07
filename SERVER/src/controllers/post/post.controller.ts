@@ -26,6 +26,12 @@ export class PostController {
     private handlePost: handlePostService
   ) { }
 
+  //GET TEST
+  @Get('/get-all-post')
+  public async getTest() {
+    return this.PostService.getTest();
+  }
+
   //GET ALL POSTS
   @Get('/')
   public async testPost(
@@ -61,13 +67,11 @@ export class PostController {
     @UploadedFiles() files: Array<Express.Multer.File>,
     @Req() req: any,
   ) {
-
-    console.log(post);
-
     //MIDDLEWARE JWT
     const payload = req.payload;
 
-    const EMAIL = "trong.phamtranduc@gmail.com" //JUST FOR TEST
+    // const EMAIL = "trong.phamtranduc@gmail.com" //JUST FOR TEST
+    const EMAIL = payload.email;
 
     let user: any = await this.UserService.findUserByEmail(EMAIL);
 

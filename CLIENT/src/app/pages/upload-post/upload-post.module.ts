@@ -5,7 +5,7 @@ import { UploadPostRoutingModule } from './upload-post-routing.module';
 import { UploadPostComponent } from './upload-post.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbDialogModule, NbDialogRef, NbToastrModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [UploadPostComponent],
@@ -17,6 +17,8 @@ import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
     NbDialogModule.forChild(),
     NbCardModule,
     NbButtonModule,
+    NbToastrModule.forRoot(),
   ],
+  providers: []
 })
-export class UploadPostModule {}
+export class UploadPostModule { }

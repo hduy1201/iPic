@@ -61,7 +61,6 @@ import { ShareModule } from './modules/share.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShareModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -79,6 +78,7 @@ import { ShareModule } from './modules/share.module';
       },
       {}
     ),
+    ShareModule,
     EffectsModule.forRoot([AuthEffects, PostEffectS, UserEffects, InterestEffect]),
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),

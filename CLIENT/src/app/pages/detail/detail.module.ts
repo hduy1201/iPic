@@ -5,6 +5,7 @@ import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
 import { NbCardModule, NbIconModule, NbSelectModule, NbSidebarModule, NbTooltipModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ShareModule } from 'src/app/modules/share.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbIconModule,
     NbEvaIconsModule,
     NbSelectModule,
-    NbTooltipModule
+    NbTooltipModule,
+    ShareModule
   ]
 })
 export class DetailModule { }

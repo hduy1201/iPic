@@ -42,7 +42,7 @@ export class User {
     default: Array,
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'posts' }],
   })
-  posts: Post[];
+  posts: [];
 
   @Prop({
     default: Array

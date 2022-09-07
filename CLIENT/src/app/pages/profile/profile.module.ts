@@ -5,6 +5,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { HomeModule } from '../home/home.module';
 import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
+import { ShareModule } from 'src/app/modules/share.module';
 
 
 
@@ -18,7 +19,8 @@ import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
     HomeModule,
     NbCardModule,
     NbDialogModule.forRoot(),
-    NbButtonModule
+    NbButtonModule,
+    ShareModule
   ]
 })
 export class ProfileModule { }

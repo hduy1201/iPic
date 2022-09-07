@@ -11,12 +11,14 @@ import { AuthService } from 'src/services/auth/auth.service';
 import { handlePostService } from 'src/controllers/post/handlePost';
 import { TagModule } from '../tag/tag.module';
 import { User, UserSchema } from 'src/schemas/user.schema';
+import { MongoModule } from '../mongoose.module';
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: Post.name, schema: PostSchema },
-      { name: User.name, schema: UserSchema }
-    ]),
+    // MongooseModule.forFeature([
+    //   { name: Post.name, schema: PostSchema },
+    //   { name: User.name, schema: UserSchema }
+    // ]),
+    MongoModule,
     UserModule,
     CloudiaryModule,
     TagModule
