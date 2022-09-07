@@ -16,7 +16,7 @@ import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
     ReactiveFormsModule,
     NbDialogModule.forChild(),
     NbCardModule,
-    NbButtonModule
+    NbButtonModule,
   ],
 })
 export class UploadPostModule {}

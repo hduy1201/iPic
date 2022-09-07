@@ -79,6 +79,10 @@
   margin: 20px 20px 20px 0;
 }
 
+.left-form {
+  width: 50%;
+}
+
 ngx-dropzone,
 .custom-dropzone {
   margin: 0;
@@ -114,6 +118,7 @@ ngx-dropzone-label,
   text-align: center;
   vertical-align: middle;
 }
+
 
 .right-form .title {
   border-top: none;
