@@ -27,6 +27,7 @@ import {
   NbContextMenuModule,
   NbDialogModule,
   NbToastrModule,
+  NbTooltipModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AuthEffects } from 'src/effects/auth.effect';
@@ -88,6 +89,7 @@ import { ShareModule } from './modules/share.module';
     HttpClientModule,
     NbDialogModule.forRoot(),
     NbToastrModule.forRoot(),
+    NbTooltipModule
   ],
   providers: [DialogService, SuggestKeywordService, ToastService],
   bootstrap: [AppComponent],
