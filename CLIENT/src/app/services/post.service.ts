@@ -18,8 +18,11 @@ export class PostService {
   }
   private idToken!: string;
   getAllPosts(page: number, pagesize: number): Observable<Post[]> {
+    var header = {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.idToken}`),
+    };
     return this.Http.get<Post[]>(
-      URL + `post?page=${page}&pagesize=${pagesize}`
+      URL + `post?page=${page}&pagesize=${pagesize}`, header
     );
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { Post } from 'src/models/post';
 import { getAllPostState } from 'src/states/post.state';
 import * as PostActions from '../../../../../actions/post.action';
@@ -21,7 +22,10 @@ export class ListPostComponent implements OnInit {
   public posts: Array<Post> = [];
   public getAllPost$: Observable<getAllPostState>;
 
-  constructor(private store: Store<{ getAllPostReducer: getAllPostState }>) {
+  constructor(
+    private store: Store<{ getAllPostReducer: getAllPostState }>,
+    private AuthService: AuthService
+  ) {
     this.getAllPost$ = this.store.select((state) => state.getAllPostReducer);
   }
 
@@ -33,9 +37,13 @@ export class ListPostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(
-      PostActions.getPosts({ page: this.page, pageSize: 30 })
-    );
+    this.AuthService.user$.subscribe(user => {
+      if (user.email) {
+        this.store.dispatch(
+          PostActions.getPosts({ page: this.page, pageSize: 30 })
+        );
+      };
+    })
     this.getAllPost$.subscribe((res) => {
       console.log(res)
       if (res.isSuccess) {

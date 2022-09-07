@@ -33,9 +33,8 @@ export class PostController {
     @Query('pagesize') pagesize: number,
     @Req() req: any
   ) {
-    // const userEmail = req.payload.email;
-
-    return await this.PostService.getAllPosts(page, pagesize, 'trong.phamtranduc@gmail.com');
+    const userEmail = req.payload.email;
+    return await this.PostService.getAllPosts(page, pagesize, userEmail);
   }
 
   //GET POST WITH ID

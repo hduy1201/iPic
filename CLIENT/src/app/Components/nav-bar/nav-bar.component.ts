@@ -46,7 +46,12 @@ export class NavBarComponent implements OnInit {
     private ToastService: ToastService
   ) {
     this.authState$ = this.store.select((state) => state.auth);
-    this.authState$.subscribe((res) => {});
+    this.authState$.subscribe((res) => {
+      console.log(res.isAuthenticated)
+      if (res.isAuthenticated) {
+        location.href = "/home"
+      }
+    });
   }
 
   ngOnInit(): void {
