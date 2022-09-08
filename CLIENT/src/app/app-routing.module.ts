@@ -32,7 +32,6 @@ const routes: Routes = [
         (m) => m.UploadPostModule
       ),
   },
-
   {
     path: 'profile',
     loadChildren: () =>
@@ -53,20 +52,38 @@ const routes: Routes = [
   {
     path: 'new-comer',
     loadChildren: () =>
-      import('./pages/new-comer/new-comer.module').then(m => m.NewComerModule)
+      import('./pages/new-comer/new-comer.module').then(
+        (m) => m.NewComerModule
+      ),
   },
   {
     path: 'search',
     loadChildren: () =>
-      import('./pages/search/search.module').then(m => m.SearchModule)
+      import('./pages/search/search.module').then((m) => m.SearchModule),
   },
-  { path: 'welcome-page', loadChildren: () => import('./pages/welcome-page/welcome-page.module').then(m => m.WelcomePageModule) },
-  { path: 'home-not-logged', loadChildren: () => import('./pages/home-not-logged/home-not-logged.module').then(m => m.HomeNotLoggedModule) },
-  { path: 'tag/:tag', loadChildren: () => import('./pages/tag/tag.module').then(m => m.TagModule) },
+  {
+    path: 'welcome-page',
+    loadChildren: () =>
+      import('./pages/welcome-page/welcome-page.module').then(
+        (m) => m.WelcomePageModule
+      ),
+  },
+  {
+    path: 'home-not-logged',
+    loadChildren: () =>
+      import('./pages/home-not-logged/home-not-logged.module').then(
+        (m) => m.HomeNotLoggedModule
+      ),
+  },
+  {
+    path: 'tag/:tag',
+    loadChildren: () =>
+      import('./pages/tag/tag.module').then((m) => m.TagModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
