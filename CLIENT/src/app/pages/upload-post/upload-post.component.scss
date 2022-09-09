@@ -47,13 +47,9 @@
 .container .drop-down-tag button:hover {
   background: #d31027;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left,
-      #ea384d,
-      #d31027);
+  background: -webkit-linear-gradient(to left, #ea384d, #d31027);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left,
-      #ea384d,
-      #d31027);
+  background: linear-gradient(to left, #ea384d, #d31027);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   cursor: pointer;
 }
@@ -108,7 +104,7 @@ ngx-dropzone-label {
 }
 
 ngx-dropzone-image-preview {
-  width: 80%;
+  height: 350px !important;
 }
 
 ngx-dropzone-label,
@@ -118,7 +114,6 @@ ngx-dropzone-label,
   text-align: center;
   vertical-align: middle;
 }
-
 
 .right-form .title {
   border-top: none;
