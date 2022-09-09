@@ -47,10 +47,9 @@ export class DetailComponent implements OnInit {
   postId: string = "";
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
-      setTimeout(() => {
-        this.post = res.post;
-        this.tags = res.post.tags.split(',');
-      }, 500)
+      this.post = res.post;
+      if (res.post.tags === undefined) return;
+      this.tags = res.post.tags.split(',');
     });
     this.PostService.getAllPost().subscribe(res => {
       this.posts = <Post[]>res;

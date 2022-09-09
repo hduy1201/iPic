@@ -213,11 +213,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.chose$.subscribe((chose) => console.log(chose));
     this.AuthService.user$.subscribe((user) => {
       if (!user.email) return;
-      // this.open(this.dialog);
       this.UserService.getProfile(user.email).subscribe((profile: any) => {
+        if (profile.interests === undefined) return;
         if (profile.interests.length == 0) {
           this.open(this.dialog);
         }

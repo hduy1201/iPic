@@ -15,7 +15,10 @@ export class TagService {
   ) { }
 
   async findSuggestion() {
-    return await this.TagModel.find().limit(10).select("name");
+
+    var random = Math.floor(Math.random() * 5);
+
+    return await this.TagModel.find().limit(10).select("name").skip(random);
   }
 
   async create(createTagDto: TagModel) {
