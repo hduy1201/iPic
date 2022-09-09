@@ -47,12 +47,15 @@ export class NavBarComponent implements OnInit {
   ) {
     this.authState$ = this.store.select((state) => state.auth);
     this.authState$.subscribe((res) => {
-      console.log(res.isAuthenticated);
-      if (res.isAuthenticated == false) {
-        // location.href = "/";
-        this.router.navigate(['/']);
+      if (res.isAuthenticated == true) {
+        // location.href = "/home";
+        // this.router.navigate(['/']);
       }
     });
+  }
+
+  backHome() {
+    window.location.href = "/home";
   }
 
   ngOnInit(): void {
@@ -144,7 +147,8 @@ export class NavBarComponent implements OnInit {
     this.store.dispatch(AuthActions.logOut());
     this.AuthService.user$.next(<User>{});
     this.user = <User>{};
-    this.ToastService.showToast('primary', 'Đăng xuất thành công!');
+    // this.ToastService.showToast('primary', 'Đăng xuất thành công!');
+    this.router.navigate(['/']);
   }
 
   signIn() {

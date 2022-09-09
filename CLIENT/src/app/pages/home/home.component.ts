@@ -213,12 +213,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.chose$.subscribe((chose) => console.log(chose));
-    this.AuthService.user$.subscribe((user) => {
+    this.AuthService.user$.subscribe((user: any) => {
       if (!user.email) return;
-      // this.open(this.dialog);
       this.UserService.getProfile(user.email).subscribe((profile: any) => {
-        if (profile.interests.length == 0) {
+        if (profile.interests === undefined || !profile.interests) return;
+        if (profile.interests.length === 0) {
           this.open(this.dialog);
         }
       });
@@ -226,7 +225,7 @@ export class HomeComponent implements OnInit {
     this.chooseState$.subscribe((state) => {
       if (state.isSuccess) {
         // this.dialogRef.close();
-        window.location.reload();
+        window.location.href = "/home";
       }
     }
     );

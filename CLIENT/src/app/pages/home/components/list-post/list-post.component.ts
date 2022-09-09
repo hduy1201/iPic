@@ -35,8 +35,10 @@ export class ListPostComponent implements OnInit {
       PostActions.getPosts({ page: this.page, pageSize: 20 })
     );
   }
+  isLoaded: boolean = false;
 
   ngOnInit(): void {
+    // console.log('list post');
     this.AuthService.user$.subscribe(user => {
       if (user.email) {
         this.store.dispatch(
@@ -44,14 +46,14 @@ export class ListPostComponent implements OnInit {
         );
       };
     })
-    setTimeout(() => {
-      this.getAllPost$.subscribe((res) => {
-        if (res.isSuccess) {
-          res.posts.map((post) => {
-            this.posts.push(post);
-          });
-        }
-      });
-    }, 500)
+    this.getAllPost$.subscribe((res) => {
+      this.isLoaded = res.isLoading;
+      if (res.isSuccess) {
+        if (res.posts === undefined || !res.posts) return;
+        res.posts.map((post) => {
+          this.posts.push(post);
+        });
+      }
+    });
   }
 }
