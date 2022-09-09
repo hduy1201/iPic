@@ -4,7 +4,12 @@
   src="../assets/iPic.png"
   height="50px"
   width="50px"
-  style="margin-left: 20px; border-radius: 100%; cursor: pointer"
+  style="
+    margin-left: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+    border: solid rgba(0, 0, 0, 0.1);
+  "
   nbTooltip="Welcome to iPic"
   nbTooltipPlacement="bottom"
 />
@@ -18,7 +23,7 @@
     Trang chủ
   </button>
 </div>
-<div class="create">
+<div class="create" *ngIf="user.email">
   <button
     routerLink="/upload-post"
     nbTooltip="Tạo bài viết"
@@ -199,7 +204,12 @@
   </div>
 </div>
 <span style="flex: 1 auto"></span>
-<div class="bell" nbTooltip="Thông báo" nbTooltipPlacement="bottom">
+<div
+  class="bell"
+  nbTooltip="Thông báo"
+  nbTooltipPlacement="bottom"
+  *ngIf="user.email"
+>
   <button
     (click)="onNofiClick()"
     nbButton
@@ -283,7 +293,12 @@
     </div>
   </div>
 </div>
-<div class="mess" nbTooltip="Nhắn tin" nbTooltipPlacement="bottom">
+<div
+  class="mess"
+  nbTooltip="Nhắn tin"
+  nbTooltipPlacement="bottom"
+  *ngIf="user.email"
+>
   <button
     (click)="onMessClick()"
     nbButton
@@ -448,20 +463,10 @@
   />
 </button>
 
-<button
-  *ngIf="user.email"
-  (click)="sigOut()"
-  nbButton
-  style="background-color: transparent; border: none; margin-right: 20px"
->
-  <nb-icon icon="arrow-ios-downward-outline" style="color: #fff"></nb-icon>
-</button>
+<div class="login">
+  <button *ngIf="user.email" (click)="sigOut()" nbButton>Logout</button>
+</div>
 
-<button
-  *ngIf="!user.email"
-  (click)="signIn()"
-  nbButton
-  style="background-color: transparent; border: none; margin-right: 20px"
->
-  login
-</button>
+<div class="login">
+  <button *ngIf="!user.email" (click)="signIn()" nbButton>Login</button>
+</div>
