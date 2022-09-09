@@ -38,6 +38,7 @@ export class DetailComponent implements OnInit {
     this.getPost$ = this.store.select((state) => state.getPostReducer);
     this.createComment$ = this.store.select((state) => state.createCommentReducer);
     this.activatedRoute.params.subscribe((params: any) => {
+      this.post = undefined;
       this.getPost(params.id);
       this.postId = params.id;
     });
@@ -46,22 +47,22 @@ export class DetailComponent implements OnInit {
   postId: string = "";
   ngOnInit(): void {
     this.getPost$.subscribe((res) => {
-      console.log(res);
-      this.post = res.post;
-      this.tags = res.post.tags.split(',');
+      setTimeout(() => {
+        this.post = res.post;
+        this.tags = res.post.tags.split(',');
+      }, 500)
     });
     this.PostService.getAllPost().subscribe(res => {
       this.posts = <Post[]>res;
     });
     this.createComment$.subscribe(res => {
       if (res.isSuccess) {
-        console.log(`comment success`);
         this.getPost(this.postId);
       }
     })
   }
 
-  public post!: Post;
+  public post!: Post | undefined;
   public user!: User;
 
   getPost(id: string) {

@@ -53,6 +53,7 @@ export class UploadPostComponent implements OnInit {
         this.toastrService.show('Tải thành công', `Thông báo`, {
           status: "success"
         });
+        this.store.dispatch(PostAction.resetCreatePost());
         this.Router.navigate(['/profile'])
         this.files = [];
         this.postForm.reset(this.postForm.value);

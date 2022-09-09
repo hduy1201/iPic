@@ -1,64 +1,71 @@
-<div style="margin-top: 50px;">
-    <div class="vitri">
-        <img class="avaUser" [src]="user.photoURL">
-    </div>
+<div style="margin-top: 50px">
+  <div class="vitri">
+    <img class="avaUser" [src]="user.photoURL" />
+  </div>
 
-    <div class="user-content">
-        <p style="margin-top: 15px;" id="name">{{user.displayName}}</p>
-        <p style="margin-top: -15px;">{{user.email}}</p>
-        <p>0 người đang theo dõi</p>
-    </div>
+  <div class="user-content">
+    <p style="margin-top: 15px" id="name">{{ user.displayName }}</p>
+    <p style="margin-top: -15px">{{ user.email }}</p>
+    <p>0 người đang theo dõi</p>
+  </div>
 
+  <div class="hub-button">
+    <button class="button-share" (click)="open(dialog)">Chia Sẻ</button>
 
-    <div class="hub-button">
-        <button class="button-share" (click)="open(dialog)">Chia Sẻ</button>
+    <button routerLink="/edit-profile" class="button-file">
+      Chỉnh sửa hồ sơ
+    </button>
+  </div>
 
-        <button routerLink="/edit-profile" class="button-file">Chỉnh sửa hồ sơ</button>
-    </div>
-
-    <!-- <div class="folder">
+  <!-- <div class="folder">
         <p class="create" style="font-weight: bold; margin-right: 2rem;">Đã Tạo</p>
         <p class="save" style="font-weight: bold;">Đã Lưu</p>
     </div> -->
 
-    <div>
-        <app-list-post-item [posts]="posts"></app-list-post-item>
-    </div>
+  <div>
+    <app-list-post-item [posts]="posts"></app-list-post-item>
+  </div>
 
-    <ng-template #dialog let-data let-ref="dialogRef">
-        <nb-card>
-            <nb-card-header class="share-width">Chia sẻ với</nb-card-header>
-            <nb-card-body style="display:flex; gap: 30px;">
-                <div>
-                    <img class="button-logo" src="../../../assets/pictures/logo_whatsapp_ico.png">
-                </div>
+  <ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+      <nb-card-header class="share-width">Chia sẻ với</nb-card-header>
+      <nb-card-body style="display: flex; gap: 30px">
+        <div>
+          <img
+            class="button-logo"
+            src="../../../assets/pictures/logo_whatsapp_ico.png"
+          />
+        </div>
 
-                <div>
-                    <img class="button-logo" src="../../../assets/pictures/f_logo_RGB-Blue_1024.png">
-                </div>
+        <div>
+          <img
+            class="button-logo"
+            src="../../../assets/pictures/f_logo_RGB-Blue_1024.png"
+          />
+        </div>
 
-                <div>
-                    <img class="button-logo"
-                        src="../../../assets/pictures/logo-messenger-inkythuatso-2-01-30-15-47-51.jpg">
-                </div>
+        <div>
+          <img
+            class="button-logo"
+            src="../../../assets/pictures/logo-messenger-inkythuatso-2-01-30-15-47-51.jpg"
+          />
+        </div>
 
-                <div>
-                    <img class="button-logo" src="../../../assets/pictures/copy.jpg">
-                </div>
+        <div>
+          <img class="button-logo" src="../../../assets/pictures/copy.jpg" />
+        </div>
 
-                <div>
-                    <img class="button-logo" src="../../../assets/pictures/gmail.png">
-                </div>
-            </nb-card-body>
+        <div>
+          <img class="button-logo" src="../../../assets/pictures/gmail.png" />
+        </div>
+      </nb-card-body>
 
-            <nb-card-footer>
-                <!-- <p class="text">Gửi trên ipic</p>
+      <nb-card-footer>
+        <!-- <p class="text">Gửi trên ipic</p>
                 <div>
                     <img class="button-logo" src="../../../assets/pictures/search.jpg">
                 </div> -->
-            </nb-card-footer>
-        </nb-card>
-    </ng-template>
-
-
+      </nb-card-footer>
+    </nb-card>
+  </ng-template>
 </div>

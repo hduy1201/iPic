@@ -59,7 +59,7 @@ import { CommentEffect } from 'src/effects/comment.effect';
     AppComponent,
     LoadingPageComponent,
     NavBarComponent,
-    NavBarNotLoggedComponent
+    NavBarNotLoggedComponent,
   ],
   imports: [
     BrowserModule,

@@ -49,6 +49,13 @@ export class PostController {
     return await this.PostService.getPostById(id);
   }
 
+  @Get('/search')
+  public async searchPost(
+    @Query('keyword') keyword: string,
+  ) {
+    return await this.PostService.searchPost(keyword);
+  }
+
   //SUGGEST POSTS
   @Get('/suggest')
   public async getPostByTitle(

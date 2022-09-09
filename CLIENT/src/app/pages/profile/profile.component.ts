@@ -33,8 +33,9 @@ export class ProfileComponent implements OnInit {
       if (res.email) {
         this.user = res
         let tem: any = await this.userService.getProfile(res.email).toPromise();
-        this.posts = tem.posts;
-        console.log(this.posts);
+        setTimeout(() => {
+          this.posts = tem.posts;
+        }, 500)
       }
     });
   }

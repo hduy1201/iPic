@@ -8,6 +8,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
+import { ShareModule } from 'src/app/modules/share.module';
 
 @NgModule({
   declarations: [HomeComponent, ListPostComponent],
@@ -19,6 +20,7 @@ import { NbButtonModule, NbCardModule, NbDialogModule } from '@nebular/theme';
     NbCardModule,
     NbButtonModule,
     NbDialogModule.forChild(),
+    ShareModule
   ],
   exports: [HomeComponent, ListPostComponent],
   providers: []

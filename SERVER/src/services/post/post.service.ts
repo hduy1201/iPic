@@ -23,6 +23,47 @@ export class PostService {
     private UserService: UserService
   ) { }
 
+  async searchPost(keyword: string) {
+    try {
+      return await this.postModel.aggregate([
+        {
+          $match: {
+            title: {
+              $regex: keyword,
+              $options: 'i',
+            }
+
+          },
+        },
+        {
+          $sort: {
+            createdAt: -1,
+          }
+        },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'authorId',
+            foreignField: '_id',
+            as: 'user',
+          }
+        },
+        {
+          $unwind: '$user'
+        },
+        {
+          $project: {
+            "user.posts": 0,
+            "user.interests": 0,
+          }
+        }
+
+      ])
+    } catch (error) {
+      return new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
   async getTest() {
     try {
       return await this.postModel.find().populate("authorId", "", this.userModel);

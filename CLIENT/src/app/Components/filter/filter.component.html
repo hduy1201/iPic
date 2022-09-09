@@ -1,0 +1,7 @@
+<div class="relevant">
+    <div class="item" *ngFor="let item of relevantKeyword">
+        <div (click)="navigate(item.name)" style="width: 100%;">
+            {{ item.name }}
+        </div>
+    </div>
+</div>
