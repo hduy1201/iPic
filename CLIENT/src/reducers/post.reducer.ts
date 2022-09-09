@@ -19,6 +19,8 @@ export const createPostReducer = createReducer(
       isLoading: true,
       isSuccess: false,
       post: action.post,
+      error: '',
+      message: ''
     };
   }),
 
@@ -28,7 +30,8 @@ export const createPostReducer = createReducer(
       isLoading: false,
       isSuccess: true,
       post: <Post>{},
-      message: action.message
+      message: action.message,
+      error: ''
     };
   }),
 
@@ -39,6 +42,17 @@ export const createPostReducer = createReducer(
       isSuccess: false,
       error: error,
       post: <Post>{},
+      message: ''
+    };
+  }),
+  on(PostAction.resetCreatePost, (state) => {
+    return {
+      ...state,
+      isLoading: false,
+      isSuccess: false,
+      error: '',
+      post: <Post>{},
+      message: ''
     };
   })
 );

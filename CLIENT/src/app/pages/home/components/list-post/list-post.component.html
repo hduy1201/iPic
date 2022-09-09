@@ -1,22 +1,13 @@
-<div
-  class="container"
-  infinite-scroll
-  [infiniteScrollDistance]="scrollDistance"
-  [infiniteScrollUpDistance]="scrollUpDistance"
-  [infiniteScrollThrottle]="throttle"
-  (scrolled)="onScrollDown($event)"
->
+<div style="margin-top: 20px;" *ngIf="posts.length === 0">
+  <app-loading></app-loading>
+</div>
+<div class="container" infinite-scroll [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance" [infiniteScrollThrottle]="throttle" (scrolled)="onScrollDown($event)"
+  *ngIf="posts">
   <div class="box" *ngFor="let post of posts">
-    <img
-      *ngIf="post.images[0].hashTag == 'Warning 18+'"
-      class="warning"
-      [src]="post.coverImage"
-      [routerLink]="['/ipic/' + post._id]"
-    />
-    <img
-      *ngIf="post.images[0].hashTag !== 'Warning 18+'"
-      [src]="post.coverImage"
-      [routerLink]="['/ipic/' + post._id]"
-    />
+    <img *ngIf="post.images[0].hashTag == 'Warning 18+'" class="warning" [src]="post.coverImage"
+      [routerLink]="['/ipic/' + post._id]" />
+    <img *ngIf="post.images[0].hashTag !== 'Warning 18+'" [src]="post.coverImage"
+      [routerLink]="['/ipic/' + post._id]" />
   </div>
 </div>

@@ -13,14 +13,19 @@ export class TagController {
         return this.TagService.findAll();
     }
 
+    @Get('suggestion')
+    async getSuggestion() {
+        return await this.TagService.findSuggestion();
+    }
+
     @Post('create')
     create(@Body() tag: any) {
         return this.TagService.create(tag);
     }
 
-    @Get('get-by-name')
-    async getByName(@Body() body: any) {
-        return await this.TagService.findByName(body.name);
+    @Get('get-with-name/:name')
+    async getByName(@Param('name') name: string) {
+        return await this.TagService.findByName(name);
     }
 
     @Get('test')

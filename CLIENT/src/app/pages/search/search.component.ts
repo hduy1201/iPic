@@ -5,6 +5,8 @@ import { Post } from 'src/models/post';
 import { Observable } from 'rxjs';
 import { getSearchPostState } from 'src/states/post.state';
 import * as PostActions from '../../../actions/post.action';
+import { PostService } from 'src/app/services/post.service';
+import { TagService } from 'src/app/services/tag.service';
 
 
 @Component({
@@ -26,20 +28,14 @@ export class SearchComponent implements OnInit {
   public posts: Array<Post> = [];
   public getSearchPost$: Observable<getSearchPostState>;
 
-  relevantKeyword = [
-    "ZzzzzzZZZ",
-    "Fury",
-    "Fox",
-    "Green Planet",
-    "Gordon Gramsay",
-    "Nightmare kitchen",
-    "Anime girl",
-    "Hunter x Hunter",
-    "Rick Asley",
-    "Tree"
-  ]
 
-  constructor(private store: Store<{ getSearchPostReducer: getSearchPostState }>, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private store: Store<{ getSearchPostReducer: getSearchPostState }>,
+    private route: ActivatedRoute,
+    private router: Router,
+    private PostService: PostService,
+    private TagService: TagService
+  ) {
     this.getSearchPost$ = this.store.select((state) => state.getSearchPostReducer);
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
@@ -57,17 +53,11 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     let tempKeyword = this.route.snapshot.queryParamMap.get('keyword');
     this.keyword = tempKeyword === null ? this.keyword : tempKeyword;
-    this.store.dispatch(
-      PostActions.getSearchPosts({ keyword: this.keyword, page: this.page, pageSize: 20 })
-    );
-    this.getSearchPost$.subscribe((res) => {
-      console.log(res);
-      if (res.isSuccess) {
-        res.posts.map((post) => {
-          this.posts.push(post);
-        });
-      }
-    });
+    this.PostService.getSearch(this.keyword).subscribe(res => {
+      setTimeout(() => {
+        this.posts = <Post[]>res;
+      }, 500)
+    })
   }
 
   //Ahihi em copy code

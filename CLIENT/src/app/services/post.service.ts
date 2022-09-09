@@ -33,6 +33,10 @@ export class PostService {
     return result;
   }
 
+  getSearch(keyword: string) {
+    return this.Http.get(URL + "post/search?keyword=" + keyword);
+  }
+
   addPost(
     post: Post,
     files: Array<File>

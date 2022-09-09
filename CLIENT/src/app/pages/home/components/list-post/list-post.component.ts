@@ -44,13 +44,14 @@ export class ListPostComponent implements OnInit {
         );
       };
     })
-    this.getAllPost$.subscribe((res) => {
-      console.log(res)
-      if (res.isSuccess) {
-        res.posts.map((post) => {
-          this.posts.push(post);
-        });
-      }
-    });
+    setTimeout(() => {
+      this.getAllPost$.subscribe((res) => {
+        if (res.isSuccess) {
+          res.posts.map((post) => {
+            this.posts.push(post);
+          });
+        }
+      });
+    }, 500)
   }
 }

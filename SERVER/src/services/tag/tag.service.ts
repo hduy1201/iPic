@@ -14,6 +14,10 @@ export class TagService {
 
   ) { }
 
+  async findSuggestion() {
+    return await this.TagModel.find().limit(10).select("name");
+  }
+
   async create(createTagDto: TagModel) {
 
     const _tag = await this.TagModel.findOne({
@@ -35,9 +39,9 @@ export class TagService {
 
   async findByName(name: string) {
     try {
-
+      let tag = `#${name}`;
       return await this.TagModel.findOne({
-        name,
+        name: tag,
       }).populate("posts", " ", this.postModel).exec();
     } catch (error) {
       return new HttpException(error.message, HttpStatus.BAD_REQUEST);
