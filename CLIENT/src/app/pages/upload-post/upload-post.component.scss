@@ -103,8 +103,15 @@ ngx-dropzone-label {
   height: 90%;
 }
 
-ngx-dropzone-image-preview {
-  height: 350px !important;
+.preview {
+  height: 300px !important;
+  width: 100% !important;
+  padding: 20px !important;
+  margin: 0px !important;
+}
+
+.preview > img {
+  margin: 20px !important;
 }
 
 ngx-dropzone-label,
