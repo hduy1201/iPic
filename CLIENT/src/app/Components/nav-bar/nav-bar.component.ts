@@ -48,7 +48,7 @@ export class NavBarComponent implements OnInit {
     this.authState$ = this.store.select((state) => state.auth);
     this.authState$.subscribe((res) => {
       if (res.isAuthenticated == true) {
-        location.href = "/home";
+        // location.href = "/home";
         // this.router.navigate(['/']);
       }
     });

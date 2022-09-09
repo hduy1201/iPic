@@ -3,3 +3,8 @@ export interface AuthState {
     idToken: string;
     error: string;
 }
+
+export interface AuthLogin {
+    isLogin: boolean;
+    error: string;
+}
