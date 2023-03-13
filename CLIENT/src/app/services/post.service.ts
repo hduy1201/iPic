@@ -17,16 +17,22 @@ export class PostService {
     });
   }
   private idToken!: string;
+
   getAllPosts(page: number, pagesize: number): Observable<Post[]> {
     var header = {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.idToken}`),
     };
     return this.Http.get<Post[]>(
-      URL + `post?page=${page}&pagesize=${pagesize}`, header
+      URL + `post?page=${page}&pagesize=${pagesize}`,
+      header
     );
   }
 
-  getSearchPosts(keyword: string, page: number, pagesize: number): Observable<Post[]> {
+  getSearchPosts(
+    keyword: string,
+    page: number,
+    pagesize: number
+  ): Observable<Post[]> {
     let result = this.Http.get<Post[]>(
       URL + `post/suggest?title=${keyword}&page=${page}&pagesize=${pagesize}`
     );
@@ -34,7 +40,7 @@ export class PostService {
   }
 
   getSearch(keyword: string) {
-    return this.Http.get(URL + "post/search?keyword=" + keyword);
+    return this.Http.get(URL + 'post/search?keyword=' + keyword);
   }
 
   addPost(
@@ -67,6 +73,6 @@ export class PostService {
   }
 
   getAllPost() {
-    return this.Http.get(URL + "post/get-all-post");
+    return this.Http.get(URL + 'post/get-all-post');
   }
 }
